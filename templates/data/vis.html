@@ -132,9 +132,18 @@
 
         <!-- 4/10新增許多plot圖的輸出 -->
         <h1>Statics:</h1>
-        <button onclick="chart({{jsfile1}})">garment_group_name</button>
+        <form action="{{ request.path }}" method="post" id="json_form">
 
-        <!-- <button onclick="chart({{jsfile2}} , 'perceived_colour_name')">perceived colour </button> -->
+        <select class="w3-bar-item" style="width:20%" name="name" form="json_form" required='required'>
+            <option value="garment_group_name">garment_group_name</option>
+            <option value="perceived_colour_value_name">perceived_colour_value_name</option>
+        </select>
+        <!-- <button onclick="chart({{jsfile}})" type='submit'>Show</button> -->
+        <button id="sub" type='submit'>Get</button>
+        </form>
+
+        <button onclick="chart({{jsfile}})">Show</button>
+
         <div id="chartdiv"></div>
 
 
@@ -168,7 +177,8 @@
         }
 
         // plot amchart
-        function chart(file,column) {
+        function chart(file) {
+            
             am4core.useTheme(am4themes_animated);
             var chart = am4core.create("chartdiv", am4charts.PieChart);
             chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
@@ -181,8 +191,7 @@
 
             var series = chart.series.push(new am4charts.PieSeries());
             series.dataFields.value = "count";
-            // series.dataFields.category = column;
-            series.dataFields.category = "garment_group_name";
+            series.dataFields.category = "column";
 
             series.slices.template.cornerRadius = 10;
             series.slices.template.innerCornerRadius = 7;

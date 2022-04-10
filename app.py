@@ -11,7 +11,6 @@ CLOTHS_FOLDER = os.path.join('static', 'cloths')
 JSON_FOLDER = os.path.join('static', 'data')
 
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = [DB_TYPE]+[DB_CONNECTOR]://[USERNAME]:[PASSWORD]@[HOST]:[PORT]/[DB_NAME]
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///DevDb.db'
 app.config['CLOTHS_FOLDER'] = CLOTHS_FOLDER
 app.config['SECRET_KEY'] = "random string"
@@ -22,10 +21,11 @@ mail = Mail(app)
 #輸入json
 data_folder = app.config['JSON_FOLDER']
 file1 = open(JSON_FOLDER+'\\garment_group_name.json')
-file2 = open(JSON_FOLDER+'\\perceived_colour_value_name.json')
+file2 = open(JSON_FOLDER+'\\perceived_colour_value_name'+'.json')
+# file3 = open(JSON_FOLDER+'\\index_name'+'.json')
 data1 = json.load(file1)
 data2 = json.load(file2)
-
+# data3 = json.load(file3)
 class Appmail():
     def __init__(self, title, sender, body):
         self.title = title
@@ -58,7 +58,7 @@ class AppML(AppInfo):
 # main link
 @app.route('/', methods=['GET', 'POST'])
 def main_page():
-
+    # 接收UI輸入
     if request.method == 'POST':  # pass with http
         if not request.form['name'] or not request.form['gender'] or not request.form['age']:
             flash('Please enter all the fields', 'error')
@@ -80,8 +80,6 @@ def main_page():
 # 新增一個後端管理站 可以看原始form
 # 需要輸入帳號密碼為ROOT權限才可啟用開啟資料庫的管理介面
 # 介面包含"使用者輸入進db的總數量,使用者類別等等
-
-
 @app.route('/root', methods=['GET', 'POST'])
 def root():
 
@@ -95,17 +93,28 @@ def root():
     return render_template('data/login.html')
 
 
-# 視覺化
+# 視覺化接收選單name
+data_js=data1 #global
 @app.route('/vis', methods=['GET', 'POST'])
 def visualization():
-    print(data1)
-    print(data2)
+    if request.method == 'POST':  
+        # import file
+        if request.form['name']=='garment_group_name':
+            data_js=data1
+            # print("get data1")
 
-    return render_template('data/vis.html', jsfile1=data1,jsfile2=data2)
+        elif  request.form['name']=='perceived_colour_value_name':
+            data_js = data2
+            # print("get data2")
+            
+
+    return render_template('data/vis.html',jsfile=data_js)
+
+
+   
+
 
 # 關於我們
-
-
 @app.route('/us', methods=['GET', 'POST'])
 def us():
     if request.method == 'POST':

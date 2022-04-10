@@ -1,34 +1,34 @@
 [
   {
-    "perceived_colour_value_name": "Dark",
+    "column": "Dark",
     "count": 42706
   },
   {
-    "perceived_colour_value_name": "Dusty Light",
+    "column": "Dusty Light",
     "count": 22152
   },
   {
-    "perceived_colour_value_name": "Light",
+    "column": "Light",
     "count": 15739
   },
   {
-    "perceived_colour_value_name": "Medium Dusty",
+    "column": "Medium Dusty",
     "count": 12630
   },
   {
-    "perceived_colour_value_name": "Bright",
+    "column": "Bright",
     "count": 6471
   },
   {
-    "perceived_colour_value_name": "Medium",
+    "column": "Medium",
     "count": 5711
   },
   {
-    "perceived_colour_value_name": "Undefined",
+    "column": "Undefined",
     "count": 105
   },
   {
-    "perceived_colour_value_name": "Unknown",
+    "column": "Unknown",
     "count": 28
   }
 ]
