@@ -1,0 +1,34 @@
+[
+  {
+    "perceived_colour_value_name": "Dark",
+    "count": 42706
+  },
+  {
+    "perceived_colour_value_name": "Dusty Light",
+    "count": 22152
+  },
+  {
+    "perceived_colour_value_name": "Light",
+    "count": 15739
+  },
+  {
+    "perceived_colour_value_name": "Medium Dusty",
+    "count": 12630
+  },
+  {
+    "perceived_colour_value_name": "Bright",
+    "count": 6471
+  },
+  {
+    "perceived_colour_value_name": "Medium",
+    "count": 5711
+  },
+  {
+    "perceived_colour_value_name": "Undefined",
+    "count": 105
+  },
+  {
+    "perceived_colour_value_name": "Unknown",
+    "count": 28
+  }
+]
