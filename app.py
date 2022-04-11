@@ -1,9 +1,9 @@
-from turtle import title
-from flask import Flask, request, flash, url_for, redirect, render_template
+from flask import Flask, request, flash, url_for, redirect, render_template, jsonify
 from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import create_engine
 import os
+from sqlite3 import connect
+
 import json
 import pandas as pd
 
@@ -18,14 +18,18 @@ app.config['JSON_FOLDER'] = JSON_FOLDER
 db = SQLAlchemy(app)
 mail = Mail(app)
 
-#輸入json
+# 輸入json
 data_folder = app.config['JSON_FOLDER']
 file1 = open(JSON_FOLDER+'\\garment_group_name.json')
 file2 = open(JSON_FOLDER+'\\perceived_colour_value_name'+'.json')
-# file3 = open(JSON_FOLDER+'\\index_name'+'.json')
+file_a = open(JSON_FOLDER+'\\index_color'+'.json')
+file_b = open(JSON_FOLDER+'\\index_category'+'.json')
 data1 = json.load(file1)
 data2 = json.load(file2)
-# data3 = json.load(file3)
+tran1 = json.load(file_a)
+tran2 = json.load(file_b)
+
+
 class Appmail():
     def __init__(self, title, sender, body):
         self.title = title
@@ -33,6 +37,8 @@ class Appmail():
         self.body = body
 
 # add user input item into database
+
+
 class AppInfo(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -47,6 +53,7 @@ class AppInfo(db.Model):
         self.age = age
         self.club = club
         self.fnews = fnews
+
 
 class AppML(AppInfo):
 
@@ -77,45 +84,94 @@ def main_page():
             # return redirect(url_for('main_page'))
     return render_template('data/show_all.html', appInfo=AppInfo.query.all())
 
-# 新增一個後端管理站 可以看原始form
-# 需要輸入帳號密碼為ROOT權限才可啟用開啟資料庫的管理介面
+
+@app.route('/db2json')
+def db2json():
+    # read sql     include UI顧客database資訊
+    df = pd.read_sql('app_info', 'sqlite:///DevDb.db')
+    
+    # 這是一個column count
+    tab_gender = df.groupby(['gender']).sum()
+    # 轉成 json
+    # for loop(1:) in key 寫成一個大 json
+    # 做成一個大json:包含全部有 table column group count, 
+    # GOAL: {"fashion": 
+    #  [
+    #      {
+    #        "column": "fashion",
+    #        "number": "5"
+    #      },
+    #      {
+    #        "column": "not fashion",
+    #        "number": "1"
+    #      }
+    #  ],"gender": 
+    #  [
+    #      {
+    #        "column": "male",
+    #        "number": "2"
+    #      },
+    #      {
+    #        "column": "female",
+    #        "number": "4"
+    #      }
+    #  ]}
+    # retun json
+    js = jsonify(df.to_dict(orient='records'))
+    return(js)
+
+
+# 新增一個後端管理站 需要輸入帳號密碼為ROOT權限才可啟用開啟資料庫的管理介面
 # 介面包含"使用者輸入進db的總數量,使用者類別等等
-@app.route('/root', methods=['GET', 'POST'])
+@ app.route('/root', methods=['GET', 'POST'])
 def root():
-
     if request.method == 'POST':
-
         if not (request.form['uname'] == 'root' and request.form['psw'] == 'root'):
             print('login false')
             return render_template('data/login.html', login=False)
         else:
-            return render_template('data/root.html', appInfo=AppInfo.query.all())
+            # 從root html 收到 x值
+            x = request.args.get('x')
+            return render_template('data/root.html', appInfo=AppInfo.query.all(), args=[x])
     return render_template('data/login.html')
 
 
 # 視覺化接收選單name
-data_js=data1 #global
-@app.route('/vis', methods=['GET', 'POST'])
+@ app.route('/vis', methods=['GET', 'POST'])
 def visualization():
-    if request.method == 'POST':  
+    data_js = 0
+    data_js2 = 0
+
+
+    if request.method == 'POST':
+       
         # import file
-        if request.form['name']=='garment_group_name':
-            data_js=data1
-            # print("get data1")
+        if request.form['pie'] == 'garment_group_name' and request.form['bar'] == 'index_color':
+            data_js = data1
+            data_js2 = file1
 
-        elif  request.form['name']=='perceived_colour_value_name':
+            print("get pie1,bar1")
+        elif request.form['pie'] == 'garment_group_name' and request.form['bar'] == 'index_category':
+            data_js = data1
+            data_js2 = file2
+            print("get pie1,bar2")
+
+        elif request.form['pie'] == 'perceived_colour_value_name' and request.form['bar'] == 'index_color':
             data_js = data2
-            # print("get data2")
-            
-
-    return render_template('data/vis.html',jsfile=data_js)
-
-
-   
+            data_js2 = file1
+            print("get pie2,bar1")
+        elif request.form['pie'] == 'perceived_colour_value_name' and request.form['bar'] == 'index_category':
+            data_js = data2
+            data_js2 = file2
+            print("get pie2,bar2")
+        else:
+            print("nothing")
+        
+    return render_template('data/vis.html', jsfile=data_js, jsfile2=data_js2)
 
 
 # 關於我們
-@app.route('/us', methods=['GET', 'POST'])
+@ app.route('/us', methods=['GET', 'POST'])
 def us():
     if request.method == 'POST':
         if not request.form['title'] or not request.form['sender']:
@@ -142,9 +198,11 @@ def us():
 def recommend():
     # OS這裡引入folder + ml_result(test.jpg)
     files = os.path.join(app.config['CLOTHS_FOLDER'])
-    print(files)
+    file = files+"\\test.jpg"
+    print(file)
+
     # rec html 讀取files
-    return render_template('data/rec.html', recommend_images=files, appInfo=AppInfo.query.all())
+    return render_template('data/rec.html', recommend_images=file, appInfo=AppInfo.query.all())
 
 
 @app.route('/recommend/<ml_result>', methods=['GET', 'POST'])

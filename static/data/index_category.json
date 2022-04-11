@@ -1,0 +1,4002 @@
+[
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Metal"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Metal"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Metal"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Metal"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "undefined"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Metal"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Metal"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Metal"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Metal"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Lilac Purple"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Sport",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Metal"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Metal"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Yellow"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Mole"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "undefined"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Brown"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Turquoise"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Ladieswear",
+        "perceived_colour_master_name": "Beige"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Khaki green"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Menswear",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "White"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Pink"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Red"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Black"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Blue"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Orange"
+    },
+    {
+        "index_group_name": "Baby\/Children",
+        "perceived_colour_master_name": "Grey"
+    },
+    {
+        "index_group_name": "Divided",
+        "perceived_colour_master_name": "Black"
+    }
+]
