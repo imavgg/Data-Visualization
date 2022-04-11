@@ -17,17 +17,8 @@ app.config['SECRET_KEY'] = "random string"
 app.config['JSON_FOLDER'] = JSON_FOLDER
 db = SQLAlchemy(app)
 mail = Mail(app)
-
-# 輸入json
 data_folder = app.config['JSON_FOLDER']
-file1 = open(JSON_FOLDER+'\\garment_group_name.json')
-file2 = open(JSON_FOLDER+'\\perceived_colour_value_name'+'.json')
-file_a = open(JSON_FOLDER+'\\index_color'+'.json')
-file_b = open(JSON_FOLDER+'\\index_category'+'.json')
-data1 = json.load(file1)
-data2 = json.load(file2)
-tran1 = json.load(file_a)
-tran2 = json.load(file_b)
+
 
 
 class Appmail():
@@ -134,40 +125,62 @@ def root():
             x = request.args.get('x')
             return render_template('data/root.html', appInfo=AppInfo.query.all(), args=[x])
     return render_template('data/login.html')
+# Restful接收data
+@app.route('/data_pie')
+def data_pie():
+        
+    # 輸入json
+    file1 = open(JSON_FOLDER+'\\garment_group_name.json')
+    file2 = open(JSON_FOLDER+'\\perceived_colour_value_name'+'.json')
+    
+    data1 = json.load(file1)
+    data2 = json.load(file2)
+    #  判別 html 傳回的plot columns項目
+    pie = request.args.get('pie')
+    data_js={}
+    # import file
+    if pie == 'garment_group_name':
+        data_js = data1
+
+    elif pie == 'perceived_colour_value_name':
+        data_js = data2
+
+    else:
+        print("nothing")
+    # ?/data_pie?pie=garment_group_name  ---> return data.js
+    # return a string. 
+    return( json.dumps(data_js))
+
+@app.route('/data_bar')
+def data_bar():
+        
+    file1 = open(JSON_FOLDER+'\\index_color'+'.json')
+    file2 = open(JSON_FOLDER+'\\index_category'+'.json')
+    data1 = json.load(file1)
+    data2 = json.load(file2)
+    #  判別 html 傳回的plot columns項目
+    
+    bar = request.args.get('bar')
+    print('bar',bar)
+    data_js={}
+    # import file
+    if bar == 'index_category':
+        data_js = data1
+    elif bar == 'index_color':
+        data_js = data2
+    else:
+        print("nothing")
+    return( json.dumps(data_js))
 
 
 # 視覺化接收選單name
 @ app.route('/vis', methods=['GET', 'POST'])
 def visualization():
-    data_js = 0
-    data_js2 = 0
-
-
-    if request.method == 'POST':
-       
-        # import file
-        if request.form['pie'] == 'garment_group_name' and request.form['bar'] == 'index_color':
-            data_js = data1
-            data_js2 = file1
-
-            print("get pie1,bar1")
-        elif request.form['pie'] == 'garment_group_name' and request.form['bar'] == 'index_category':
-            data_js = data1
-            data_js2 = file2
-            print("get pie1,bar2")
-
-        elif request.form['pie'] == 'perceived_colour_value_name' and request.form['bar'] == 'index_color':
-            data_js = data2
-            data_js2 = file1
-            print("get pie2,bar1")
-        elif request.form['pie'] == 'perceived_colour_value_name' and request.form['bar'] == 'index_category':
-            data_js = data2
-            data_js2 = file2
-            print("get pie2,bar2")
-        else:
-            print("nothing")
-        
-    return render_template('data/vis.html', jsfile=data_js, jsfile2=data_js2)
+    
+    pie = request.args.get('pie')
+    bar = request.args.get('bar')      
+    
+    return render_template('data/vis.html', args=[pie,bar])
 
 
 # 關於我們

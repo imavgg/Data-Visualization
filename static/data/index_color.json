@@ -1,19 +1,14 @@
 [
-    {
-      "index": "Men",
-      "Black": 200,
-      "White": 100,
-      "Yello": 150
-      
-
-    },
-    
-    {
-      "index": "Women",
-      "Black": 50,
-      "White": 120,
-      "Yello": 30
-
-    }
-   
-  ]
+  {
+    "index": "Men",
+    "Black": 200,
+    "White": 100,
+    "Yello": 150
+  },
+  {
+    "index": "Women",
+    "Black": 50,
+    "White": 120,
+    "Yello": 30
+  }
+]

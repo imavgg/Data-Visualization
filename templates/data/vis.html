@@ -124,22 +124,24 @@
 
         <!-- Push down content on small screens -->
         <div class="w3-hide-large" style="margin-top:83px"></div>
-        <!-- 4/10新增許多plot圖的輸出 -->
-        <form action="{{ request.path }}" method="post" id="json_form">
+        <!-- 4/10新增許多plot圖的輸出,4/11 Restful -->
+        <form action="/vis" id="json_form">
             <b>Pie Chart</b>
-            <select class="w3-bar-item" style="width:20%" name="pie" form="json_form" required='required'>
+
+            <!-- /vis?pie=garment_group_name&bar=index_category -->
+            <select class="w3-bar-item" style="width:20%" name="pie" form="json_form">
                 <option value="garment_group_name">garment_group_name</option>
                 <option value="perceived_colour_value_name">perceived_colour_value_name</option>
             </select>
             <b>Bar Chart</b>
-            <select class="w3-bar-item" style="width:20%" name="bar" form="json_form" required='required'>
+            <select class="w3-bar-item" style="width:20%" name="bar" form="json_form">
                 <option value="index_category">index_category</option>
                 <option value="index_color">index_color</option>
             </select>
             <button type='submit'>Show</button>
         </form>
 
-        <button onclick="chart_pie({{jsfile}});chart_bar();chart_timeseries();chart_bubble()">Show</button>
+        <!-- <button onclick="chart_pie({{jsfile}});chart_bar();chart_timeseries();chart_bubble()">Show</button> -->
         <!-- plot圖id名稱 -->
 
         <!-- <div id="chartdiv"></div>
@@ -212,358 +214,337 @@
             captionText.innerHTML = element.alt;
         }
 
-        function chart_pie(file) {
+        // function chart_pie(file) {
 
-            am4core.useTheme(am4themes_animated);
-            var chart = am4core.create("chartdiv", am4charts.PieChart);
-
-
-            chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-            chart.data = file
-            // 設定圓的角度 設定圓的columns  設定圓的半徑大
-            chart.radius = am4core.percent(70);
-            chart.innerRadius = am4core.percent(40);
-            chart.startAngle = 0;
-            chart.endAngle = 360;
+        am4core.useTheme(am4themes_animated);
+        var chart = am4core.create("chartdiv", am4charts.PieChart);
 
 
-            var series = chart.series.push(new am4charts.PieSeries());
-            series.dataFields.value = "count";
-            series.dataFields.category = "column";
+        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+        // chart.data = file
+        chart.dataSource.url = "/data_pie?pie={{args[0]}}";
 
-            series.slices.template.cornerRadius = 10;
-            series.slices.template.innerCornerRadius = 7;
-            series.slices.template.draggable = false;
-            series.slices.template.inert = false;
-
-            series.hiddenState.properties.startAngle = 90;
-            series.hiddenState.properties.endAngle = 90;
-            //標示總數
-            // chart.legend = new am4charts.Legend();
+        // 設定圓的角度 設定圓的columns  設定圓的半徑大
+        chart.radius = am4core.percent(70);
+        chart.innerRadius = am4core.percent(40);
+        chart.startAngle = 0;
+        chart.endAngle = 360;
 
 
+        var series = chart.series.push(new am4charts.PieSeries());
+        series.dataFields.value = "count";
+        series.dataFields.category = "column";
+
+        series.slices.template.cornerRadius = 10;
+        series.slices.template.innerCornerRadius = 7;
+        series.slices.template.draggable = false;
+        series.slices.template.inert = false;
+
+        series.hiddenState.properties.startAngle = 90;
+        series.hiddenState.properties.endAngle = 90;
+        //標示總數
+        // chart.legend = new am4charts.Legend();
 
 
-        }
-
-        function chart_bar(file) {
-            // Create root element
-            var root = am5.Root.new("chartdiv2");
-            // Set themes
-            // https://www.amcharts.com/docs/v5/concepts/themes/
-            root.setThemes([
-                am5themes_Animated.new(root)
-            ]);
 
 
-            // Create chart
-            var chart = root.container.children.push(am5xy.XYChart.new(root, {
-                panX: false,
-                panY: false,
-                wheelX: "panX",
-                wheelY: "zoomX",
-                layout: root.verticalLayout
+        //OK }
+
+        // function chart_bar(file) {
+        // Create root element
+        var root = am5.Root.new("chartdiv2");
+        root.setThemes([
+            am5themes_Animated.new(root)
+        ]);
+        // Create chart
+        var chart = root.container.children.push(am5xy.XYChart.new(root, {
+            panX: false,
+            panY: false,
+            wheelX: "panX",
+            wheelY: "zoomX",
+            layout: root.verticalLayout
+        }));
+
+        // // Add scrollbar
+        // // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+        // chart.set("scrollbarX", am5.Scrollbar.new(root, {
+        //     orientation: "horizontal"
+        // }));
+        // var data = files
+        data = "/data_bar?bar={{args[1]}}";
+        // Create axes
+        var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+            categoryField: "index",
+            renderer: am5xy.AxisRendererX.new(root, {}),
+            tooltip: am5.Tooltip.new(root, {})
+        }));
+        
+        xAxis.data.setAll(data);
+
+        var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+            min: 0,
+            max: 100,
+            numberFormat: "#'%'",
+            strictMinMax: true,
+            calculateTotals: true,
+            renderer: am5xy.AxisRendererY.new(root, {})
+        }));
+
+
+        // Add legend
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+        var legend = chart.children.push(am5.Legend.new(root, {
+            centerX: am5.p50,
+            x: am5.p50
+        }));
+
+
+        // Add series
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+        function makeSeries(name, fieldName) {
+            var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+                name: name,
+                stacked: true,
+                xAxis: xAxis,
+                yAxis: yAxis,
+                valueYField: fieldName,
+                valueYShow: "valueYTotalPercent",
+                categoryXField: "index"
             }));
 
-            // Add scrollbar
-            // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-            chart.set("scrollbarX", am5.Scrollbar.new(root, {
-                orientation: "horizontal"
-            }));
-            //import data
-            var data = [{
-                "year": "2021",
-                "europe": 2.5,
-                "namerica": 2.5,
-                "asia": 2.1,
-                "lamerica": 1,
-                "meast": 0.8,
-                "africa": 0.4
-            }, {
-                "year": "2022",
-                "europe": 2.6,
-                "namerica": 2.7,
-                "asia": 2.2,
-                "lamerica": 0.5,
-                "meast": 0.4,
-                "africa": 0.3
-            }, {
-                "year": "2023",
-                "europe": 2.8,
-                "namerica": 2.9,
-                "asia": 2.4,
-                "lamerica": 0.3,
-                "meast": 0.9,
-                "africa": 0.5
-            }]
-
-            // Create axes
-            // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-            var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-                categoryField: "year",
-                renderer: am5xy.AxisRendererX.new(root, {}),
-                tooltip: am5.Tooltip.new(root, {})
-            }));
-
-            xAxis.data.setAll(data);
-
-            var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-                min: 0,
-                max: 100,
-                numberFormat: "#'%'",
-                strictMinMax: true,
-                calculateTotals: true,
-                renderer: am5xy.AxisRendererY.new(root, {})
-            }));
-
-
-            // Add legend
-            // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-            var legend = chart.children.push(am5.Legend.new(root, {
-                centerX: am5.p50,
-                x: am5.p50
-            }));
-
-
-            // Add series
-            // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-            function makeSeries(name, fieldName) {
-                var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-                    name: name,
-                    stacked: true,
-                    xAxis: xAxis,
-                    yAxis: yAxis,
-                    valueYField: fieldName,
-                    valueYShow: "valueYTotalPercent",
-                    categoryXField: "year"
-                }));
-
-                series.columns.template.setAll({
-                    tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
-                    tooltipY: am5.percent(10)
-                });
-                series.data.setAll(data);
-
-                // Make stuff animate on load
-                // https://www.amcharts.com/docs/v5/concepts/animations/
-                series.appear();
-
-
-                series.bullets.push(function () {
-                    return am5.Bullet.new(root, {
-                        sprite: am5.Label.new(root, {
-                            text: "{valueYTotalPercent.formatNumber('#.#')}%",
-                            fill: root.interfaceColors.get("alternativeText"),
-                            centerY: am5.p50,
-                            centerX: am5.p50,
-                            populateText: true
-                        })
-                    });
-                });
-
-                legend.data.push(series);
-            }
-
-            makeSeries("Europe", "europe");
-            makeSeries("North America", "namerica");
-            makeSeries("Asia", "asia");
-
-
+            series.columns.template.setAll({
+                tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
+                tooltipY: am5.percent(10)
+            });
+            series.data.setAll(data);
             // Make stuff animate on load
-            chart.appear(1000, 100);
-            // end am5.ready()
+            // https://www.amcharts.com/docs/v5/concepts/animations/
+            series.appear();
 
+
+            series.bullets.push(function () {
+                return am5.Bullet.new(root, {
+                    sprite: am5.Label.new(root, {
+                        text: "{valueYTotalPercent.formatNumber('#.#')}%",
+                        fill: root.interfaceColors.get("alternativeText"),
+                        centerY: am5.p50,
+                        centerX: am5.p50,
+                        populateText: true
+                    })
+                });
+            });
+
+            legend.data.push(series);
         }
+        // //makeSeries(name, fieldName)
+        // if ('{{args[1]}}'=='index_category'){
+        //     makeSeries("Pant", "Pant");
+        //     makeSeries("Cloth", "Cloth");
+        //     makeSeries("Others", "Others");
+        // }elseif ('{{args[1]}}'=='index_color')
+        //     makeSeries("Grey", "Grey");
+        //     makeSeries("Pink", "Pink");
+        //     makeSeries("Black", "Black");
 
-        function chart_timeseries() {
+            makeSeries("Pant", "Pant");
+            makeSeries("Cloth", "Cloth");
+            makeSeries("Others", "Others");
 
-            am4core.useTheme(am4themes_animated);
+        // Make stuff animate on load
+        chart.appear(1000, 100);
+        // end am5.ready()
 
-            // Create chart instance
-            var chart = am4core.create("chartdiv3", am4charts.XYChart);
+        // }
 
-            // Add data
-            chart.data = [{
-                "date": new Date(2018, 0, 1),
-                "value": 450,
-                "value2": 162,
-                "value3": 1100
-            }, {
-                "date": new Date(2018, 0, 2),
-                "value": 669,
-                "value3": 841
-            }, {
-                "date": new Date(2018, 0, 3),
-                "value": 1200,
-                "value3": 199
-            }, {
-                "date": new Date(2018, 0, 4),
-                "value2": 867
-            }, {
-                "date": new Date(2018, 0, 5),
-                "value2": 185,
-                "value3": 669
-            }, {
-                "date": new Date(2018, 0, 6),
-                "value": 150
-            }, {
-                "date": new Date(2018, 0, 7),
-                "value": 1220,
-                "value2": 350,
-                "value3": 600
-            }];
+        // function chart_timeseries() {
 
-            // Create axes
-            var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-            dateAxis.renderer.grid.template.location = 0;
-            dateAxis.renderer.minGridDistance = 30;
+        am4core.useTheme(am4themes_animated);
 
-            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        // Create chart instance
+        var chart = am4core.create("chartdiv3", am4charts.XYChart);
 
-            // Create series
-            function createSeries(field, name) {
-                var series = chart.series.push(new am4charts.LineSeries());
-                series.dataFields.valueY = field;
-                series.dataFields.dateX = "date";
-                series.name = name;
-                series.tooltipText = "{dateX}: [b]{valueY}[/]";
-                series.strokeWidth = 2;
+        // Add data
+        chart.data = [{
+            "date": new Date(2018, 0, 1),
+            "value": 450,
+            "value2": 162,
+            "value3": 1100
+        }, {
+            "date": new Date(2018, 0, 2),
+            "value": 669,
+            "value3": 841
+        }, {
+            "date": new Date(2018, 0, 3),
+            "value": 1200,
+            "value3": 199
+        }, {
+            "date": new Date(2018, 0, 4),
+            "value2": 867
+        }, {
+            "date": new Date(2018, 0, 5),
+            "value2": 185,
+            "value3": 669
+        }, {
+            "date": new Date(2018, 0, 6),
+            "value": 150
+        }, {
+            "date": new Date(2018, 0, 7),
+            "value": 1220,
+            "value2": 350,
+            "value3": 600
+        }];
 
-                series.smoothing = "monotoneX";
+        // Create axes
+        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+        dateAxis.renderer.grid.template.location = 0;
+        dateAxis.renderer.minGridDistance = 30;
 
-                var bullet = series.bullets.push(new am4charts.CircleBullet());
-                bullet.circle.stroke = am4core.color("#fff");
-                bullet.circle.strokeWidth = 2;
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
-                return series;
-            }
-
-            createSeries("value", "Totol Income");
-            // createSeries("value2", "Series #2");
-
-            // chart.legend = new am4charts.Legend();
-            chart.cursor = new am4charts.XYCursor();
-        }
-
-        function chart_bubble() {
-            am4core.useTheme(am4themes_animated);
-            // am4core.useTheme(am4themes_dark);
-
-            var chart = am4core.create("chartdiv4", am4charts.XYChart);
-            chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-
-            var valueAxisX = chart.xAxes.push(new am4charts.ValueAxis());
-            var valueAxisY = chart.yAxes.push(new am4charts.ValueAxis());
-
+        // Create series
+        function createSeries(field, name) {
             var series = chart.series.push(new am4charts.LineSeries());
-            series.dataFields.valueX = "x";
-            series.dataFields.valueY = "y";
-            series.dataFields.value = "value";
-            series.strokeOpacity = 0;
-            series.sequencedInterpolation = true;
+            series.dataFields.valueY = field;
+            series.dataFields.dateX = "date";
+            series.name = name;
+            series.tooltipText = "{dateX}: [b]{valueY}[/]";
+            series.strokeWidth = 2;
 
-            var bullet = series.bullets.push(new am4core.Circle());
-            bullet.fill = am4core.color("#ff0000");
-            bullet.propertyFields.fill = "color";
-            bullet.strokeOpacity = 0;
-            bullet.radius = 5;
-            bullet.strokeWidth = 2;
-            bullet.fillOpacity = 0.7;
-            bullet.stroke = am4core.color("#ffffff");
+            series.smoothing = "monotoneX";
 
-            bullet.tooltipText = "[bold]{title}:[/]\nPopulation: {value.value}\nIncome: {valueX.value}\nLife expectancy:{valueY.value}";
+            var bullet = series.bullets.push(new am4charts.CircleBullet());
+            bullet.circle.stroke = am4core.color("#fff");
+            bullet.circle.strokeWidth = 2;
 
-            var hoverState = bullet.states.create("hover");
-            hoverState.properties.fillOpacity = 1;
-            hoverState.properties.strokeOpacity = 1;
-
-            series.heatRules.push({ target: bullet, min: 2, max: 60, property: "radius" });
-
-            bullet.adapter.add("tooltipY", function (tooltipY, target) {
-                return -target.radius;
-            })
-
-            chart.cursor = new am4charts.XYCursor();
-            chart.cursor.behavior = "zoomXY";
-
-            chart.scrollbarX = new am4core.Scrollbar();
-            chart.scrollbarY = new am4core.Scrollbar();
-
-            chart.data = [
-                {
-                    "title": "Afghanistan",
-                    "id": "AF",
-                    "color": "#eea638",
-                    "continent": "asia",
-                    "x": 1349.69694102398,
-                    "y": 60.524,
-                    "value": 33397058
-                },
-                {
-                    "title": "Albania",
-                    "id": "AL",
-                    "color": "#d8854f",
-                    "continent": "europe",
-                    "x": 6969.30628256456,
-                    "y": 77.185,
-                    "value": 3227373
-                },
-                {
-                    "title": "Algeria",
-                    "id": "DZ",
-                    "color": "#de4c4f",
-                    "continent": "africa",
-                    "x": 6419.12782939372,
-                    "y": 70.874,
-                    "value": 36485828
-                },
-                {
-                    "title": "Angola",
-                    "id": "AO",
-                    "color": "#de4c4f",
-                    "continent": "africa",
-                    "x": 5838.15537582502,
-                    "y": 51.498,
-                    "value": 20162517
-                },
-                {
-                    "title": "Argentina",
-                    "id": "AR",
-                    "color": "#86a965",
-                    "continent": "south_america",
-                    "x": 15714.1031814398,
-                    "y": 76.128,
-                    "value": 41118986
-                },
-                {
-                    "title": "Armenia",
-                    "id": "AM",
-                    "color": "#d8854f",
-                    "continent": "europe",
-                    "x": 5059.0879636443,
-                    "y": 74.469,
-                    "value": 3108972
-                }, ,
-                {
-                    "title": "Zambia",
-                    "id": "ZM",
-                    "color": "#de4c4f",
-                    "continent": "africa",
-                    "x": 1550.92385858124,
-                    "y": 57.037,
-                    "value": 13883577
-                },
-                {
-                    "title": "Zimbabwe",
-                    "id": "ZW",
-                    "color": "#de4c4f",
-                    "continent": "africa",
-                    "x": 545.344601005788,
-                    "y": 58.142,
-                    "value": 13013678
-                }
-            ];
+            return series;
         }
+
+        createSeries("value", "Totol Income");
+        // createSeries("value2", "Series #2");
+
+        // chart.legend = new am4charts.Legend();
+        chart.cursor = new am4charts.XYCursor();
+        // }
+
+        // function chart_bubble() {
+        am4core.useTheme(am4themes_animated);
+        // am4core.useTheme(am4themes_dark);
+
+        var chart = am4core.create("chartdiv4", am4charts.XYChart);
+        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+        var valueAxisX = chart.xAxes.push(new am4charts.ValueAxis());
+        var valueAxisY = chart.yAxes.push(new am4charts.ValueAxis());
+
+        var series = chart.series.push(new am4charts.LineSeries());
+        series.dataFields.valueX = "x";
+        series.dataFields.valueY = "y";
+        series.dataFields.value = "value";
+        series.strokeOpacity = 0;
+        series.sequencedInterpolation = true;
+
+        var bullet = series.bullets.push(new am4core.Circle());
+        bullet.fill = am4core.color("#ff0000");
+        bullet.propertyFields.fill = "color";
+        bullet.strokeOpacity = 0;
+        bullet.radius = 5;
+        bullet.strokeWidth = 2;
+        bullet.fillOpacity = 0.7;
+        bullet.stroke = am4core.color("#ffffff");
+
+        bullet.tooltipText = "[bold]{title}:[/]\nPopulation: {value.value}\nIncome: {valueX.value}\nLife expectancy:{valueY.value}";
+
+        var hoverState = bullet.states.create("hover");
+        hoverState.properties.fillOpacity = 1;
+        hoverState.properties.strokeOpacity = 1;
+
+        series.heatRules.push({ target: bullet, min: 2, max: 60, property: "radius" });
+
+        bullet.adapter.add("tooltipY", function (tooltipY, target) {
+            return -target.radius;
+        })
+
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.behavior = "zoomXY";
+
+        chart.scrollbarX = new am4core.Scrollbar();
+        chart.scrollbarY = new am4core.Scrollbar();
+
+        chart.data = [
+            {
+                "title": "Afghanistan",
+                "id": "AF",
+                "color": "#eea638",
+                "continent": "asia",
+                "x": 1349.69694102398,
+                "y": 60.524,
+                "value": 33397058
+            },
+            {
+                "title": "Albania",
+                "id": "AL",
+                "color": "#d8854f",
+                "continent": "europe",
+                "x": 6969.30628256456,
+                "y": 77.185,
+                "value": 3227373
+            },
+            {
+                "title": "Algeria",
+                "id": "DZ",
+                "color": "#de4c4f",
+                "continent": "africa",
+                "x": 6419.12782939372,
+                "y": 70.874,
+                "value": 36485828
+            },
+            {
+                "title": "Angola",
+                "id": "AO",
+                "color": "#de4c4f",
+                "continent": "africa",
+                "x": 5838.15537582502,
+                "y": 51.498,
+                "value": 20162517
+            },
+            {
+                "title": "Argentina",
+                "id": "AR",
+                "color": "#86a965",
+                "continent": "south_america",
+                "x": 15714.1031814398,
+                "y": 76.128,
+                "value": 41118986
+            },
+            {
+                "title": "Armenia",
+                "id": "AM",
+                "color": "#d8854f",
+                "continent": "europe",
+                "x": 5059.0879636443,
+                "y": 74.469,
+                "value": 3108972
+            }, ,
+            {
+                "title": "Zambia",
+                "id": "ZM",
+                "color": "#de4c4f",
+                "continent": "africa",
+                "x": 1550.92385858124,
+                "y": 57.037,
+                "value": 13883577
+            },
+            {
+                "title": "Zimbabwe",
+                "id": "ZW",
+                "color": "#de4c4f",
+                "continent": "africa",
+                "x": 545.344601005788,
+                "y": 58.142,
+                "value": 13013678
+            }
+        ];
+        // }
 
     </script>
 
