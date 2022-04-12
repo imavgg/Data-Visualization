@@ -73,6 +73,29 @@
       <!-- Push down content on small screens -->
       <div class="w3-hide-large" style="margin-top:83px"></div>
 
+      <div class="container">
+
+         <div class="row">
+             <div class="col">
+                 <h2>Total Numer 100000</h2>
+             </div>
+             <div class="col">
+                 <h2>Total Columns 1000</h2>
+             </div>
+         </div>
+
+         <div class="row">
+             <div class="col-3" id="chartdiv">
+             </div>
+             <div class="col-3" id="chartdiv2">
+             </div>
+             <div class="col-3" id="chartdiv3">
+             </div>
+
+         </div>
+
+     </div>
+
 
       <!-- Table Content -->
 
@@ -176,8 +199,7 @@
       var chart = am4core.create("chartdiv", am4charts.PieChart);
       chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
       // chart.data = file
-      chart.dataSource.url = "/db2json"
-      // chart.dataSource.url = "/db2json?x={{args[0]}}"
+      chart.dataSource.url = "/db2json?gender={{args[0]}}"
       chart.radius = am4core.percent(70);
       chart.innerRadius = am4core.percent(40);
       chart.startAngle = 0;

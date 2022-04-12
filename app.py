@@ -108,8 +108,7 @@ def db2json():
     #      }
     #  ]}
     # retun json
-    js = jsonify(df.to_dict(orient='records'))
-    return(js)
+    return (jsonify(df.to_dict(orient='records')))
 
 
 # 新增一個後端管理站 需要輸入帳號密碼為ROOT權限才可啟用開啟資料庫的管理介面
@@ -121,9 +120,7 @@ def root():
             print('login false')
             return render_template('data/login.html', login=False)
         else:
-            # 從root html 收到 x值
-            x = request.args.get('x')
-            return render_template('data/root.html', appInfo=AppInfo.query.all(), args=[x])
+            return render_template('data/root.html', appInfo=AppInfo.query.all())
     return render_template('data/login.html')
 # Restful接收data
 @app.route('/data_pie')
@@ -137,7 +134,7 @@ def data_pie():
     data2 = json.load(file2)
     #  判別 html 傳回的plot columns項目
     pie = request.args.get('pie')
-    data_js={}
+    data_js=data1
     # import file
     if pie == 'garment_group_name':
         data_js = data1
@@ -162,7 +159,7 @@ def data_bar():
     
     bar = request.args.get('bar')
     print('bar',bar)
-    data_js={}
+    data_js=data1
     # import file
     if bar == 'index_category':
         data_js = data1

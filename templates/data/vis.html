@@ -151,10 +151,17 @@
 
             <div class="row">
                 <div class="col">
-                    <h2>Total Numer 100000</h2>
+                    <h2>Total Articles</h2>
+                    <h1>        106k</h1>
                 </div>
                 <div class="col">
-                    <h2>Total Columns 1000</h2>
+                    <h2>Total Transactions </h2>
+                    <h1>        31.8m</h1>
+
+                </div>
+                <div class="col">
+                    <h2>Total Customer</h2>
+                    <h1>     13.7m </h1>
                 </div>
             </div>
 
@@ -249,7 +256,6 @@
 
 
         //OK }
-
         // function chart_bar(file) {
         // Create root element
         var root = am5.Root.new("chartdiv2");
@@ -265,21 +271,103 @@
             layout: root.verticalLayout
         }));
 
-        // // Add scrollbar
-        // // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-        // chart.set("scrollbarX", am5.Scrollbar.new(root, {
-        //     orientation: "horizontal"
-        // }));
-        // var data = files
-        data = "/data_bar?bar={{args[1]}}";
+
+        // This is a test!
+        if ('{{args[1]}}' == 'index_category') {
+            data = [
+                {
+                    "index": "women",
+                    "Pant": 0.3,
+                    "Cloth": 0.1,
+                    "Others": 0.6
+                },
+                {
+                    "index": "Baby\/Children",
+                    "Pant": 0.6,
+                    "Cloth": 0.3,
+                    "Others": 0.1
+                },
+                {
+                    "index": "Divided",
+                    "Pant": 0.8,
+                    "Cloth": 0.1,
+                    "Others": 0.1
+                }
+            ]
+
+            // result = am5.net.load(url);
+            // // result.target.series.each(function (series) {
+            // //         xAxis.data.setAll(data)
+            // //         series.data.setAll(data);
+            // //         console.log("data=" + result.response);
+            // //     });
+            // data = am5.JSONParser.parse(result.response);
+            // data = result.response;
+        } else if ('{{args[1]}}' == 'index_color') {
+
+            data = [
+                {
+                    "index": "Men",
+                    "Black": 0.2,
+                    "White": 0.1,
+                    "Yello": 0.15
+                },
+                {
+                    "index": "Women",
+                    "Black": 0.5,
+                    "White": 0.3,
+                    "Yello": 0.3
+                }
+            ]
+        } else {
+
+            data = [
+                {
+                    "index": "women",
+                    "Pant": 0.3,
+                    "Cloth": 0.1,
+                    "Others": 0.6
+                },
+                {
+                    "index": "Baby\/Children",
+                    "Pant": 0.6,
+                    "Cloth": 0.3,
+                    "Others": 0.1
+                },
+                {
+                    "index": "Divided",
+                    "Pant": 0.8,
+                    "Cloth": 0.1,
+                    "Others": 0.1
+                }
+            ]
+        }
+
+        // // var data = files
+        // function dataLoaded(result) {
+        //     // Set data on all series of the chart
+        //     var data = am5.JSONParser.parse(result.response);
+        //     console.log("loading " + result.xhr.responseURL);
+
+        //     // set data
+        //     result.target.series.each(function (series) {
+        //         xAxis.data.setAll(data)
+        //         series.data.setAll(data);
+        //         console.log("data=" + result.response);
+        //     });
+        // }
+        // // http://127.0.0.1:5000//data_bar?bar=index_category
+        // url = '/data_bar?bar={{args[1]}}';
+        // am5.net.load(url, chart).then(dataLoaded);
+
+
+
         // Create axes
         var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
             categoryField: "index",
             renderer: am5xy.AxisRendererX.new(root, {}),
             tooltip: am5.Tooltip.new(root, {})
         }));
-        
-        xAxis.data.setAll(data);
 
         var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
             min: 0,
@@ -316,7 +404,22 @@
                 tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
                 tooltipY: am5.percent(10)
             });
+
+
+
+
+            xAxis.data.setAll(data);
             series.data.setAll(data);
+
+            // am5.net.load("/data/mydata.json").then(function (result) {
+            //     // This gets executed when data finishes loading
+            //     series.data.setAll(am5.JSONParser.parse(result.response));
+            // }).catch(function (result) {
+            //     // This gets executed if there was an error loading URL
+            //     // ... handle error
+            //     console.log("Error loading " + result.xhr.responseURL);
+            // });
+
             // Make stuff animate on load
             // https://www.amcharts.com/docs/v5/concepts/animations/
             series.appear();
@@ -336,21 +439,22 @@
 
             legend.data.push(series);
         }
-        // //makeSeries(name, fieldName)
-        // if ('{{args[1]}}'=='index_category'){
-        //     makeSeries("Pant", "Pant");
-        //     makeSeries("Cloth", "Cloth");
-        //     makeSeries("Others", "Others");
-        // }elseif ('{{args[1]}}'=='index_color')
-        //     makeSeries("Grey", "Grey");
-        //     makeSeries("Pink", "Pink");
-        //     makeSeries("Black", "Black");
-
+        //makeSeries(name, fieldName)
+        if ('{{args[1]}}' == 'index_category') {
             makeSeries("Pant", "Pant");
             makeSeries("Cloth", "Cloth");
             makeSeries("Others", "Others");
+        } else if ('{{args[1]}}' == 'index_color') {
+            makeSeries("Black", "Black");
+            makeSeries("White", "White");
+            makeSeries("Yello", "Yello");
+        }
+        else {
+            makeSeries("Pant", "Pant");
+            makeSeries("Cloth", "Cloth");
+            makeSeries("Others", "Others");
+        }
 
-        // Make stuff animate on load
         chart.appear(1000, 100);
         // end am5.ready()
 
