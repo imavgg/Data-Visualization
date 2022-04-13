@@ -13,7 +13,7 @@
 * git add . 增加內容
 * git status 查看改變內容
 * git commit -m  "your words" 說明推送文字
-* git push Data-Visualization "your branch name" 推上你的BRANCH
+* git push origin "your branch name" 推上你的BRANCH
 
 ## 其他可能用到的指令:
 * git remote -v : 查看自己推送的遠端
