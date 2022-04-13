@@ -6,6 +6,7 @@
 ## Git 首次下載:
 * git clone https://github.com/imavgg/Data-Visualization.git 需先下載本端。
 * 複製（Fork）一份原作的專案到你自己的 GitHub 帳號底下。
+* cd Data-Visualization
 * git checkout -b "your branch name" :設一個新的branch 名字。
 
 ## 開發本地專案
