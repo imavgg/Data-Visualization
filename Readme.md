@@ -14,8 +14,11 @@
 * git status :查看改變內容
 * git commit -m  "your words" :說明推送文字
 * git remote -v : 查看自己推送的遠端位子名稱 ---> 會出現類似以下(遠端名是Data-Visualization 但也可能出現別的)
-` Data-Visualization     https://github.com/imavgg/Data-Visualization.git (fetch)
-Data-Visualization      https://github.com/imavgg/Data-Visualization.git (push)`
+
+```
+Data-Visualization     https://github.com/imavgg/Data-Visualization.git (fetch)
+Data-Visualization      https://github.com/imavgg/Data-Visualization.git (push)
+```
 
 * git push "遠端名" "your branch name" :推上你的BRANCH
 
