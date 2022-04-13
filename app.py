@@ -3,10 +3,9 @@ from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 import os
 from sqlite3 import connect
-
 import json
 import pandas as pd
-
+import read_db as rb
 CLOTHS_FOLDER = os.path.join('static', 'cloths')
 JSON_FOLDER = os.path.join('static', 'data')
 
@@ -18,9 +17,6 @@ app.config['JSON_FOLDER'] = JSON_FOLDER
 db = SQLAlchemy(app)
 mail = Mail(app)
 data_folder = app.config['JSON_FOLDER']
-
-
-
 class Appmail():
     def __init__(self, title, sender, body):
         self.title = title
@@ -28,8 +24,6 @@ class Appmail():
         self.body = body
 
 # add user input item into database
-
-
 class AppInfo(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -76,52 +70,38 @@ def main_page():
     return render_template('data/show_all.html', appInfo=AppInfo.query.all())
 
 
-@app.route('/db2json')
-def db2json():
-    # read sql     include UI顧客database資訊
-    df = pd.read_sql('app_info', 'sqlite:///DevDb.db')
-    
-    # 這是一個column count
-    tab_gender = df.groupby(['gender']).sum()
-    # 轉成 json
-    # for loop(1:) in key 寫成一個大 json
-    # 做成一個大json:包含全部有 table column group count, 
-    # GOAL: {"fashion": 
-    #  [
-    #      {
-    #        "column": "fashion",
-    #        "number": "5"
-    #      },
-    #      {
-    #        "column": "not fashion",
-    #        "number": "1"
-    #      }
-    #  ],"gender": 
-    #  [
-    #      {
-    #        "column": "male",
-    #        "number": "2"
-    #      },
-    #      {
-    #        "column": "female",
-    #        "number": "4"
-    #      }
-    #  ]}
-    # retun json
-    return (jsonify(df.to_dict(orient='records')))
+@app.route('/db2json1')
+def db2json1():
+    col = request.args.get('col')
+    print(col)
+    print(type(col))
+    return(rb.returnjson(col))
 
 
-# 新增一個後端管理站 需要輸入帳號密碼為ROOT權限才可啟用開啟資料庫的管理介面
-# 介面包含"使用者輸入進db的總數量,使用者類別等等
-@ app.route('/root', methods=['GET', 'POST'])
-def root():
+# 一個後端管理站 需要login才可啟用開啟資料庫的管理介面
+@ app.route('/login', methods=['GET', 'POST'])
+def login():
     if request.method == 'POST':
-        if not (request.form['uname'] == 'root' and request.form['psw'] == 'root'):
+        if not (request.form['uname'] == 'roottcfst' and request.form['psw'] == 'roottcfst'):
             print('login false')
             return render_template('data/login.html', login=False)
         else:
-            return render_template('data/root.html', appInfo=AppInfo.query.all())
+            # col = 'gender'
+            # col2 = 'test'
+            return render_template('data/root.html')
     return render_template('data/login.html')
+
+# 介面包含"使用者輸入進db的總數量,使用者類別等等
+@ app.route('/root',methods=['GET', 'POST'])
+def root():
+    
+    col = request.args.getlist('col')
+    print(col) #['gender', 'age']
+    return render_template('data/root.html',args=[col])
+# def root2():
+#     col2 = request.args.get('col2')
+
+
 # Restful接收data
 @app.route('/data_pie')
 def data_pie():
@@ -155,8 +135,28 @@ def data_bar():
     file2 = open(JSON_FOLDER+'\\index_category'+'.json')
     data1 = json.load(file1)
     data2 = json.load(file2)
-    #  判別 html 傳回的plot columns項目
-    
+    #  判別 html 傳回的plot columns項目    
+    bar = request.args.get('bar')
+    print('bar',bar)
+    data_js=data1
+    # import file
+    if bar == 'index_category':
+        data_js = data1
+    elif bar == 'index_color':
+        data_js = data2
+    else:
+        print("nothing")
+    return( json.dumps(data_js))
+
+
+@app.route('/data_timeline')
+def data_timeline():
+        
+    file1 = open(JSON_FOLDER+'\\income'+'.json')
+    file2 = open(JSON_FOLDER+'\\counts'+'.json')
+    data1 = json.load(file1)
+    data2 = json.load(file2)
+    #  判別 html 傳回的plot columns項目    
     bar = request.args.get('bar')
     print('bar',bar)
     data_js=data1
@@ -175,7 +175,8 @@ def data_bar():
 def visualization():
     
     pie = request.args.get('pie')
-    bar = request.args.get('bar')      
+    bar = request.args.get('bar')  
+    # time = request.args.get('time')    
     
     return render_template('data/vis.html', args=[pie,bar])
 

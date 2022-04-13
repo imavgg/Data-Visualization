@@ -152,21 +152,21 @@
             <div class="row">
                 <div class="col">
                     <h2>Total Articles</h2>
-                    <h1>        106k</h1>
+                    <h1> 106k</h1>
                 </div>
                 <div class="col">
                     <h2>Total Transactions </h2>
-                    <h1>        31.8m</h1>
+                    <h1> 31.8m</h1>
 
                 </div>
                 <div class="col">
                     <h2>Total Customer</h2>
-                    <h1>     13.7m </h1>
+                    <h1> 13.7m </h1>
                 </div>
             </div>
 
             <div class="row">
-                <div class=".col-12 .col-lg-8" id="chartdiv4">
+                <!-- <div class=".col-12 .col-lg-8" id="chartdiv4"> -->
                 </div>
             </div>
 
@@ -251,9 +251,6 @@
         series.hiddenState.properties.endAngle = 90;
         //標示總數
         // chart.legend = new am4charts.Legend();
-
-
-
 
         //OK }
         // function chart_bar(file) {
@@ -460,11 +457,11 @@
 
         // }
 
-        // function chart_timeseries() {
+        //  chart timelines
+        // chart.legend = new am4charts.Legend();
+        chart.cursor = new am4charts.XYCursor();
+        // }
 
-        am4core.useTheme(am4themes_animated);
-
-        // Create chart instance
         var chart = am4core.create("chartdiv3", am4charts.XYChart);
 
         // Add data
@@ -524,11 +521,8 @@
         }
 
         createSeries("value", "Totol Income");
-        // createSeries("value2", "Series #2");
+        createSeries("value2", "Series #2");
 
-        // chart.legend = new am4charts.Legend();
-        chart.cursor = new am4charts.XYCursor();
-        // }
 
         // function chart_bubble() {
         am4core.useTheme(am4themes_animated);
