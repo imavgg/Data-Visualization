@@ -5,7 +5,6 @@ import os
 from sqlite3 import connect
 import json
 import pandas as pd
-import read_db as rb
 CLOTHS_FOLDER = os.path.join('static', 'cloths')
 JSON_FOLDER = os.path.join('static', 'data')
 
@@ -43,6 +42,7 @@ class AppInfo(db.Model):
 class AppML(AppInfo):
 
     def model(self):
+        # "test" is from the return value of Machine Learning code
         self.out = 'test'+'.jpg'
         return(self.out)
 
@@ -69,37 +69,6 @@ def main_page():
             # return redirect(url_for('main_page'))
     return render_template('data/show_all.html', appInfo=AppInfo.query.all())
 
-
-@app.route('/db2json1')
-def db2json1():
-    col = request.args.get('col')
-    print(col)
-    print(type(col))
-    return(rb.returnjson(col))
-
-
-# 一個後端管理站 需要login才可啟用開啟資料庫的管理介面
-@ app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        if not (request.form['uname'] == 'roottcfst' and request.form['psw'] == 'roottcfst'):
-            print('login false')
-            return render_template('data/login.html', login=False)
-        else:
-            # col = 'gender'
-            # col2 = 'test'
-            return render_template('data/root.html')
-    return render_template('data/login.html')
-
-# 介面包含"使用者輸入進db的總數量,使用者類別等等
-@ app.route('/root',methods=['GET', 'POST'])
-def root():
-    
-    col = request.args.getlist('col')
-    print(col) #['gender', 'age']
-    return render_template('data/root.html',args=[col])
-# def root2():
-#     col2 = request.args.get('col2')
 
 
 # Restful接收data
@@ -157,13 +126,13 @@ def data_timeline():
     data1 = json.load(file1)
     data2 = json.load(file2)
     #  判別 html 傳回的plot columns項目    
-    bar = request.args.get('bar')
-    print('bar',bar)
+    timeline = request.args.get('timeline')
+    print('timeline',timeline)
     data_js=data1
     # import file
-    if bar == 'index_category':
+    if timeline == 'index_category':
         data_js = data1
-    elif bar == 'index_color':
+    elif timeline == 'index_color':
         data_js = data2
     else:
         print("nothing")
@@ -176,7 +145,7 @@ def visualization():
     
     pie = request.args.get('pie')
     bar = request.args.get('bar')  
-    # time = request.args.get('time')    
+    # timeline = request.args.get('timeline')    
     
     return render_template('data/vis.html', args=[pie,bar])
 
