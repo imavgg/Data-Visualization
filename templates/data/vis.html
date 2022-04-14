@@ -99,14 +99,23 @@
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
         style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-        <h3 class="w3-padding-64 w3-center"><b>H&M<br>Recommendation</b></h3>
+        <br>
+        <br>
+        <img src="./static/H&M.png" width="165px">
+        <br>
+        <br>
+        <br>
         <a href="javascript:void(0)" onclick="w3_close()"
             class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+        <br>
+
         <a href="{{url_for('main_page')}}" onclick="w3_close()" class="w3-bar-item w3-button">MAIN</a>
-        <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+        <br>
         <a href="{{url_for('recommend')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
-        <a href="{{url_for('recommend')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
-        <a href="{{url_for('recommend')}}#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+        <br>
+        <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+        <br>
+        <a href="{{url_for('us')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
     </nav>
 
     <!-- Top menu on small screens -->
@@ -167,25 +176,25 @@
 
             <div class="row">
                 <!-- <div class=".col-12 .col-lg-8" id="chartdiv4"> -->
-                </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-3" id="chartdiv">
-                </div>
-                <div class="col-3" id="chartdiv2">
-                </div>
+        <div class="row">
+            <div class="col-3" id="chartdiv">
             </div>
+            <div class="col-3" id="chartdiv2">
+            </div>
+        </div>
 
-            <div class="row">
-                <div class="col-12" id="chartdiv3">
-                </div>
-
+        <div class="row">
+            <div class="col-12" id="chartdiv3">
             </div>
 
         </div>
 
-        <!-- End page content -->
+    </div>
+
+    <!-- End page content -->
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"

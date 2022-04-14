@@ -1,10 +1,11 @@
+
+   
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify
 from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 import os
 from sqlite3 import connect
 import json
-import pandas as pd
 CLOTHS_FOLDER = os.path.join('static', 'cloths')
 JSON_FOLDER = os.path.join('static', 'data')
 
@@ -15,7 +16,6 @@ app.config['SECRET_KEY'] = "random string"
 app.config['JSON_FOLDER'] = JSON_FOLDER
 db = SQLAlchemy(app)
 mail = Mail(app)
-data_folder = app.config['JSON_FOLDER']
 class Appmail():
     def __init__(self, title, sender, body):
         self.title = title
@@ -39,12 +39,12 @@ class AppInfo(db.Model):
         self.fnews = fnews
 
 
-class AppML(AppInfo):
+# class AppML(AppInfo):
 
-    def model(self):
-        # "test" is from the return value of Machine Learning code
-        self.out = 'test'+'.jpg'
-        return(self.out)
+#     def model(self):
+#         # "test" is from the return value of Machine Learning code
+#         self.out = 'test'+'.jpg'
+#         return(self.out)
 
 
 # main link
@@ -148,42 +148,50 @@ def visualization():
     # timeline = request.args.get('timeline')    
     
     return render_template('data/vis.html', args=[pie,bar])
-
-
 # 關於我們
-@ app.route('/us', methods=['GET', 'POST'])
+@app.route('/us',methods=['GET', 'POST'])
 def us():
-    if request.method == 'POST':
+    if request.method == 'POST':        
         if not request.form['title'] or not request.form['sender']:
             flash('Please enter all the fields', 'error')
         else:
-            mail = Appmail(request.form['title'],
-                           request.form['sender'],
+            mail = Appmail( request.form['title'], 
+                            request.form['sender'],
                            request.form['body']
                            )
             msg_recipients = ['applean061516@gmail.com']
             msg = Message(mail.title,
-                          sender=mail.sender,
-                          recipients=msg_recipients,
-                          body=mail.body)
+                sender=mail.sender,
+                recipients=msg_recipients,
+                body=mail.body)
             mail.send(msg)
             return('Mail sent')
 
     return render_template('data/us.html', appInfo=AppInfo.query.all())
 
 # 推薦產品頁面
-
-
 @app.route('/recommend', methods=['GET', 'POST'])
 def recommend():
-    # OS這裡引入folder + ml_result(test.jpg)
-    files = os.path.join(app.config['CLOTHS_FOLDER'])
-    file = files+"\\test.jpg"
-    print(file)
+    # The default random articles ID for ML
+    from random import sample 
+    IDs = ['0108775015','0108775044','0108775051','0110065001','0110065002','0110065011','0111565001','0111565003','0111586001','0111593001','0111609001','0112679048','0112679052','0114428026','0114428030','0116379047','0118458003','0118458004','0118458028','0118458029','0118458034','0118458038','0118458039']
+    cloth_files=[]
+    picked = sample(IDs,12)
+    for DXX in picked:
+        Name = str(DXX) + '.jpg'
+        Folder = str(DXX)[0:3]
+        FN = Folder +'\\'+ Name
+        cloth_files.append(FN)
+
+    # return 給HTML的參數
     files=[]
-    files.append(file)
+    print(cloth_files)
+    for i in cloth_files:
+        file = app.config['CLOTHS_FOLDER']+ '\\'+ i
+        print(file)
+        files.append(file)
     # rec html 讀取files
-    return render_template('data/rec.html', recommend_images=file, appInfo=AppInfo.query.all())
+    return render_template('data/rec.html', recommend_images=files, appInfo=AppInfo.query.all())
 
 
 @app.route('/recommend/<ml_result>', methods=['GET', 'POST'])
@@ -200,21 +208,21 @@ def recommend_cus(ml_result):
     return render_template('data/rec.html', recommend_images=files, appInfo=AppInfo.query.all())
 
 
+
 # 依照各ID  連結去推薦產品頁面
 @app.route('/predict/<app_id>', methods=['GET', 'POST'])
 def modify(app_id):
-    if request.method == 'GET':
+    if request.method == 'GET':  
         if not app_id:
             flash('Please enter the fields', 'error')
         else:
             # 從資料庫撈出產品
-            # 1.2.3....
             appInfo = db.session.query(AppInfo).filter_by(id=app_id).first()
-            ml_result = AppML.model(appInfo)  # test.jpg
-            print(ml_result)
-            app.config['RECOMMEND_RESULT'] = ml_result
+            print(appInfo)
+            flash('Record was successfully delete')
+    return redirect(url_for('recommend'))
 
-    return redirect(url_for('recommend_cus', ml_result=ml_result))
+
 
 
 if __name__ == '__main__':
