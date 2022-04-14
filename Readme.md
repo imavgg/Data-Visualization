@@ -15,15 +15,16 @@
 
 ## Git 推送
 * git checkout "your branch" : 切換到自己設定的分支下。
-* git add . :增加內容
-* git status :查看改變內容
-* git commit -m  "your words" :說明推送文字
-* git remote -v : 查看自己推送的遠端位子名稱 ---> 會出現類似以下(遠端名是Data-Visualization 但也可能出現別的ex:origin)
+* git remote -v : 查看自己推送的遠端位子名稱 ---> 會出現類似以下(遠端名可能是Data-Visualization 但也可能出現別的ex:origin)
 
 ```
 Data-Visualization     https://github.com/imavgg/Data-Visualization.git (fetch)
 Data-Visualization      https://github.com/imavgg/Data-Visualization.git (push)
 ```
+* git pull "遠端名"  "your branch name" : 需要先讓本地端版本與git上一致
+* git add . :增加內容
+* git status :查看改變內容
+* git commit -m  "your words" :說明推送文字
 
 * git push "遠端名" "your branch name" :推上你的BRANCH，可於此github上確認以及檢察。
 
