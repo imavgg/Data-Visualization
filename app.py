@@ -180,7 +180,8 @@ def recommend():
     files = os.path.join(app.config['CLOTHS_FOLDER'])
     file = files+"\\test.jpg"
     print(file)
-
+    files=[]
+    files.append(file)
     # rec html 讀取files
     return render_template('data/rec.html', recommend_images=file, appInfo=AppInfo.query.all())
 
