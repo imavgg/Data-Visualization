@@ -26,33 +26,39 @@
         .w3-third img:hover {
             opacity: 1
         }
+		#A ul li{
+		display:inline;
+		float:left;
+		}
+		tr{
+		display:block; /*将tr设置为块体元素*/
+		margin:30px;  /*设置tr间距为2px*/
+		}
     </style>
 </head>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
-        style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-        <h3 class="w3-padding-64 w3-center"><b>H&M<br>Recommendation</b></h3>
-        <a href="javascript:void(0)" onclick="w3_close()"
-            class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
-            <a href="{{url_for('main_page')}}" onclick="w3_close()" class="w3-bar-item w3-button">MAIN</a>
-            <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
-            <a href="{{url_for('recommend')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
-        <a href="{{url_for('us')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
-        <a href="{{url_for('us')}}#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
-    </nav>
+   <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
+      style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+      <!--<h3 class="w3-padding-64 w3-center"><b>H&M<br>Recommendation</b></h3>-->
+	  <br>
+	  <br>
+	  <img src="./static/H&M.png" width="165px">
+	  <br>
+	  <br>
+	  <br>
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+      <a href="/" onclick="w3_close()" class="w3-bar-item w3-button" >MAIN</a>
+	  <br>
+	  <a href="{{url_for('recommend')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
+      <br>
+	  <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+      <br>
+	  <a href="{{url_for('us')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
+   </nav>
 
-    <!-- Top menu on small screens -->
-    <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-        <span class="w3-left w3-padding">H&M Recommendation</span>
-        <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
-    </header>
-
-    <!-- Overlay effect when opening sidebar on small screens -->
-    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
-        title="close side menu" id="myOverlay"></div>
 
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:300px">
@@ -61,47 +67,46 @@
         <div class="w3-hide-large" style="margin-top:83px"></div>
 
         <!-- Photo grid -->
-        <div class="w3-row">
-            <div class="w3-third">
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F60%2Fb0%2F60b051fdff724e8e821dfa478fd7927159be94d4.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F92%2Fe3%2F92e3dcdccf637fc9575644912102432a2a03bad2.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%" onclick="onClick(this)" alt="What a beautiful scenery this sunset">
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fc2%2F25%2Fc225d33440880157de121cea148576f07ef3c263.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
+		<table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+		<tbody><tr>
+				<td><img src="{{recommend_images1}}"
+                    style="width:160px" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
+                
+				<td><img src="{{recommend_images2}}"
+                    style="width:160px" onclick="onClick(this)" alt="What a beautiful scenery this sunset">
+				
+				<td><img src="{{recommend_images3}}"
+                    style="width:160px" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
+				
+				<td><img src="{{recommend_images4}}"
+                    style="width:160px">
 
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fdf%2F9c%2Fdf9caa3c77df9ba6976ddc3c7224390050c022f5.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%">
+				<td><img src="{{recommend_images5}}"
+                    style="width:160px">
 
-            </div>
+                <td><img src="{{recommend_images6}}"
+                    style="width:160px" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
+			   </tr>
+			   <tr>
+                <td><img src="{{recommend_images7}}"
+                    style="width:160px" onclick="onClick(this)" alt="What a beautiful scenery this sunset">
 
-            <div class="w3-third">
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fdf%2F9c%2Fdf9caa3c77df9ba6976ddc3c7224390050c022f5.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%">
+				<td><img src="{{recommend_images8}}"
+                    style="width:160px" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
 
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fc2%2F25%2Fc225d33440880157de121cea148576f07ef3c263.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
+                <td><img src="{{recommend_images9}}"
+                    style="width:160px" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
 
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F92%2Fe3%2F92e3dcdccf637fc9575644912102432a2a03bad2.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%" onclick="onClick(this)" alt="What a beautiful scenery this sunset">
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fc2%2F25%2Fc225d33440880157de121cea148576f07ef3c263.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
-            </div>
+				<td><img src="{{recommend_images10}}"
+                    style="width:160px">
 
+                <td><img src="{{recommend_images11}}"
+                    style="width:160px" onclick="onClick(this)" alt="What a beautiful scenery this sunset">
 
-            <div class="w3-third">
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F92%2Fe3%2F92e3dcdccf637fc9575644912102432a2a03bad2.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fdf%2F9c%2Fdf9caa3c77df9ba6976ddc3c7224390050c022f5.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%">
-
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F92%2Fe3%2F92e3dcdccf637fc9575644912102432a2a03bad2.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%" onclick="onClick(this)" alt="What a beautiful scenery this sunset">
-                <img src="https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fc2%2F25%2Fc225d33440880157de121cea148576f07ef3c263.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D"
-                    style="width:80%" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
-            </div>
-        </div>
-
+				<td><img src="{{recommend_images12}}"
+                    style="width:160px" onclick="onClick(this)" alt="The Beach. Me. Alone. Beautiful">
+			   </tr>
+			   </tbody></table>
 
         <!-- Modal for full size images on click-->
         <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
@@ -112,69 +117,7 @@
             </div>
         </div>
 
-        <!-- About section -->
-        <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
-            <h4><b>About Us</b></h4>
-            <img src="https://www.w3schools.com/w3images/avatar_hat.jpg" alt="Me" class="w3-image w3-padding-32"
-                width="600" height="650">
-            <div class="w3-content w3-justify" style="max-width:600px">
-                <h4>My Name</h4>
-                <p>Some text about me. I love taking photos of PEOPLE. I am lorem ipsum consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                    consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <p>mail: example@example.com</p>
-                <p>tel: 5353 35531</p>
-                <hr class="w3-opacity">
-                <h4 class="w3-padding-16">Technical Skills</h4>
-                <p class="w3-wide">Photography</p>
-                <div class="w3-white">
-                    <div class="w3-container w3-padding-small w3-center w3-grey" style="width:95%">95%</div>
-                </div>
-                <p class="w3-wide">Web Design</p>
-                <div class="w3-white">
-                    <div class="w3-container w3-padding-small w3-center w3-grey" style="width:85%">85%</div>
-                </div>
-                <p class="w3-wide">Photoshop</p>
-                <div class="w3-white">
-                    <div class="w3-container w3-padding-small w3-center w3-grey" style="width:80%">80%</div>
-                </div>
-                <p><button class="w3-button w3-light-grey w3-padding-large w3-margin-top w3-margin-bottom">Download
-                        Resume</button></p>
-                <hr class="w3-opacity">
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Contact section -->
-    <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
-        <div class="w3-content" style="max-width:600px">
-            <h4 class="w3-center"><b>Contact Me</b></h4>
-            <p>Do you want me to photograph you? Fill out the form and fill me in with the details :) I love meeting
-                new people!</p>
-            <form action="/action_page.php" target="_blank">
-                <div class="w3-section">
-                    <label>Name</label>
-                    <input class="w3-input w3-border" type="text" name="Name" required>
-                </div>
-                <div class="w3-section">
-                    <label>Email</label>
-                    <input class="w3-input w3-border" type="text" name="Email" required>
-                </div>
-                <div class="w3-section">
-                    <label>Message</label>
-                    <input class="w3-input w3-border" type="text" name="Message" required>
-                </div>
-                <button type="submit" class="w3-button w3-block w3-black w3-margin-bottom">Send Message</button>
-            </form>
-        </div>
-    </div>
+        
 
 
 

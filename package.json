@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "charts.css": "^0.9.0",
-    "jquery-csv": "^1.0.21"
+    "charts.css": "^0.9.0"
   }
 }

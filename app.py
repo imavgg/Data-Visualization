@@ -1,30 +1,27 @@
-from flask import Flask, request, flash, url_for, redirect, render_template, jsonify
-from flask_mail import Mail, Message
+from flask import Flask, request, flash, url_for, redirect, render_template
+from flask_mail import Mail,Message
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
 import os
-from sqlite3 import connect
-import json
-import pandas as pd
-CLOTHS_FOLDER = os.path.join('static', 'cloths')
-JSON_FOLDER = os.path.join('static', 'data')
-
+CLOTHS_FOLDER = os.path.join('static','cloths')
 app = Flask(__name__)
+
+# app.config['SQLALCHEMY_DATABASE_URI'] = [DB_TYPE]+[DB_CONNECTOR]://[USERNAME]:[PASSWORD]@[HOST]:[PORT]/[DB_NAME]
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///DevDb.db'
 app.config['CLOTHS_FOLDER'] = CLOTHS_FOLDER
 app.config['SECRET_KEY'] = "random string"
-app.config['JSON_FOLDER'] = JSON_FOLDER
+
 db = SQLAlchemy(app)
 mail = Mail(app)
-data_folder = app.config['JSON_FOLDER']
 class Appmail():
-    def __init__(self, title, sender, body):
-        self.title = title
+    def __init__(self,title,sender,body):
+        self.title= title
         self.sender = sender
         self.body = body
 
-# add user input item into database
+# add item into database
 class AppInfo(db.Model):
-    id = db.Column('id', db.Integer, primary_key=True)
+    id = db.Column('id',db.Integer, primary_key=True)
     name = db.Column(db.String)
     gender = db.Column(db.String)
     age = db.Column(db.String)
@@ -39,25 +36,18 @@ class AppInfo(db.Model):
         self.fnews = fnews
 
 
-class AppML(AppInfo):
-
-    def model(self):
-        # "test" is from the return value of Machine Learning code
-        self.out = 'test'+'.jpg'
-        return(self.out)
-
-
 # main link
 @app.route('/', methods=['GET', 'POST'])
+
 def main_page():
-    # 接收UI輸入
-    if request.method == 'POST':  # pass with http
+    
+    if request.method == 'POST':
         if not request.form['name'] or not request.form['gender'] or not request.form['age']:
             flash('Please enter all the fields', 'error')
         else:
             # 新增AppInfo欄位的客戶進入db
-            info = AppInfo(request.form['name'],
-                           request.form['gender'],
+            info = AppInfo( request.form['name'], 
+                            request.form['gender'],
                            request.form['age'],
                            request.form['club'],
                            request.form['fnews']
@@ -65,155 +55,84 @@ def main_page():
             db.session.add(info)
             db.session.commit()
             flash('Record was successfully added')
-
-            # return redirect(url_for('main_page'))
+            
+            return redirect(url_for('main_page'))
     return render_template('data/show_all.html', appInfo=AppInfo.query.all())
 
 
-
-# Restful接收data
-@app.route('/data_pie')
-def data_pie():
-        
-    # 輸入json
-    file1 = open(JSON_FOLDER+'\\garment_group_name.json')
-    file2 = open(JSON_FOLDER+'\\perceived_colour_value_name'+'.json')
-    
-    data1 = json.load(file1)
-    data2 = json.load(file2)
-    #  判別 html 傳回的plot columns項目
-    pie = request.args.get('pie')
-    data_js=data1
-    # import file
-    if pie == 'garment_group_name':
-        data_js = data1
-
-    elif pie == 'perceived_colour_value_name':
-        data_js = data2
-
-    else:
-        print("nothing")
-    # ?/data_pie?pie=garment_group_name  ---> return data.js
-    # return a string. 
-    return( json.dumps(data_js))
-
-@app.route('/data_bar')
-def data_bar():
-        
-    file1 = open(JSON_FOLDER+'\\index_color'+'.json')
-    file2 = open(JSON_FOLDER+'\\index_category'+'.json')
-    data1 = json.load(file1)
-    data2 = json.load(file2)
-    #  判別 html 傳回的plot columns項目    
-    bar = request.args.get('bar')
-    print('bar',bar)
-    data_js=data1
-    # import file
-    if bar == 'index_category':
-        data_js = data1
-    elif bar == 'index_color':
-        data_js = data2
-    else:
-        print("nothing")
-    return( json.dumps(data_js))
-
-
-@app.route('/data_timeline')
-def data_timeline():
-        
-    file1 = open(JSON_FOLDER+'\\income'+'.json')
-    file2 = open(JSON_FOLDER+'\\counts'+'.json')
-    data1 = json.load(file1)
-    data2 = json.load(file2)
-    #  判別 html 傳回的plot columns項目    
-    timeline = request.args.get('timeline')
-    print('timeline',timeline)
-    data_js=data1
-    # import file
-    if timeline == 'index_category':
-        data_js = data1
-    elif timeline == 'index_color':
-        data_js = data2
-    else:
-        print("nothing")
-    return( json.dumps(data_js))
-
-
-# 視覺化接收選單name
-@ app.route('/vis', methods=['GET', 'POST'])
+#視覺化
+@app.route('/vis',methods=['GET', 'POST']) 
 def visualization():
-    
-    pie = request.args.get('pie')
-    bar = request.args.get('bar')  
-    # timeline = request.args.get('timeline')    
-    
-    return render_template('data/vis.html', args=[pie,bar])
-
+    return render_template('data/vis.html', appInfo=AppInfo.query.all())
 
 # 關於我們
-@ app.route('/us', methods=['GET', 'POST'])
+@app.route('/us',methods=['GET', 'POST'])
 def us():
-    if request.method == 'POST':
+    if request.method == 'POST':        
         if not request.form['title'] or not request.form['sender']:
             flash('Please enter all the fields', 'error')
         else:
-            mail = Appmail(request.form['title'],
-                           request.form['sender'],
+            mail = Appmail( request.form['title'], 
+                            request.form['sender'],
                            request.form['body']
                            )
             msg_recipients = ['applean061516@gmail.com']
             msg = Message(mail.title,
-                          sender=mail.sender,
-                          recipients=msg_recipients,
-                          body=mail.body)
+                sender=mail.sender,
+                recipients=msg_recipients,
+                body=mail.body)
             mail.send(msg)
             return('Mail sent')
 
     return render_template('data/us.html', appInfo=AppInfo.query.all())
 
 # 推薦產品頁面
-
-
 @app.route('/recommend', methods=['GET', 'POST'])
 def recommend():
-    # OS這裡引入folder + ml_result(test.jpg)
-    files = os.path.join(app.config['CLOTHS_FOLDER'])
-    file = files+"\\test.jpg"
-    print(file)
+    # 這裡引入folder 內圖檔
+    from random import sample #假裝是機器學習 XDD
+    ls = ['0108775015','0108775044','0108775051','0110065001','0110065002','0110065011','0111565001','0111565003','0111586001','0111593001','0111609001','0112679048','0112679052','0114428026','0114428030','0116379047','0118458003','0118458004','0118458028','0118458029','0118458034','0118458038','0118458039']
+    lls = []
+    R = sample(ls,12)
+    for DXX in R:
+        N = str(DXX) + '.jpg'
+        F = str(DXX)[0:3]
+        FN = F +'/'+ N
+        lls.append(FN)
+    B = lls
+    #B = 'an'+'/'+'test'+'.jpg' #無須另加''  (= = 搞到我呀~小哥哥)
+    print("B =",B)
+    #files = os.path.join(app.config['CLOTHS_FOLDER'],'an/test.jpg')
+    files1 = os.path.join(app.config['CLOTHS_FOLDER'],B[0])
+    files2 = os.path.join(app.config['CLOTHS_FOLDER'],B[1])
+    files3 = os.path.join(app.config['CLOTHS_FOLDER'],B[2])
+    files4 = os.path.join(app.config['CLOTHS_FOLDER'],B[3])
+    files5 = os.path.join(app.config['CLOTHS_FOLDER'],B[4])
+    files6 = os.path.join(app.config['CLOTHS_FOLDER'],B[5])
+    files7 = os.path.join(app.config['CLOTHS_FOLDER'],B[6])
+    files8 = os.path.join(app.config['CLOTHS_FOLDER'],B[7])
+    files9 = os.path.join(app.config['CLOTHS_FOLDER'],B[8])
+    files10 = os.path.join(app.config['CLOTHS_FOLDER'],B[9])
+    files11 = os.path.join(app.config['CLOTHS_FOLDER'],B[10])
+    files12 = os.path.join(app.config['CLOTHS_FOLDER'],B[11])
+    return render_template('data/rec.html',recommend_images1 =files1 ,recommend_images2 =files2 ,recommend_images3 =files3 ,recommend_images4 =files4 ,recommend_images5 =files5 ,recommend_images6 =files6 ,recommend_images7 =files7 ,recommend_images8 =files8 ,recommend_images9 =files9 ,recommend_images10 =files10 ,recommend_images11 =files11 ,recommend_images12 =files12 , appInfo=AppInfo.query.all())
 
-    # rec html 讀取files
-    return render_template('data/rec.html', recommend_images=file, appInfo=AppInfo.query.all())
-
-
-@app.route('/recommend/<ml_result>', methods=['GET', 'POST'])
-def recommend_cus(ml_result):
-    if request.method == 'GET':
-        if not ml_result:
-            flash('Please enter the fields', 'error')
-        else:
-            # OS這裡引入folder + ml_result(test.jpg)
-            files = os.path.join(app.config['CLOTHS_FOLDER'], ml_result)
-            print(files)
-            # rec html 讀取files
-            return(files)
-    return render_template('data/rec.html', recommend_images=files, appInfo=AppInfo.query.all())
 
 
 # 依照各ID  連結去推薦產品頁面
 @app.route('/predict/<app_id>', methods=['GET', 'POST'])
 def modify(app_id):
-    if request.method == 'GET':
+    if request.method == 'GET':  
         if not app_id:
             flash('Please enter the fields', 'error')
         else:
             # 從資料庫撈出產品
-            # 1.2.3....
             appInfo = db.session.query(AppInfo).filter_by(id=app_id).first()
-            ml_result = AppML.model(appInfo)  # test.jpg
-            print(ml_result)
-            app.config['RECOMMEND_RESULT'] = ml_result
+            print(appInfo)
+            flash('Record was successfully delete')
+    return redirect(url_for('recommend'))
 
-    return redirect(url_for('recommend_cus', ml_result=ml_result))
+
 
 
 if __name__ == '__main__':
