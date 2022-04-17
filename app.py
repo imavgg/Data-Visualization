@@ -1,11 +1,15 @@
-
-   
+from tkinter import Y
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify
 from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 import os
+import numpy as np
 from sqlite3 import connect
-import json
+import json,pickle
+import pandas as pd
+from pyparsing import col
+from Model_1 import pickle_model  as x2art # x2articles
+
 CLOTHS_FOLDER = os.path.join('static', 'cloths')
 JSON_FOLDER = os.path.join('static', 'data')
 
@@ -16,6 +20,31 @@ app.config['SECRET_KEY'] = "random string"
 app.config['JSON_FOLDER'] = JSON_FOLDER
 db = SQLAlchemy(app)
 mail = Mail(app)
+
+
+# this is a test for printing images on recommend
+prediction =[]
+def test():
+    from random import sample 
+    # The default random articles ID for ML
+    IDs = ['0108775015','0108775044','0108775051','0110065001','0110065002','0110065011','0111565001','0111565003','0111586001','0111593001','0111609001','0112679048','0112679052','0114428026','0114428030','0116379047','0118458003','0118458004','0118458028','0118458029','0118458034','0118458038','0118458039']
+    cloth_files=[]
+    picked = sample(IDs,12)
+    for DXX in picked:
+        Name = str(DXX) + '.jpg'
+        Folder = str(DXX)[0:3]
+        FN = Folder +'\\'+ Name
+        cloth_files.append(FN)
+
+    # return 給HTML的參數
+    files=[]
+    for i in cloth_files:
+        file = app.config['CLOTHS_FOLDER']+ '\\'+ i
+        # print(file)
+        files.append(file)
+    return(files)
+files = test()
+
 class Appmail():
     def __init__(self, title, sender, body):
         self.title = title
@@ -31,21 +60,38 @@ class AppInfo(db.Model):
     club = db.Column(db.String)
     fnews = db.Column(db.String)
 
-    def __init__(self, name, gender, age, club, fnews):
+    # FOR MODEL1
+    sales_channel_id = db.Column(db.String)
+    product_group_name= db.Column(db.String)
+    graphical_appearance_name= db.Column(db.String)
+    colour_group_name= db.Column(db.String)
+    section_name= db.Column(db.String)
+    garment_group_name= db.Column(db.String)
+    Year= db.Column(db.String)
+    season= db.Column(db.String)
+    pricelabel= db.Column(db.String)
+    salelabel= db.Column(db.String)
+    PREDICT = db.Column(db.String) #save predict result
+
+    def __init__(self, name, gender, age, club, fnews,sales_channel_id,
+    product_group_name,graphical_appearance_name,colour_group_name,
+    section_name,garment_group_name,Year,season,pricelabel,salelabel,PREDICT):
         self.name = name
         self.gender = gender
         self.age = age
         self.club = club
         self.fnews = fnews
-
-
-# class AppML(AppInfo):
-
-#     def model(self):
-#         # "test" is from the return value of Machine Learning code
-#         self.out = 'test'+'.jpg'
-#         return(self.out)
-
+        self.sales_channel_id=sales_channel_id
+        self.product_group_name=product_group_name
+        self.graphical_appearance_name=graphical_appearance_name
+        self.colour_group_name=colour_group_name
+        self.section_name=section_name
+        self.garment_group_name=garment_group_name
+        self.Year=Year
+        self.season=season
+        self.pricelabel=pricelabel
+        self.salelabel=salelabel
+        self.PREDICT=PREDICT
 
 # main link
 @app.route('/', methods=['GET', 'POST'])
@@ -55,21 +101,29 @@ def main_page():
         if not request.form['name'] or not request.form['gender'] or not request.form['age']:
             flash('Please enter all the fields', 'error')
         else:
-            # 新增AppInfo欄位的客戶進入db
+            # 從 HTML 得到參數 並 新增info欄位
             info = AppInfo(request.form['name'],
                            request.form['gender'],
                            request.form['age'],
                            request.form['club'],
-                           request.form['fnews']
+                           request.form['fnews'],
+                           request.form['sales_channel_id'],
+                           request.form['product_group_name'],
+                           request.form['graphical_appearance_name'],
+                           request.form['colour_group_name'],
+                           request.form['section_name'],
+                           request.form['garment_group_name'],
+                           request.form['Year'],
+                           request.form['season'],
+                           request.form['pricelabel'],
+                           request.form['salelabel'],
+                           'NONE'
                            )
+            # 加進DB
             db.session.add(info)
             db.session.commit()
             flash('Record was successfully added')
-
-            # return redirect(url_for('main_page'))
     return render_template('data/show_all.html', appInfo=AppInfo.query.all())
-
-
 
 # Restful接收data
 @app.route('/data_pie')
@@ -117,7 +171,6 @@ def data_bar():
         print("nothing")
     return( json.dumps(data_js))
 
-
 @app.route('/data_timeline')
 def data_timeline():
         
@@ -137,7 +190,6 @@ def data_timeline():
     else:
         print("nothing")
     return( json.dumps(data_js))
-
 
 # 視覺化接收選單name
 @ app.route('/vis', methods=['GET', 'POST'])
@@ -172,56 +224,31 @@ def us():
 # 推薦產品頁面
 @app.route('/recommend', methods=['GET', 'POST'])
 def recommend():
-    # The default random articles ID for ML
-    from random import sample 
-    IDs = ['0108775015','0108775044','0108775051','0110065001','0110065002','0110065011','0111565001','0111565003','0111586001','0111593001','0111609001','0112679048','0112679052','0114428026','0114428030','0116379047','0118458003','0118458004','0118458028','0118458029','0118458034','0118458038','0118458039']
-    cloth_files=[]
-    picked = sample(IDs,12)
-    for DXX in picked:
-        Name = str(DXX) + '.jpg'
-        Folder = str(DXX)[0:3]
-        FN = Folder +'\\'+ Name
-        cloth_files.append(FN)
-
-    # return 給HTML的參數
-    files=[]
-    print(cloth_files)
-    for i in cloth_files:
-        file = app.config['CLOTHS_FOLDER']+ '\\'+ i
-        print(file)
-        files.append(file)
     # rec html 讀取files
-    return render_template('data/rec.html', recommend_images=files, appInfo=AppInfo.query.all())
+    return render_template('data/rec.html')
 
 
-@app.route('/recommend/<ml_result>', methods=['GET', 'POST'])
-def recommend_cus(ml_result):
-    if request.method == 'GET':
-        if not ml_result:
-            flash('Please enter the fields', 'error')
-        else:
-            # OS這裡引入folder + ml_result(test.jpg)
-            files = os.path.join(app.config['CLOTHS_FOLDER'], ml_result)
-            print(files)
-            # rec html 讀取files
-            return(files)
-    return render_template('data/rec.html', recommend_images=files, appInfo=AppInfo.query.all())
-
-
-
-# 依照各ID  連結去推薦產品頁面
-@app.route('/predict/<app_id>', methods=['GET', 'POST'])
+# 依照各FORM ID  連結去推薦產品頁面
+@app.route('/recommend/<app_id>', methods=['GET', 'POST'])
 def modify(app_id):
     if request.method == 'GET':  
         if not app_id:
             flash('Please enter the fields', 'error')
         else:
-            # 從資料庫撈出產品
+            # 從資料庫撈出某一欄位顧客資訊
             appInfo = db.session.query(AppInfo).filter_by(id=app_id).first()
-            print(appInfo)
-            flash('Record was successfully delete')
-    return redirect(url_for('recommend'))
 
+            # AI Model 1 :產生一個article id
+            ex1 =x2art.encode(appInfo)
+            y1 = x2art.predict(ex1)         
+
+            # save to model
+            appInfo.PREDICT =str(y1)
+            db.session.add(appInfo)    
+            db.session.commit()
+   
+
+    return render_template('data/rec.html', prediction_text='{}.jpg'.format(y1))
 
 
 
