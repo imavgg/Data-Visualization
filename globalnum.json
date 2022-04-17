@@ -1,0 +1,356 @@
+[
+    {
+      
+        id: "AU",
+        name: "Australia",
+        value: 49,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+        id: "AT",
+        name: "Austria",
+        value: 87,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+    
+        id: "BY",
+        name: "Belarus",
+        value: 3,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+       
+        id: "BE",
+        name: "Belgium",
+        value: 93,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+      
+        id: "BG",
+        name: "Bulgaria",
+        value: 21,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+    
+        id: "CA",
+        name: "Canada",
+        value: 96,
+        circleTemplate:{ fill: colors.getIndex(4)}
+    },
+    {
+  
+        id: "CL",
+        name: "Chile",
+        value: 17,
+        circleTemplate:{ fill: colors.getIndex(3)}
+    },
+    {
+     
+        id: "CN",
+        name: "China",
+        value: 505,
+        circleTemplate:{ fill: colors.getIndex(0)}
+    },
+    {
+    
+        id: "CO",
+        name: "Colombia",
+        value: 9,
+        circleTemplate:{ fill: colors.getIndex(3)}
+    },
+    {
+    
+        id: "CY",
+        name: "Cyprus",
+        value: 1,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+
+        id: "DK",
+        name: "Denmark",
+        value: 105,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+   
+        id: "EE",
+        name: "Estonia",
+        value: 13,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+       
+        id: "FI",
+        name: "Finland",
+        value: 65,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+
+        id: "FR",
+        name: "France",
+        value: 228,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+ 
+        id: "GE",
+        name: "Georgia",
+        value: 3,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+
+        id: "DE",
+        name: "Germany",
+        value: 457,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+        "index": 16,
+        id: "GR",
+        name: "Greece",
+        value: 35,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+   
+        id: "HU",
+        name: "Hungary",
+        value: 47,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+ 
+        id: "IS",
+        name: "Iceland",
+        value: 7,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+   
+        id: "IN",
+        name: "India",
+        value: 49,
+        circleTemplate:{ fill: colors.getIndex(0)}
+    },
+    {
+        id: "IE",
+        name: "Ireland",
+        value: 24,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+ 
+        id: "IT",
+        name: "Italy",
+        value: 174,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+   
+        id: "JP",
+        name: "Japan",
+        value: 115,
+        circleTemplate:{ fill: colors.getIndex(0)}
+    },
+    {
+
+        id: "KZ",
+        name: "Kazakhstan",
+        value: 6,
+        circleTemplate:{ fill: colors.getIndex(0)}
+    },
+    {
+ 
+        id: "LV",
+        name: "Latvia",
+        value: 9,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+
+        id: "LT",
+        name: "Lithuania",
+        value: 10,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+  
+        id: "LU",
+        name: "Luxembourg",
+        value: 14,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+    
+        id: "MY",
+        name: "Malaysia",
+        value: 50,
+        circleTemplate:{ fill: colors.getIndex(0)}
+    },
+    {
+     
+        id: "MX",
+        name: "Mexico",
+        value: 55,
+        circleTemplate:{ fill: colors.getIndex(4)}
+    },
+    {
+      
+        id: "NL",
+        name: "Netherlands",
+        value: 135,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+   
+        id: "NZ",
+        name: "New Zealand",
+        value: 11,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+ 
+        id: "NO",
+        name: "Norway",
+        value: 125,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+   
+        id: "PE",
+        name: "Peru",
+        value: 15,
+        circleTemplate:{ fill: colors.getIndex(3)}
+    },
+    {
+       
+        id: "PH",
+        name: "Philippines",
+        value: 41,
+        circleTemplate:{ fill: colors.getIndex(0)}
+    },
+    {
+ 
+        id: "PL",
+        name: "Poland",
+        value: 192,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+ 
+        id: "PT",
+        name: "Portugal",
+        value: 29,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+ 
+        id: "RO",
+        name: "Romania",
+        value: 57,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+        id: "RU",
+        name: "Russia",
+        value: 155,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+     
+        id: "RS",
+        name: "Serbia",
+        value: 15,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+
+        id: "SG",
+        name: "Singapore",
+        value: 13,
+        circleTemplate:{ fill: colors.getIndex(0)}
+    },
+    {
+        id: "SI",
+        name: "Slovenia",
+        value: 13,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+        id: "ZA",
+        name: "South Africa",
+        value: 27,
+        circleTemplate:{ fill: colors.getIndex(2)}
+    },
+    {
+
+        id: "ES",
+        name: "Spain",
+        value: 166,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+        id: "SE",
+        name: "Sweden",
+        value: 168,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+
+        id: "CH",
+        name: "Switzerland",
+        value: 98,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+        id: "TW",
+        name: "Taiwan",
+        value: 13,
+        circleTemplate:{ fill: colors.getIndex(0)}
+    },
+    {
+
+        id: "TR",
+        name: "Turkey",
+        value: 59,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+        id: "UA",
+        name: "Ukraine",
+        value: 5,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+
+        id: "GB",
+        name: "United Kingdom",
+        value: 289,
+        circleTemplate:{ fill: colors.getIndex(8)}
+    },
+    {
+        id: "US",
+        name: "United States",
+        value: 582,
+        circleTemplate:{ fill: colors.getIndex(4)}
+    },
+    {
+
+        id: "UY",
+        name: "Uruguay",
+        value: 3,
+        circleTemplate:{ fill: colors.getIndex(3)}
+    },
+    {
+        id: "VN",
+        name: "Vietnam",
+        value: 9,
+        circleTemplate:{ fill: colors.getIndex(0)}
+    }
+]
