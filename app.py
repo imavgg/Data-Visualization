@@ -154,8 +154,8 @@ def recommend():
     y1 = xdart.predict(ex1)  #這是arrary
     lls = []
     for DXX in y1:
-        N = str(DXX)
-        F = str(DXX)[0:3]
+        N = '0'+str(DXX)
+        F = 'item'
         FN = F +'\\'+ N
         lls.append(FN)
     B = lls
