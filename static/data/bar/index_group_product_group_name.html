@@ -1,0 +1,145 @@
+<!-- Styles -->
+<style>
+  #chartdiv {
+    width: 100%;
+    height: 500px;
+  }
+  </style>
+  
+  <!-- Resources -->
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  
+  <!-- Chart code -->
+  <script>
+  am5.ready(function() {
+  
+  // Create root element
+  // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+  var root = am5.Root.new("chartdiv");
+  
+  
+  // Set themes
+  // https://www.amcharts.com/docs/v5/concepts/themes/
+  root.setThemes([
+    am5themes_Animated.new(root)
+  ]);
+  
+  
+  // Create chart
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/
+  var chart = root.container.children.push(am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  }));
+  
+  // Add scrollbar
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+  chart.set("scrollbarX", am5.Scrollbar.new(root, {
+    orientation: "horizontal"
+  }));
+  
+  var data = [{"index_group_name":"Baby\/Children","Accessories":0.0843248538,"Bags":0.0000576186,"Cosmetic":0.0014116562,"Fun":0.0000576186,"Furniture":0.0,"Garment Full body":0.1389473078,"Garment Lower body":0.2123534326,"Garment Upper body":0.3796491026,"Garment and Shoe care":0.0,"Interior textile":0.0000864279,"Items":0.0,"Nightwear":0.0322376192,"Shoes":0.0645040477,"Socks & Tights":0.0364725879,"Stationery":0.0,"Swimwear":0.0235660165,"Underwear":0.0245167238,"Underwear\/nightwear":0.0015557028,"Unknown":0.0002592838},{"index_group_name":"Divided","Accessories":0.0965740313,"Bags":0.0009901644,"Cosmetic":0.0,"Fun":0.0,"Furniture":0.0,"Garment Full body":0.1864809558,"Garment Lower body":0.2100468678,"Garment Upper body":0.4620106938,"Garment and Shoe care":0.0,"Interior textile":0.0,"Items":0.0,"Nightwear":0.0,"Shoes":0.0182850353,"Socks & Tights":0.0061390191,"Stationery":0.0,"Swimwear":0.0050168328,"Underwear":0.0133342135,"Underwear\/nightwear":0.0,"Unknown":0.0011221863},{"index_group_name":"Ladieswear","Accessories":0.1311372273,"Bags":0.0000251655,"Cosmetic":0.0,"Fun":0.0,"Furniture":0.000327151,"Garment Full body":0.1409517578,"Garment Lower body":0.1445000881,"Garment Upper body":0.3550846818,"Garment and Shoe care":0.0002264892,"Interior textile":0.0,"Items":0.0004026474,"Nightwear":0.0166847019,"Shoes":0.0526713139,"Socks & Tights":0.0145456376,"Stationery":0.0001258273,"Swimwear":0.0481163651,"Underwear":0.0937916803,"Underwear\/nightwear":0.0,"Unknown":0.0014092659},{"index_group_name":"Menswear","Accessories":0.1108898271,"Bags":0.0005576356,"Cosmetic":0.0,"Fun":0.0,"Furniture":0.0,"Garment Full body":0.0008762846,"Garment Lower body":0.19628774,"Garment Upper body":0.5460846013,"Garment and Shoe care":0.0,"Interior textile":0.0,"Items":0.0000796622,"Nightwear":0.0093204812,"Shoes":0.05353302,"Socks & Tights":0.028837728,"Stationery":0.0,"Swimwear":0.0195172469,"Underwear":0.0317852306,"Underwear\/nightwear":0.0,"Unknown":0.0022305425},{"index_group_name":"Sport","Accessories":0.0486438679,"Bags":0.0,"Cosmetic":0.0,"Fun":0.0,"Furniture":0.0,"Garment Full body":0.0094339623,"Garment Lower body":0.3104363208,"Garment Upper body":0.4714033019,"Garment and Shoe care":0.0,"Interior textile":0.0,"Items":0.0,"Nightwear":0.0,"Shoes":0.0005896226,"Socks & Tights":0.0421580189,"Stationery":0.0,"Swimwear":0.0224056604,"Underwear":0.0916863208,"Underwear\/nightwear":0.0,"Unknown":0.0032429245}]
+  
+  // Create axes
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+  var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+    categoryField: "index_group_name",
+    renderer: am5xy.AxisRendererX.new(root, {}),
+    tooltip: am5.Tooltip.new(root, {})
+  }));
+  
+  xAxis.data.setAll(data);
+  
+  var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+    min: 0,
+    max: 100,
+    numberFormat: "#'%'",
+    strictMinMax: true,
+    calculateTotals: true,
+    renderer: am5xy.AxisRendererY.new(root, {})
+  }));
+  
+  
+  // Add legend
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+  var legend = chart.children.push(am5.Legend.new(root, {
+    centerX: am5.p50,
+    x: am5.p50
+  }));
+  
+  
+  // Add series
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+  function makeSeries(name, fieldName) {
+    var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+      name: name,
+      stacked: true,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: fieldName,
+      valueYShow: "valueYTotalPercent",
+      categoryXField: "index_group_name"
+    }));
+  
+    series.columns.template.setAll({
+      tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
+      tooltipY: am5.percent(10)
+    });
+    series.data.setAll(data);
+  
+    // Make stuff animate on load
+    // https://www.amcharts.com/docs/v5/concepts/animations/
+    series.appear();
+  
+    series.bullets.push(function () {
+      return am5.Bullet.new(root, {
+        sprite: am5.Label.new(root, {
+          text: "{valueYTotalPercent.formatNumber('#.#')}%",
+          fill: root.interfaceColors.get("alternativeText"),
+          centerY: am5.p50,
+          centerX: am5.p50,
+          populateText: true
+        })
+      });
+    });
+  
+    legend.data.push(series);
+  }
+  
+  makeSeries("Accessories", "Accessories");
+  makeSeries("Bags", "Bags");
+  makeSeries("Cosmetic", "Cosmetic");
+  makeSeries("Fun", "Fun");
+  makeSeries("Furniture", "Furniture");
+  makeSeries( "Garment Full body", "Garment Full body");
+  makeSeries("Garment Lower body", "Garment Lower body");
+  makeSeries("Garment Upper body", "Garment Upper body");
+  makeSeries("Garment and Shoe care", "Garment and Shoe care");
+  makeSeries("Interior textile", "Interior textile");
+  makeSeries("Items", "Items");
+  makeSeries("Nightwear", "Nightwear");
+  makeSeries("Shoes", "Shoes");
+  makeSeries("Socks & Tights", "USocks & Tights");
+  makeSeries("Stationery", "Stationery");
+  makeSeries("Swimwear", "Swimwear");
+  makeSeries("Stationery", "Stationery");
+  makeSeries("Underwear", "Underwear");
+  makeSeries("Underwear\/nightwear", "Underwear\/nightwear");
+  makeSeries("Unknown", "Unknown");
+
+
+
+  // Make stuff animate on load
+  // https://www.amcharts.com/docs/v5/concepts/animations/
+  chart.appear(1000, 100);
+  
+  }); // end am5.ready()
+  </script>
+  
+  <!-- HTML -->
+  <div id="chartdiv"></div>
