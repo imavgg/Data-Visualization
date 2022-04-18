@@ -69,8 +69,16 @@
 
         <!-- Push down content on small screens -->
         <div class="w3-hide-large" style="margin-top:83px"></div>
-
         {{prediction_text}}
+
+        <div class="container">
+            <div class="row">
+                <div class="col align-self-center">
+                    <img src="{{prediction_text}}"
+                        style="width:75%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature">
+                </div>
+            </div>
+        </div>
 
         <!-- Modal for full size images on click-->
         <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">

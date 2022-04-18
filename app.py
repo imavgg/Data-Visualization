@@ -151,7 +151,16 @@ def recommend():
     select0 = request.form.get('salelabel')
 
     ex1 =xdart.encode(select1,select2,select3,select4,select5,select6,select7,select8,select9,select0)
-    y1 = xdart.predict(ex1) 
+    y1 = xdart.predict(ex1)  #這是arrary
+    lls = []
+    for DXX in y1:
+        N = str(DXX)
+        F = str(DXX)[0:3]
+        FN = F +'\\'+ N
+        lls.append(FN)
+    B = lls
+    #y1 = y1[0]
+    y1 = os.path.join(app.config['CLOTHS_FOLDER'],B[0])
    
     return render_template('data/rec.html', prediction_text='{}.jpg'.format(y1))
 
