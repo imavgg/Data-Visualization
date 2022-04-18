@@ -73,6 +73,8 @@ class AppInfo(db.Model):
     salelabel= db.Column(db.String)
     PREDICT = db.Column(db.String) #save predict result
 
+    # FOR MODEL2
+
     def __init__(self, name, gender, age, club, fnews,sales_channel_id,
     product_group_name,graphical_appearance_name,colour_group_name,
     section_name,garment_group_name,Year,season,pricelabel,salelabel,PREDICT):
@@ -154,8 +156,8 @@ def data_pie():
 @app.route('/data_bar')
 def data_bar():
         
-    file1 = open(JSON_FOLDER+'\\index_color'+'.json')
-    file2 = open(JSON_FOLDER+'\\index_category'+'.json')
+    file1 = open(JSON_FOLDER+'\\bar\\index_group_perceived_colour_value_name'+'.json')
+    file2 = open(JSON_FOLDER+'\\bar\\index_group_product_group_name'+'.json')
     data1 = json.load(file1)
     data2 = json.load(file2)
     #  判別 html 傳回的plot columns項目    
@@ -163,10 +165,10 @@ def data_bar():
     print('bar',bar)
     data_js=data1
     # import file
-    if bar == 'index_category':
-        data_js = data1
-    elif bar == 'index_color':
+    if bar == 'index_group_product_group_name':
         data_js = data2
+    elif bar == 'index_group_perceived_colour_value_name':
+        data_js = data1
     else:
         print("nothing")
     return( json.dumps(data_js))
@@ -174,8 +176,8 @@ def data_bar():
 @app.route('/data_timeline')
 def data_timeline():
         
-    file1 = open(JSON_FOLDER+'\\income'+'.json')
-    file2 = open(JSON_FOLDER+'\\counts'+'.json')
+    file1 = open(JSON_FOLDER+'\\time\\dateprice.json')
+    file2 = open(JSON_FOLDER+'\\time\\dattoaccu.json')
     data1 = json.load(file1)
     data2 = json.load(file2)
     #  判別 html 傳回的plot columns項目    
@@ -183,9 +185,9 @@ def data_timeline():
     print('timeline',timeline)
     data_js=data1
     # import file
-    if timeline == 'index_category':
+    if timeline == 'dateprice':
         data_js = data1
-    elif timeline == 'index_color':
+    elif timeline == 'dattoaccu':
         data_js = data2
     else:
         print("nothing")
@@ -197,9 +199,10 @@ def visualization():
     
     pie = request.args.get('pie')
     bar = request.args.get('bar')  
-    # timeline = request.args.get('timeline')    
+    timeline = request.args.get('timeline')    
+    globalc = request.args.get('globalc')
     
-    return render_template('data/vis.html', args=[pie,bar])
+    return render_template('data/vis.html', args=[pie,bar,timeline,globalc] )
 # 關於我們
 @app.route('/us',methods=['GET', 'POST'])
 def us():

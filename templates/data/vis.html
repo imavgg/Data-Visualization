@@ -19,6 +19,10 @@
     <script src="//cdn.amcharts.com/lib/4/core.js"></script>
     <script src="//cdn.amcharts.com/lib/4/charts.js"></script>
     <script src="//cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -27,12 +31,22 @@
 
         #chartdiv {
             width: 50%;
-            height: 250px;
+            height: 300px;
         }
 
         #chartdiv2 {
             width: 50%;
-            height: 250px;
+            height: 300px;
+        }
+
+        #chartdiv3 {
+            width: 100%;
+            height: 300px;
+        }
+
+        #chartdiv4 {
+            width: 50%;
+            height: 300px;
         }
 
         /* .container {
@@ -135,19 +149,39 @@
         <div class="w3-hide-large" style="margin-top:83px"></div>
         <!-- 4/10新增許多plot圖的輸出,4/11 Restful -->
         <form action="/vis" id="json_form">
-            <b>Pie Chart</b>
 
-            <!-- /vis?pie=garment_group_name&bar=index_category -->
-            <select class="w3-bar-item" style="width:20%" name="pie" form="json_form">
-                <option value="garment_group_name">garment_group_name</option>
-                <option value="perceived_colour_value_name">perceived_colour_value_name</option>
-            </select>
-            <b>Bar Chart</b>
-            <select class="w3-bar-item" style="width:20%" name="bar" form="json_form">
-                <option value="index_category">index_category</option>
-                <option value="index_color">index_color</option>
-            </select>
-            <button type='submit'>Show</button>
+            <div class="w3-bar w3-black">
+
+
+                <label for="pie" style="width:25% " class="w3-bar-item">Pie Chart</label></a>
+                <label for="bar" style="width:25%" class="w3-bar-item">Bar Chart</label></a>
+                <label for="timeline" style="width:25%" class="w3-bar-item">Timeline Chart</label></a>
+                <label for="globalc" style="width:25%" class="w3-bar-item">Global</label><br>
+
+                <!-- /vis?pie=garment_group_name&bar=index_category -->
+                <select class="w3-bar-item" style="width:25%" name="pie" form="json_form">
+                    <option value="garment_group_name">garment_group_name</option>
+                    <option value="perceived_colour_value_name">perceived_colour_value_name</option>
+                </select></a>
+
+                <select class="w3-bar-item" style="width:25%" name="bar" form="json_form">
+                    <option value="index_group_product_group_name">index_group_product_group_name</option>
+                    <option value="index_group_perceived_colour_value_name">index_group_perceived_colour_value_name
+                    </option>
+                </select></a>
+
+                <select class="w3-bar-item" style="width:25%" name="timeline" form="json_form">
+                    <option value="dateprice">date_price</option>
+                    <option value="dattoaccu">datto_accu</option>
+                </select></a>
+
+                <select class="w3-bar-item" style="width:25%" name="globalc" form="json_form">
+                    <option value="globalnum">number</option>
+                </select></a>
+            </div>
+
+            <button type='submit' class="w3-button w3-block w3-black w3-margin-bottom" >Show</button>
+
         </form>
 
         <!-- <button onclick="chart_pie({{jsfile}});chart_bar();chart_timeseries();chart_bubble()">Show</button> -->
@@ -158,7 +192,7 @@
 
         <div class="container">
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col">
                     <h2>Total Articles</h2>
                     <h1> 106k</h1>
@@ -172,7 +206,7 @@
                     <h2>Total Customer</h2>
                     <h1> 13.7m </h1>
                 </div>
-            </div>
+            </div> -->
 
             <div class="row">
                 <!-- <div class=".col-12 .col-lg-8" id="chartdiv4"> -->
@@ -181,20 +215,30 @@
 
         <div class="row">
             <div class="col-3" id="chartdiv">
+                <br>
             </div>
             <div class="col-3" id="chartdiv2">
+                <br>
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6" id="chartdiv5">
+                <br>
+            </div>
+            <div class="col-6" id="chartdiv4">
+                <br>
+            </div>
+
+
         </div>
 
         <div class="row">
             <div class="col-12" id="chartdiv3">
             </div>
-
         </div>
 
-    </div>
-
-    <!-- End page content -->
+        <!-- End page content -->
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
@@ -209,6 +253,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+
     <script>
 
         // Script to open and close sidebar
@@ -230,428 +276,1373 @@
             captionText.innerHTML = element.alt;
         }
 
-        // function chart_pie(file) {
+        function chart_pie() {
 
-        am4core.useTheme(am4themes_animated);
-        var chart = am4core.create("chartdiv", am4charts.PieChart);
-
-
-        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-        // chart.data = file
-        chart.dataSource.url = "/data_pie?pie={{args[0]}}";
-
-        // 設定圓的角度 設定圓的columns  設定圓的半徑大
-        chart.radius = am4core.percent(70);
-        chart.innerRadius = am4core.percent(40);
-        chart.startAngle = 0;
-        chart.endAngle = 360;
+            am4core.useTheme(am4themes_animated);
+            var chart = am4core.create("chartdiv", am4charts.PieChart);
 
 
-        var series = chart.series.push(new am4charts.PieSeries());
-        series.dataFields.value = "count";
-        series.dataFields.category = "column";
+            chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+            // chart.data = file
+            chart.dataSource.url = "/data_pie?pie={{args[0]}}";
 
-        series.slices.template.cornerRadius = 10;
-        series.slices.template.innerCornerRadius = 7;
-        series.slices.template.draggable = false;
-        series.slices.template.inert = false;
-
-        series.hiddenState.properties.startAngle = 90;
-        series.hiddenState.properties.endAngle = 90;
-        //標示總數
-        // chart.legend = new am4charts.Legend();
-
-        //OK }
-        // function chart_bar(file) {
-        // Create root element
-        var root = am5.Root.new("chartdiv2");
-        root.setThemes([
-            am5themes_Animated.new(root)
-        ]);
-        // Create chart
-        var chart = root.container.children.push(am5xy.XYChart.new(root, {
-            panX: false,
-            panY: false,
-            wheelX: "panX",
-            wheelY: "zoomX",
-            layout: root.verticalLayout
-        }));
+            // 設定圓的角度 設定圓的columns  設定圓的半徑大
+            chart.radius = am4core.percent(70);
+            chart.innerRadius = am4core.percent(40);
+            chart.startAngle = 0;
+            chart.endAngle = 360;
 
 
-        // This is a test!
-        if ('{{args[1]}}' == 'index_category') {
-            data = [
-                {
-                    "index": "women",
-                    "Pant": 0.3,
-                    "Cloth": 0.1,
-                    "Others": 0.6
-                },
-                {
-                    "index": "Baby\/Children",
-                    "Pant": 0.6,
-                    "Cloth": 0.3,
-                    "Others": 0.1
-                },
-                {
-                    "index": "Divided",
-                    "Pant": 0.8,
-                    "Cloth": 0.1,
-                    "Others": 0.1
-                }
-            ]
+            var series = chart.series.push(new am4charts.PieSeries());
+            series.dataFields.value = "count";
+            series.dataFields.category = "column";
 
-            // result = am5.net.load(url);
-            // // result.target.series.each(function (series) {
-            // //         xAxis.data.setAll(data)
-            // //         series.data.setAll(data);
-            // //         console.log("data=" + result.response);
-            // //     });
-            // data = am5.JSONParser.parse(result.response);
-            // data = result.response;
-        } else if ('{{args[1]}}' == 'index_color') {
+            series.slices.template.cornerRadius = 10;
+            series.slices.template.innerCornerRadius = 7;
+            series.slices.template.draggable = false;
+            series.slices.template.inert = false;
 
-            data = [
-                {
-                    "index": "Men",
-                    "Black": 0.2,
-                    "White": 0.1,
-                    "Yello": 0.15
-                },
-                {
-                    "index": "Women",
-                    "Black": 0.5,
-                    "White": 0.3,
-                    "Yello": 0.3
-                }
-            ]
-        } else {
-
-            data = [
-                {
-                    "index": "women",
-                    "Pant": 0.3,
-                    "Cloth": 0.1,
-                    "Others": 0.6
-                },
-                {
-                    "index": "Baby\/Children",
-                    "Pant": 0.6,
-                    "Cloth": 0.3,
-                    "Others": 0.1
-                },
-                {
-                    "index": "Divided",
-                    "Pant": 0.8,
-                    "Cloth": 0.1,
-                    "Others": 0.1
-                }
-            ]
+            series.hiddenState.properties.startAngle = 90;
+            series.hiddenState.properties.endAngle = 90;
+            //標示總數
+            // chart.legend = new am4charts.Legend();
         }
-
-        // // var data = files
-        // function dataLoaded(result) {
-        //     // Set data on all series of the chart
-        //     var data = am5.JSONParser.parse(result.response);
-        //     console.log("loading " + result.xhr.responseURL);
-
-        //     // set data
-        //     result.target.series.each(function (series) {
-        //         xAxis.data.setAll(data)
-        //         series.data.setAll(data);
-        //         console.log("data=" + result.response);
-        //     });
-        // }
-        // // http://127.0.0.1:5000//data_bar?bar=index_category
-        // url = '/data_bar?bar={{args[1]}}';
-        // am5.net.load(url, chart).then(dataLoaded);
+        chart_pie();
 
 
+        function chart_bar() {
 
-        // Create axes
-        var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-            categoryField: "index",
-            renderer: am5xy.AxisRendererX.new(root, {}),
-            tooltip: am5.Tooltip.new(root, {})
-        }));
-
-        var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-            min: 0,
-            max: 100,
-            numberFormat: "#'%'",
-            strictMinMax: true,
-            calculateTotals: true,
-            renderer: am5xy.AxisRendererY.new(root, {})
-        }));
-
-
-        // Add legend
-        // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-        var legend = chart.children.push(am5.Legend.new(root, {
-            centerX: am5.p50,
-            x: am5.p50
-        }));
-
-
-        // Add series
-        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-        function makeSeries(name, fieldName) {
-            var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-                name: name,
-                stacked: true,
-                xAxis: xAxis,
-                yAxis: yAxis,
-                valueYField: fieldName,
-                valueYShow: "valueYTotalPercent",
-                categoryXField: "index"
+            // function chart_bar(file) {
+            // Create root element
+            var root = am5.Root.new("chartdiv2");
+            root.setThemes([
+                am5themes_Animated.new(root)
+            ]);
+            // Create chart
+            var chart = root.container.children.push(am5xy.XYChart.new(root, {
+                panX: false,
+                panY: false,
+                wheelX: "panX",
+                wheelY: "zoomX",
+                layout: root.verticalLayout
             }));
 
-            series.columns.template.setAll({
-                tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
-                tooltipY: am5.percent(10)
+
+            if ('{{args[1]}}' == 'index_group_perceived_colour_value_name') {
+
+                var data = [{ "index_group_name": "Baby\/Children", "Bright": 0.0608164559, "Dark": 0.3153755294, "Dusty Light": 0.2626832992, "Light": 0.1791939155, "Medium": 0.0671545043, "Medium Dusty": 0.1139408257, "Undefined": 0.00083547, "Unknown": 0.0 }, { "index_group_name": "Divided", "Bright": 0.053138821, "Dark": 0.4160670671, "Dusty Light": 0.2071423856, "Light": 0.1400092415, "Medium": 0.0629084428, "Medium Dusty": 0.1195458446, "Undefined": 0.0011881972, "Unknown": 0.0 }, { "index_group_name": "Ladieswear", "Bright": 0.0727281878, "Dark": 0.4087122833, "Dusty Light": 0.2086468531, "Light": 0.1428391675, "Medium": 0.0450713441, "Medium Dusty": 0.1201902509, "Undefined": 0.0012582731, "Unknown": 0.0005536402 }, { "index_group_name": "Menswear", "Bright": 0.0336971242, "Dark": 0.5612204254, "Dusty Light": 0.1016490082, "Light": 0.1150322632, "Medium": 0.0459651079, "Medium Dusty": 0.1414801243, "Undefined": 0.0004779734, "Unknown": 0.0004779734 }, { "index_group_name": "Sport", "Bright": 0.0713443396, "Dark": 0.639740566, "Dusty Light": 0.0969929245, "Light": 0.0819575472, "Medium": 0.0173938679, "Medium Dusty": 0.0919811321, "Undefined": 0.0005896226, "Unknown": 0.0 }]
+
+            } else {
+                var data = [{ "index_group_name": "Baby\/Children", "Accessories": 0.0843248538, "Bags": 0.0000576186, "Cosmetic": 0.0014116562, "Fun": 0.0000576186, "Furniture": 0.0, "Garment Full body": 0.1389473078, "Garment Lower body": 0.2123534326, "Garment Upper body": 0.3796491026, "Garment and Shoe care": 0.0, "Interior textile": 0.0000864279, "Items": 0.0, "Nightwear": 0.0322376192, "Shoes": 0.0645040477, "Socks & Tights": 0.0364725879, "Stationery": 0.0, "Swimwear": 0.0235660165, "Underwear": 0.0245167238, "Underwear\/nightwear": 0.0015557028, "Unknown": 0.0002592838 }, { "index_group_name": "Divided", "Accessories": 0.0965740313, "Bags": 0.0009901644, "Cosmetic": 0.0, "Fun": 0.0, "Furniture": 0.0, "Garment Full body": 0.1864809558, "Garment Lower body": 0.2100468678, "Garment Upper body": 0.4620106938, "Garment and Shoe care": 0.0, "Interior textile": 0.0, "Items": 0.0, "Nightwear": 0.0, "Shoes": 0.0182850353, "Socks & Tights": 0.0061390191, "Stationery": 0.0, "Swimwear": 0.0050168328, "Underwear": 0.0133342135, "Underwear\/nightwear": 0.0, "Unknown": 0.0011221863 }, { "index_group_name": "Ladieswear", "Accessories": 0.1311372273, "Bags": 0.0000251655, "Cosmetic": 0.0, "Fun": 0.0, "Furniture": 0.000327151, "Garment Full body": 0.1409517578, "Garment Lower body": 0.1445000881, "Garment Upper body": 0.3550846818, "Garment and Shoe care": 0.0002264892, "Interior textile": 0.0, "Items": 0.0004026474, "Nightwear": 0.0166847019, "Shoes": 0.0526713139, "Socks & Tights": 0.0145456376, "Stationery": 0.0001258273, "Swimwear": 0.0481163651, "Underwear": 0.0937916803, "Underwear\/nightwear": 0.0, "Unknown": 0.0014092659 }, { "index_group_name": "Menswear", "Accessories": 0.1108898271, "Bags": 0.0005576356, "Cosmetic": 0.0, "Fun": 0.0, "Furniture": 0.0, "Garment Full body": 0.0008762846, "Garment Lower body": 0.19628774, "Garment Upper body": 0.5460846013, "Garment and Shoe care": 0.0, "Interior textile": 0.0, "Items": 0.0000796622, "Nightwear": 0.0093204812, "Shoes": 0.05353302, "Socks & Tights": 0.028837728, "Stationery": 0.0, "Swimwear": 0.0195172469, "Underwear": 0.0317852306, "Underwear\/nightwear": 0.0, "Unknown": 0.0022305425 }, { "index_group_name": "Sport", "Accessories": 0.0486438679, "Bags": 0.0, "Cosmetic": 0.0, "Fun": 0.0, "Furniture": 0.0, "Garment Full body": 0.0094339623, "Garment Lower body": 0.3104363208, "Garment Upper body": 0.4714033019, "Garment and Shoe care": 0.0, "Interior textile": 0.0, "Items": 0.0, "Nightwear": 0.0, "Shoes": 0.0005896226, "Socks & Tights": 0.0421580189, "Stationery": 0.0, "Swimwear": 0.0224056604, "Underwear": 0.0916863208, "Underwear\/nightwear": 0.0, "Unknown": 0.0032429245 }]
+
+            }
+
+            // // var data = files
+            // function dataLoaded(result) {
+            //     // Set data on all series of the chart
+            //     var data = am5.JSONParser.parse(result.response);
+            //     console.log("loading " + result.xhr.responseURL);
+
+            //     // set data
+            //     result.target.series.each(function (series) {
+            //         xAxis.data.setAll(data)
+            //         series.data.setAll(data);
+            //         console.log("data=" + result.response);
+            //     });
+            // }
+            // // http://127.0.0.1:5000//data_bar?bar=index_category
+            // url = '/data_bar?bar={{args[1]}}';
+            // am5.net.load(url, chart).then(dataLoaded);
+
+
+
+            // Create axes
+            var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+
+                categoryField: "index_group_name",
+                renderer: am5xy.AxisRendererX.new(root, {}),
+                tooltip: am5.Tooltip.new(root, {})
+            }));
+
+            var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+                min: 0,
+                max: 100,
+                numberFormat: "#'%'",
+                strictMinMax: true,
+                calculateTotals: true,
+                renderer: am5xy.AxisRendererY.new(root, {})
+            }));
+
+
+            // Add legend
+            // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+            var legend = chart.children.push(am5.Legend.new(root, {
+                centerX: am5.p50,
+                x: am5.p50
+            }));
+
+
+            // Add series
+            // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+            function makeSeries(name, fieldName) {
+                var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+                    name: name,
+                    stacked: true,
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: fieldName,
+                    valueYShow: "valueYTotalPercent",
+                    categoryXField: "index_group_name"
+                }));
+
+                series.columns.template.setAll({
+                    tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
+                    tooltipY: am5.percent(10)
+                });
+
+
+
+
+                xAxis.data.setAll(data);
+                series.data.setAll(data);
+
+                // am5.net.load("/data/mydata.json").then(function (result) {
+                //     // This gets executed when data finishes loading
+                //     series.data.setAll(am5.JSONParser.parse(result.response));
+                // }).catch(function (result) {
+                //     // This gets executed if there was an error loading URL
+                //     // ... handle error
+                //     console.log("Error loading " + result.xhr.responseURL);
+                // });
+
+                // Make stuff animate on load
+                // https://www.amcharts.com/docs/v5/concepts/animations/
+                series.appear();
+
+
+                series.bullets.push(function () {
+                    return am5.Bullet.new(root, {
+                        sprite: am5.Label.new(root, {
+                            text: "{valueYTotalPercent.formatNumber('#.#')}%",
+                            fill: root.interfaceColors.get("alternativeText"),
+                            centerY: am5.p50,
+                            centerX: am5.p50,
+                            populateText: true
+                        })
+                    });
+                });
+
+                // legend.data.push(series);
+            }
+            //makeSeries(name, fieldName)
+            if ('{{args[1]}}' == 'index_group_perceived_colour_value_name') {
+                makeSeries("Dark", "Dark");
+                makeSeries("Dusty Light", "Dusty Light");
+                makeSeries("Light", "Light");
+                makeSeries("Medium Dusty", "Medium Dusty");
+                makeSeries("Bright", "Bright");
+                makeSeries("Medium", "Medium");
+                makeSeries("Undefined", "Undefined");
+                makeSeries("Unknown", "Unknown");
+            }
+            else {
+
+                makeSeries("Accessories", "Accessories");
+                makeSeries("Bags", "Bags");
+                makeSeries("Cosmetic", "Cosmetic");
+                makeSeries("Fun", "Fun");
+                makeSeries("Furniture", "Furniture");
+                makeSeries("Garment Full body", "Garment Full body");
+                makeSeries("Garment Lower body", "Garment Lower body");
+                makeSeries("Garment Upper body", "Garment Upper body");
+                makeSeries("Garment and Shoe care", "Garment and Shoe care");
+                makeSeries("Interior textile", "Interior textile");
+                makeSeries("Items", "Items");
+                makeSeries("Nightwear", "Nightwear");
+                makeSeries("Shoes", "Shoes");
+                makeSeries("Socks & Tights", "USocks & Tights");
+                makeSeries("Stationery", "Stationery");
+                makeSeries("Swimwear", "Swimwear");
+                makeSeries("Stationery", "Stationery");
+                makeSeries("Underwear", "Underwear");
+                makeSeries("Underwear\/nightwear", "Underwear\/nightwear");
+                makeSeries("Unknown", "Unknown");
+            }
+
+            chart.appear(1000, 100);
+        }
+
+        chart_bar();
+
+        function chart_time() {
+            //  Chart3 timelines
+            var root = am5.Root.new("chartdiv3");
+
+
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([
+                am5themes_Animated.new(root)
+            ]);
+
+            root.dateFormatter.setAll({
+                dateFormat: "yyyy",
+                dateFields: ["valueX"]
             });
 
+            if ('{{args[2]}}' == 'dattoaccu') {
+                var data = [{ "Date": "2018-09-20", "Amount": 48399 }, { "Date": "2018-09-21", "Amount": 47543 }, { "Date": "2018-09-22", "Amount": 17635 }, { "Date": "2018-09-23", "Amount": 52230 }, { "Date": "2018-09-24", "Amount": 45984 }, { "Date": "2018-09-25", "Amount": 43857 }, { "Date": "2018-09-26", "Amount": 48224 }, { "Date": "2018-09-27", "Amount": 44261 }, { "Date": "2018-09-28", "Amount": 66900 }, { "Date": "2018-09-29", "Amount": 141700 }, { "Date": "2018-09-30", "Amount": 38043 }, { "Date": "2018-10-01", "Amount": 38677 }, { "Date": "2018-10-02", "Amount": 39932 }, { "Date": "2018-10-03", "Amount": 38387 }, { "Date": "2018-10-04", "Amount": 38103 }, { "Date": "2018-10-05", "Amount": 33485 }, { "Date": "2018-10-06", "Amount": 37012 }, { "Date": "2018-10-07", "Amount": 32647 }, { "Date": "2018-10-08", "Amount": 28241 }, { "Date": "2018-10-09", "Amount": 38581 }, { "Date": "2018-10-10", "Amount": 63750 }, { "Date": "2018-10-11", "Amount": 58802 }, { "Date": "2018-10-12", "Amount": 53530 }, { "Date": "2018-10-13", "Amount": 53008 }, { "Date": "2018-10-14", "Amount": 36426 }, { "Date": "2018-10-15", "Amount": 33624 }, { "Date": "2018-10-16", "Amount": 48481 }, { "Date": "2018-10-17", "Amount": 59231 }, { "Date": "2018-10-18", "Amount": 46586 }, { "Date": "2018-10-19", "Amount": 39033 }, { "Date": "2018-10-20", "Amount": 40517 }, { "Date": "2018-10-21", "Amount": 37437 }, { "Date": "2018-10-22", "Amount": 43546 }, { "Date": "2018-10-23", "Amount": 49740 }, { "Date": "2018-10-24", "Amount": 64499 }, { "Date": "2018-10-25", "Amount": 54487 }, { "Date": "2018-10-26", "Amount": 55390 }, { "Date": "2018-10-27", "Amount": 50649 }, { "Date": "2018-10-28", "Amount": 56271 }, { "Date": "2018-10-29", "Amount": 45952 }, { "Date": "2018-10-30", "Amount": 42392 }, { "Date": "2018-10-31", "Amount": 38624 }, { "Date": "2018-11-01", "Amount": 41119 }, { "Date": "2018-11-02", "Amount": 36103 }, { "Date": "2018-11-03", "Amount": 39899 }, { "Date": "2018-11-04", "Amount": 32709 }, { "Date": "2018-11-05", "Amount": 30346 }, { "Date": "2018-11-06", "Amount": 33798 }, { "Date": "2018-11-07", "Amount": 35299 }, { "Date": "2018-11-08", "Amount": 32002 }, { "Date": "2018-11-09", "Amount": 35259 }, { "Date": "2018-11-10", "Amount": 34598 }, { "Date": "2018-11-11", "Amount": 44899 }, { "Date": "2018-11-12", "Amount": 25777 }, { "Date": "2018-11-13", "Amount": 28740 }, { "Date": "2018-11-14", "Amount": 35108 }, { "Date": "2018-11-15", "Amount": 38619 }, { "Date": "2018-11-16", "Amount": 38361 }, { "Date": "2018-11-17", "Amount": 38817 }, { "Date": "2018-11-18", "Amount": 35871 }, { "Date": "2018-11-19", "Amount": 32984 }, { "Date": "2018-11-20", "Amount": 40454 }, { "Date": "2018-11-21", "Amount": 43132 }, { "Date": "2018-11-22", "Amount": 56174 }, { "Date": "2018-11-23", "Amount": 142018 }, { "Date": "2018-11-24", "Amount": 80235 }, { "Date": "2018-11-25", "Amount": 59322 }, { "Date": "2018-11-26", "Amount": 56913 }, { "Date": "2018-11-27", "Amount": 30127 }, { "Date": "2018-11-28", "Amount": 29276 }, { "Date": "2018-11-29", "Amount": 32096 }, { "Date": "2018-11-30", "Amount": 30564 }, { "Date": "2018-12-01", "Amount": 34101 }, { "Date": "2018-12-02", "Amount": 26579 }, { "Date": "2018-12-03", "Amount": 27155 }, { "Date": "2018-12-04", "Amount": 31834 }, { "Date": "2018-12-05", "Amount": 35693 }, { "Date": "2018-12-06", "Amount": 37284 }, { "Date": "2018-12-07", "Amount": 33316 }, { "Date": "2018-12-08", "Amount": 37420 }, { "Date": "2018-12-09", "Amount": 34622 }, { "Date": "2018-12-10", "Amount": 30431 }, { "Date": "2018-12-11", "Amount": 31051 }, { "Date": "2018-12-12", "Amount": 39436 }, { "Date": "2018-12-13", "Amount": 33145 }, { "Date": "2018-12-14", "Amount": 31201 }, { "Date": "2018-12-15", "Amount": 36258 }, { "Date": "2018-12-16", "Amount": 32374 }, { "Date": "2018-12-17", "Amount": 34947 }, { "Date": "2018-12-18", "Amount": 39247 }, { "Date": "2018-12-19", "Amount": 46619 }, { "Date": "2018-12-20", "Amount": 61022 }, { "Date": "2018-12-21", "Amount": 56260 }, { "Date": "2018-12-22", "Amount": 58623 }, { "Date": "2018-12-23", "Amount": 43155 }, { "Date": "2018-12-24", "Amount": 38362 }, { "Date": "2018-12-25", "Amount": 14799 }, { "Date": "2018-12-26", "Amount": 24989 }, { "Date": "2018-12-27", "Amount": 52976 }, { "Date": "2018-12-28", "Amount": 46132 }, { "Date": "2018-12-29", "Amount": 42402 }, { "Date": "2018-12-30", "Amount": 33491 }, { "Date": "2018-12-31", "Amount": 23903 }, { "Date": "2019-01-01", "Amount": 18145 }, { "Date": "2019-01-02", "Amount": 44252 }, { "Date": "2019-01-03", "Amount": 47744 }, { "Date": "2019-01-04", "Amount": 43545 }, { "Date": "2019-01-05", "Amount": 44536 }, { "Date": "2019-01-06", "Amount": 37885 }, { "Date": "2019-01-07", "Amount": 34484 }, { "Date": "2019-01-08", "Amount": 49228 }, { "Date": "2019-01-09", "Amount": 53309 }, { "Date": "2019-01-10", "Amount": 53180 }, { "Date": "2019-01-11", "Amount": 42656 }, { "Date": "2019-01-12", "Amount": 44825 }, { "Date": "2019-01-13", "Amount": 39612 }, { "Date": "2019-01-14", "Amount": 35715 }, { "Date": "2019-01-15", "Amount": 35037 }, { "Date": "2019-01-16", "Amount": 46962 }, { "Date": "2019-01-17", "Amount": 36013 }, { "Date": "2019-01-18", "Amount": 35741 }, { "Date": "2019-01-19", "Amount": 38720 }, { "Date": "2019-01-20", "Amount": 34356 }, { "Date": "2019-01-21", "Amount": 34553 }, { "Date": "2019-01-22", "Amount": 36878 }, { "Date": "2019-01-23", "Amount": 40120 }, { "Date": "2019-01-24", "Amount": 42320 }, { "Date": "2019-01-25", "Amount": 46825 }, { "Date": "2019-01-26", "Amount": 48158 }, { "Date": "2019-01-27", "Amount": 40605 }, { "Date": "2019-01-28", "Amount": 35705 }, { "Date": "2019-01-29", "Amount": 44990 }, { "Date": "2019-01-30", "Amount": 39026 }, { "Date": "2019-01-31", "Amount": 38346 }, { "Date": "2019-02-01", "Amount": 41584 }, { "Date": "2019-02-02", "Amount": 43901 }, { "Date": "2019-02-03", "Amount": 45259 }, { "Date": "2019-02-04", "Amount": 33631 }, { "Date": "2019-02-05", "Amount": 35743 }, { "Date": "2019-02-06", "Amount": 37340 }, { "Date": "2019-02-07", "Amount": 39423 }, { "Date": "2019-02-08", "Amount": 36732 }, { "Date": "2019-02-09", "Amount": 41220 }, { "Date": "2019-02-10", "Amount": 36967 }, { "Date": "2019-02-11", "Amount": 32624 }, { "Date": "2019-02-12", "Amount": 34629 }, { "Date": "2019-02-13", "Amount": 33441 }, { "Date": "2019-02-14", "Amount": 33707 }, { "Date": "2019-02-15", "Amount": 37835 }, { "Date": "2019-02-16", "Amount": 43012 }, { "Date": "2019-02-17", "Amount": 33705 }, { "Date": "2019-02-18", "Amount": 31761 }, { "Date": "2019-02-19", "Amount": 33761 }, { "Date": "2019-02-20", "Amount": 43688 }, { "Date": "2019-02-21", "Amount": 58728 }, { "Date": "2019-02-22", "Amount": 64026 }, { "Date": "2019-02-23", "Amount": 75668 }, { "Date": "2019-02-24", "Amount": 34618 }, { "Date": "2019-02-25", "Amount": 39670 }, { "Date": "2019-02-26", "Amount": 43079 }, { "Date": "2019-02-27", "Amount": 45506 }, { "Date": "2019-02-28", "Amount": 41154 }, { "Date": "2019-03-01", "Amount": 42145 }, { "Date": "2019-03-02", "Amount": 40748 }, { "Date": "2019-03-03", "Amount": 35154 }, { "Date": "2019-03-04", "Amount": 30308 }, { "Date": "2019-03-05", "Amount": 34652 }, { "Date": "2019-03-06", "Amount": 49580 }, { "Date": "2019-03-07", "Amount": 44575 }, { "Date": "2019-03-08", "Amount": 39791 }, { "Date": "2019-03-09", "Amount": 40750 }, { "Date": "2019-03-10", "Amount": 39697 }, { "Date": "2019-03-11", "Amount": 35607 }, { "Date": "2019-03-12", "Amount": 37488 }, { "Date": "2019-03-13", "Amount": 45230 }, { "Date": "2019-03-14", "Amount": 39055 }, { "Date": "2019-03-15", "Amount": 37282 }, { "Date": "2019-03-16", "Amount": 51837 }, { "Date": "2019-03-17", "Amount": 39506 }, { "Date": "2019-03-18", "Amount": 31074 }, { "Date": "2019-03-19", "Amount": 35556 }, { "Date": "2019-03-20", "Amount": 41505 }, { "Date": "2019-03-21", "Amount": 41778 }, { "Date": "2019-03-22", "Amount": 43836 }, { "Date": "2019-03-23", "Amount": 44283 }, { "Date": "2019-03-24", "Amount": 40788 }, { "Date": "2019-03-25", "Amount": 37437 }, { "Date": "2019-03-26", "Amount": 47173 }, { "Date": "2019-03-27", "Amount": 49139 }, { "Date": "2019-03-28", "Amount": 47074 }, { "Date": "2019-03-29", "Amount": 47539 }, { "Date": "2019-03-30", "Amount": 49560 }, { "Date": "2019-03-31", "Amount": 46603 }, { "Date": "2019-04-01", "Amount": 43981 }, { "Date": "2019-04-02", "Amount": 42351 }, { "Date": "2019-04-03", "Amount": 44936 }, { "Date": "2019-04-04", "Amount": 42650 }, { "Date": "2019-04-05", "Amount": 40220 }, { "Date": "2019-04-06", "Amount": 119601 }, { "Date": "2019-04-07", "Amount": 40873 }, { "Date": "2019-04-08", "Amount": 34419 }, { "Date": "2019-04-09", "Amount": 39942 }, { "Date": "2019-04-10", "Amount": 43708 }, { "Date": "2019-04-11", "Amount": 41695 }, { "Date": "2019-04-12", "Amount": 41923 }, { "Date": "2019-04-13", "Amount": 44852 }, { "Date": "2019-04-14", "Amount": 42322 }, { "Date": "2019-04-15", "Amount": 41713 }, { "Date": "2019-04-16", "Amount": 44930 }, { "Date": "2019-04-17", "Amount": 45191 }, { "Date": "2019-04-18", "Amount": 47593 }, { "Date": "2019-04-19", "Amount": 53188 }, { "Date": "2019-04-20", "Amount": 55558 }, { "Date": "2019-04-21", "Amount": 32616 }, { "Date": "2019-04-22", "Amount": 45237 }, { "Date": "2019-04-23", "Amount": 61860 }, { "Date": "2019-04-24", "Amount": 80711 }, { "Date": "2019-04-25", "Amount": 63624 }, { "Date": "2019-04-26", "Amount": 54735 }, { "Date": "2019-04-27", "Amount": 29402 }, { "Date": "2019-04-28", "Amount": 44907 }, { "Date": "2019-04-29", "Amount": 48190 }, { "Date": "2019-04-30", "Amount": 63526 }, { "Date": "2019-05-01", "Amount": 72875 }, { "Date": "2019-05-02", "Amount": 68839 }, { "Date": "2019-05-03", "Amount": 55773 }, { "Date": "2019-05-04", "Amount": 52336 }, { "Date": "2019-05-05", "Amount": 41956 }, { "Date": "2019-05-06", "Amount": 39273 }, { "Date": "2019-05-07", "Amount": 43795 }, { "Date": "2019-05-08", "Amount": 44209 }, { "Date": "2019-05-09", "Amount": 38693 }, { "Date": "2019-05-10", "Amount": 41585 }, { "Date": "2019-05-11", "Amount": 42390 }, { "Date": "2019-05-12", "Amount": 33240 }, { "Date": "2019-05-13", "Amount": 35508 }, { "Date": "2019-05-14", "Amount": 41100 }, { "Date": "2019-05-15", "Amount": 40695 }, { "Date": "2019-05-16", "Amount": 97320 }, { "Date": "2019-05-17", "Amount": 41312 }, { "Date": "2019-05-18", "Amount": 47698 }, { "Date": "2019-05-19", "Amount": 37283 }, { "Date": "2019-05-20", "Amount": 43006 }, { "Date": "2019-05-21", "Amount": 43676 }, { "Date": "2019-05-22", "Amount": 51126 }, { "Date": "2019-05-23", "Amount": 52773 }, { "Date": "2019-05-24", "Amount": 58066 }, { "Date": "2019-05-25", "Amount": 56786 }, { "Date": "2019-05-26", "Amount": 51913 }, { "Date": "2019-05-27", "Amount": 51676 }, { "Date": "2019-05-28", "Amount": 49568 }, { "Date": "2019-05-29", "Amount": 68148 }, { "Date": "2019-05-30", "Amount": 47604 }, { "Date": "2019-05-31", "Amount": 70097 }, { "Date": "2019-06-01", "Amount": 62619 }, { "Date": "2019-06-02", "Amount": 58089 }, { "Date": "2019-06-03", "Amount": 52676 }, { "Date": "2019-06-04", "Amount": 51977 }, { "Date": "2019-06-05", "Amount": 53398 }, { "Date": "2019-06-06", "Amount": 51953 }, { "Date": "2019-06-07", "Amount": 48905 }, { "Date": "2019-06-08", "Amount": 46384 }, { "Date": "2019-06-09", "Amount": 29798 }, { "Date": "2019-06-10", "Amount": 39561 }, { "Date": "2019-06-11", "Amount": 43337 }, { "Date": "2019-06-12", "Amount": 36588 }, { "Date": "2019-06-13", "Amount": 78012 }, { "Date": "2019-06-14", "Amount": 48555 }, { "Date": "2019-06-15", "Amount": 46705 }, { "Date": "2019-06-16", "Amount": 34579 }, { "Date": "2019-06-17", "Amount": 50067 }, { "Date": "2019-06-18", "Amount": 60593 }, { "Date": "2019-06-19", "Amount": 104052 }, { "Date": "2019-06-20", "Amount": 92778 }, { "Date": "2019-06-21", "Amount": 84136 }, { "Date": "2019-06-22", "Amount": 87802 }, { "Date": "2019-06-23", "Amount": 80648 }, { "Date": "2019-06-24", "Amount": 95110 }, { "Date": "2019-06-25", "Amount": 91365 }, { "Date": "2019-06-26", "Amount": 96337 }, { "Date": "2019-06-27", "Amount": 82326 }, { "Date": "2019-06-28", "Amount": 74998 }, { "Date": "2019-06-29", "Amount": 63192 }, { "Date": "2019-06-30", "Amount": 59662 }, { "Date": "2019-07-01", "Amount": 72375 }, { "Date": "2019-07-02", "Amount": 70056 }, { "Date": "2019-07-03", "Amount": 71255 }, { "Date": "2019-07-04", "Amount": 58684 }, { "Date": "2019-07-05", "Amount": 56127 }, { "Date": "2019-07-06", "Amount": 56162 }, { "Date": "2019-07-07", "Amount": 44867 }, { "Date": "2019-07-08", "Amount": 51888 }, { "Date": "2019-07-09", "Amount": 54224 }, { "Date": "2019-07-10", "Amount": 63403 }, { "Date": "2019-07-11", "Amount": 58167 }, { "Date": "2019-07-12", "Amount": 49104 }, { "Date": "2019-07-13", "Amount": 52472 }, { "Date": "2019-07-14", "Amount": 45379 }, { "Date": "2019-07-15", "Amount": 53061 }, { "Date": "2019-07-16", "Amount": 51589 }, { "Date": "2019-07-17", "Amount": 60641 }, { "Date": "2019-07-18", "Amount": 57822 }, { "Date": "2019-07-19", "Amount": 52222 }, { "Date": "2019-07-20", "Amount": 47872 }, { "Date": "2019-07-21", "Amount": 47870 }, { "Date": "2019-07-22", "Amount": 59218 }, { "Date": "2019-07-23", "Amount": 63567 }, { "Date": "2019-07-24", "Amount": 124683 }, { "Date": "2019-07-25", "Amount": 64314 }, { "Date": "2019-07-26", "Amount": 57071 }, { "Date": "2019-07-27", "Amount": 55024 }, { "Date": "2019-07-28", "Amount": 47989 }, { "Date": "2019-07-29", "Amount": 54247 }, { "Date": "2019-07-30", "Amount": 50802 }, { "Date": "2019-07-31", "Amount": 55339 }, { "Date": "2019-08-01", "Amount": 52371 }, { "Date": "2019-08-02", "Amount": 41438 }, { "Date": "2019-08-03", "Amount": 40553 }, { "Date": "2019-08-04", "Amount": 34634 }, { "Date": "2019-08-05", "Amount": 44248 }, { "Date": "2019-08-06", "Amount": 48092 }, { "Date": "2019-08-07", "Amount": 46769 }, { "Date": "2019-08-08", "Amount": 45867 }, { "Date": "2019-08-09", "Amount": 39561 }, { "Date": "2019-08-10", "Amount": 41323 }, { "Date": "2019-08-11", "Amount": 32932 }, { "Date": "2019-08-12", "Amount": 39689 }, { "Date": "2019-08-13", "Amount": 45355 }, { "Date": "2019-08-14", "Amount": 53274 }, { "Date": "2019-08-15", "Amount": 51943 }, { "Date": "2019-08-16", "Amount": 45866 }, { "Date": "2019-08-17", "Amount": 43572 }, { "Date": "2019-08-18", "Amount": 45329 }, { "Date": "2019-08-19", "Amount": 39571 }, { "Date": "2019-08-20", "Amount": 41351 }, { "Date": "2019-08-21", "Amount": 42056 }, { "Date": "2019-08-22", "Amount": 40190 }, { "Date": "2019-08-23", "Amount": 35626 }, { "Date": "2019-08-24", "Amount": 32581 }, { "Date": "2019-08-25", "Amount": 28313 }, { "Date": "2019-08-26", "Amount": 31842 }, { "Date": "2019-08-27", "Amount": 31754 }, { "Date": "2019-08-28", "Amount": 34884 }, { "Date": "2019-08-29", "Amount": 38002 }, { "Date": "2019-08-30", "Amount": 34681 }, { "Date": "2019-08-31", "Amount": 29863 }, { "Date": "2019-09-01", "Amount": 33228 }, { "Date": "2019-09-02", "Amount": 33078 }, { "Date": "2019-09-03", "Amount": 33981 }, { "Date": "2019-09-04", "Amount": 34530 }, { "Date": "2019-09-05", "Amount": 43200 }, { "Date": "2019-09-06", "Amount": 38762 }, { "Date": "2019-09-07", "Amount": 39480 }, { "Date": "2019-09-08", "Amount": 37052 }, { "Date": "2019-09-09", "Amount": 33377 }, { "Date": "2019-09-10", "Amount": 37719 }, { "Date": "2019-09-11", "Amount": 36096 }, { "Date": "2019-09-12", "Amount": 35417 }, { "Date": "2019-09-13", "Amount": 36761 }, { "Date": "2019-09-14", "Amount": 35936 }, { "Date": "2019-09-15", "Amount": 31112 }, { "Date": "2019-09-16", "Amount": 33716 }, { "Date": "2019-09-17", "Amount": 37008 }, { "Date": "2019-09-18", "Amount": 39063 }, { "Date": "2019-09-19", "Amount": 36491 }, { "Date": "2019-09-20", "Amount": 31508 }, { "Date": "2019-09-21", "Amount": 20542 }, { "Date": "2019-09-22", "Amount": 33950 }, { "Date": "2019-09-23", "Amount": 34076 }, { "Date": "2019-09-24", "Amount": 36702 }, { "Date": "2019-09-25", "Amount": 41256 }, { "Date": "2019-09-26", "Amount": 37128 }, { "Date": "2019-09-27", "Amount": 35597 }, { "Date": "2019-09-28", "Amount": 198622 }, { "Date": "2019-09-29", "Amount": 40043 }, { "Date": "2019-09-30", "Amount": 31747 }, { "Date": "2019-10-01", "Amount": 40412 }, { "Date": "2019-10-02", "Amount": 63452 }, { "Date": "2019-10-03", "Amount": 50775 }, { "Date": "2019-10-04", "Amount": 43558 }, { "Date": "2019-10-05", "Amount": 43387 }, { "Date": "2019-10-06", "Amount": 42390 }, { "Date": "2019-10-07", "Amount": 39091 }, { "Date": "2019-10-08", "Amount": 37840 }, { "Date": "2019-10-09", "Amount": 44476 }, { "Date": "2019-10-10", "Amount": 38121 }, { "Date": "2019-10-11", "Amount": 32866 }, { "Date": "2019-10-12", "Amount": 36954 }, { "Date": "2019-10-13", "Amount": 33358 }, { "Date": "2019-10-14", "Amount": 31945 }, { "Date": "2019-10-15", "Amount": 34410 }, { "Date": "2019-10-16", "Amount": 37522 }, { "Date": "2019-10-17", "Amount": 31801 }, { "Date": "2019-10-18", "Amount": 29189 }, { "Date": "2019-10-19", "Amount": 32588 }, { "Date": "2019-10-20", "Amount": 27989 }, { "Date": "2019-10-21", "Amount": 31697 }, { "Date": "2019-10-22", "Amount": 35293 }, { "Date": "2019-10-23", "Amount": 37008 }, { "Date": "2019-10-24", "Amount": 37675 }, { "Date": "2019-10-25", "Amount": 37261 }, { "Date": "2019-10-26", "Amount": 34845 }, { "Date": "2019-10-27", "Amount": 33399 }, { "Date": "2019-10-28", "Amount": 29691 }, { "Date": "2019-10-29", "Amount": 30235 }, { "Date": "2019-10-30", "Amount": 34411 }, { "Date": "2019-10-31", "Amount": 33133 }, { "Date": "2019-11-01", "Amount": 32518 }, { "Date": "2019-11-02", "Amount": 35299 }, { "Date": "2019-11-03", "Amount": 84406 }, { "Date": "2019-11-04", "Amount": 28038 }, { "Date": "2019-11-05", "Amount": 28336 }, { "Date": "2019-11-06", "Amount": 29694 }, { "Date": "2019-11-07", "Amount": 28221 }, { "Date": "2019-11-08", "Amount": 30760 }, { "Date": "2019-11-09", "Amount": 31131 }, { "Date": "2019-11-10", "Amount": 25462 }, { "Date": "2019-11-11", "Amount": 41049 }, { "Date": "2019-11-12", "Amount": 25201 }, { "Date": "2019-11-13", "Amount": 27669 }, { "Date": "2019-11-14", "Amount": 28256 }, { "Date": "2019-11-15", "Amount": 28366 }, { "Date": "2019-11-16", "Amount": 31297 }, { "Date": "2019-11-17", "Amount": 25967 }, { "Date": "2019-11-18", "Amount": 23989 }, { "Date": "2019-11-19", "Amount": 25831 }, { "Date": "2019-11-20", "Amount": 29013 }, { "Date": "2019-11-21", "Amount": 28532 }, { "Date": "2019-11-22", "Amount": 30161 }, { "Date": "2019-11-23", "Amount": 31419 }, { "Date": "2019-11-24", "Amount": 25957 }, { "Date": "2019-11-25", "Amount": 38160 }, { "Date": "2019-11-26", "Amount": 37160 }, { "Date": "2019-11-27", "Amount": 33628 }, { "Date": "2019-11-28", "Amount": 106257 }, { "Date": "2019-11-29", "Amount": 160875 }, { "Date": "2019-11-30", "Amount": 65381 }, { "Date": "2019-12-01", "Amount": 68468 }, { "Date": "2019-12-02", "Amount": 60843 }, { "Date": "2019-12-03", "Amount": 22951 }, { "Date": "2019-12-04", "Amount": 25105 }, { "Date": "2019-12-05", "Amount": 22457 }, { "Date": "2019-12-06", "Amount": 24432 }, { "Date": "2019-12-07", "Amount": 28188 }, { "Date": "2019-12-08", "Amount": 23345 }, { "Date": "2019-12-09", "Amount": 24980 }, { "Date": "2019-12-10", "Amount": 28309 }, { "Date": "2019-12-11", "Amount": 31451 }, { "Date": "2019-12-12", "Amount": 31493 }, { "Date": "2019-12-13", "Amount": 28924 }, { "Date": "2019-12-14", "Amount": 32329 }, { "Date": "2019-12-15", "Amount": 28747 }, { "Date": "2019-12-16", "Amount": 30041 }, { "Date": "2019-12-17", "Amount": 33931 }, { "Date": "2019-12-18", "Amount": 66070 }, { "Date": "2019-12-19", "Amount": 53330 }, { "Date": "2019-12-20", "Amount": 52454 }, { "Date": "2019-12-21", "Amount": 56187 }, { "Date": "2019-12-22", "Amount": 46731 }, { "Date": "2019-12-23", "Amount": 51240 }, { "Date": "2019-12-24", "Amount": 37927 }, { "Date": "2019-12-25", "Amount": 13637 }, { "Date": "2019-12-26", "Amount": 20328 }, { "Date": "2019-12-27", "Amount": 40678 }, { "Date": "2019-12-28", "Amount": 39513 }, { "Date": "2019-12-29", "Amount": 34918 }, { "Date": "2019-12-30", "Amount": 34915 }, { "Date": "2019-12-31", "Amount": 24393 }, { "Date": "2020-01-01", "Amount": 12760 }, { "Date": "2020-01-02", "Amount": 44864 }, { "Date": "2020-01-03", "Amount": 46190 }, { "Date": "2020-01-04", "Amount": 44507 }, { "Date": "2020-01-05", "Amount": 34813 }, { "Date": "2020-01-06", "Amount": 29430 }, { "Date": "2020-01-07", "Amount": 29251 }, { "Date": "2020-01-08", "Amount": 38700 }, { "Date": "2020-01-09", "Amount": 36746 }, { "Date": "2020-01-10", "Amount": 34590 }, { "Date": "2020-01-11", "Amount": 36101 }, { "Date": "2020-01-12", "Amount": 34899 }, { "Date": "2020-01-13", "Amount": 31333 }, { "Date": "2020-01-14", "Amount": 32103 }, { "Date": "2020-01-15", "Amount": 32972 }, { "Date": "2020-01-16", "Amount": 33827 }, { "Date": "2020-01-17", "Amount": 31236 }, { "Date": "2020-01-18", "Amount": 34025 }, { "Date": "2020-01-19", "Amount": 29787 }, { "Date": "2020-01-20", "Amount": 29107 }, { "Date": "2020-01-21", "Amount": 25632 }, { "Date": "2020-01-22", "Amount": 34075 }, { "Date": "2020-01-23", "Amount": 36257 }, { "Date": "2020-01-24", "Amount": 38920 }, { "Date": "2020-01-25", "Amount": 43377 }, { "Date": "2020-01-26", "Amount": 43586 }, { "Date": "2020-01-27", "Amount": 35427 }, { "Date": "2020-01-28", "Amount": 33689 }, { "Date": "2020-01-29", "Amount": 36833 }, { "Date": "2020-01-30", "Amount": 36058 }, { "Date": "2020-01-31", "Amount": 35259 }, { "Date": "2020-02-01", "Amount": 38017 }, { "Date": "2020-02-02", "Amount": 31387 }, { "Date": "2020-02-03", "Amount": 31845 }, { "Date": "2020-02-04", "Amount": 30914 }, { "Date": "2020-02-05", "Amount": 36030 }, { "Date": "2020-02-06", "Amount": 41058 }, { "Date": "2020-02-07", "Amount": 38144 }, { "Date": "2020-02-08", "Amount": 39288 }, { "Date": "2020-02-09", "Amount": 33788 }, { "Date": "2020-02-10", "Amount": 30260 }, { "Date": "2020-02-11", "Amount": 31588 }, { "Date": "2020-02-12", "Amount": 29543 }, { "Date": "2020-02-13", "Amount": 35157 }, { "Date": "2020-02-14", "Amount": 32158 }, { "Date": "2020-02-15", "Amount": 37570 }, { "Date": "2020-02-16", "Amount": 32814 }, { "Date": "2020-02-17", "Amount": 32415 }, { "Date": "2020-02-18", "Amount": 33069 }, { "Date": "2020-02-19", "Amount": 26943 }, { "Date": "2020-02-20", "Amount": 39201 }, { "Date": "2020-02-21", "Amount": 34720 }, { "Date": "2020-02-22", "Amount": 34562 }, { "Date": "2020-02-23", "Amount": 29957 }, { "Date": "2020-02-24", "Amount": 30865 }, { "Date": "2020-02-25", "Amount": 35114 }, { "Date": "2020-02-26", "Amount": 38859 }, { "Date": "2020-02-27", "Amount": 41095 }, { "Date": "2020-02-28", "Amount": 35822 }, { "Date": "2020-02-29", "Amount": 39676 }, { "Date": "2020-03-01", "Amount": 37082 }, { "Date": "2020-03-02", "Amount": 30941 }, { "Date": "2020-03-03", "Amount": 36802 }, { "Date": "2020-03-04", "Amount": 56629 }, { "Date": "2020-03-05", "Amount": 46043 }, { "Date": "2020-03-06", "Amount": 40139 }, { "Date": "2020-03-07", "Amount": 44794 }, { "Date": "2020-03-08", "Amount": 39775 }, { "Date": "2020-03-09", "Amount": 37516 }, { "Date": "2020-03-10", "Amount": 34895 }, { "Date": "2020-03-11", "Amount": 41503 }, { "Date": "2020-03-12", "Amount": 32748 }, { "Date": "2020-03-13", "Amount": 29159 }, { "Date": "2020-03-14", "Amount": 33680 }, { "Date": "2020-03-15", "Amount": 25601 }, { "Date": "2020-03-16", "Amount": 19385 }, { "Date": "2020-03-17", "Amount": 23792 }, { "Date": "2020-03-18", "Amount": 27091 }, { "Date": "2020-03-19", "Amount": 24810 }, { "Date": "2020-03-20", "Amount": 25830 }, { "Date": "2020-03-21", "Amount": 27792 }, { "Date": "2020-03-22", "Amount": 34956 }, { "Date": "2020-03-23", "Amount": 25907 }, { "Date": "2020-03-24", "Amount": 32432 }, { "Date": "2020-03-25", "Amount": 34904 }, { "Date": "2020-03-26", "Amount": 35264 }, { "Date": "2020-03-27", "Amount": 31779 }, { "Date": "2020-03-28", "Amount": 31114 }, { "Date": "2020-03-29", "Amount": 34443 }, { "Date": "2020-03-30", "Amount": 36648 }, { "Date": "2020-03-31", "Amount": 34298 }, { "Date": "2020-04-01", "Amount": 39518 }, { "Date": "2020-04-02", "Amount": 39040 }, { "Date": "2020-04-03", "Amount": 55966 }, { "Date": "2020-04-04", "Amount": 80500 }, { "Date": "2020-04-05", "Amount": 36027 }, { "Date": "2020-04-06", "Amount": 41962 }, { "Date": "2020-04-07", "Amount": 44270 }, { "Date": "2020-04-08", "Amount": 52965 }, { "Date": "2020-04-09", "Amount": 50991 }, { "Date": "2020-04-10", "Amount": 41889 }, { "Date": "2020-04-11", "Amount": 162799 }, { "Date": "2020-04-12", "Amount": 31418 }, { "Date": "2020-04-13", "Amount": 32744 }, { "Date": "2020-04-14", "Amount": 29072 }, { "Date": "2020-04-15", "Amount": 33366 }, { "Date": "2020-04-16", "Amount": 34359 }, { "Date": "2020-04-17", "Amount": 32475 }, { "Date": "2020-04-18", "Amount": 32065 }, { "Date": "2020-04-19", "Amount": 29562 }, { "Date": "2020-04-20", "Amount": 36744 }, { "Date": "2020-04-21", "Amount": 30862 }, { "Date": "2020-04-22", "Amount": 37893 }, { "Date": "2020-04-23", "Amount": 44438 }, { "Date": "2020-04-24", "Amount": 41437 }, { "Date": "2020-04-25", "Amount": 51396 }, { "Date": "2020-04-26", "Amount": 59238 }, { "Date": "2020-04-27", "Amount": 27850 }, { "Date": "2020-04-28", "Amount": 35644 }, { "Date": "2020-04-29", "Amount": 36390 }, { "Date": "2020-04-30", "Amount": 38002 }, { "Date": "2020-05-01", "Amount": 32182 }, { "Date": "2020-05-02", "Amount": 27822 }, { "Date": "2020-05-03", "Amount": 25087 }, { "Date": "2020-05-04", "Amount": 28126 }, { "Date": "2020-05-05", "Amount": 25874 }, { "Date": "2020-05-06", "Amount": 34129 }, { "Date": "2020-05-07", "Amount": 37864 }, { "Date": "2020-05-08", "Amount": 43071 }, { "Date": "2020-05-09", "Amount": 43018 }, { "Date": "2020-05-10", "Amount": 26039 }, { "Date": "2020-05-11", "Amount": 37795 }, { "Date": "2020-05-12", "Amount": 37670 }, { "Date": "2020-05-13", "Amount": 41121 }, { "Date": "2020-05-14", "Amount": 45407 }, { "Date": "2020-05-15", "Amount": 42451 }, { "Date": "2020-05-16", "Amount": 41721 }, { "Date": "2020-05-17", "Amount": 34390 }, { "Date": "2020-05-18", "Amount": 44982 }, { "Date": "2020-05-19", "Amount": 49952 }, { "Date": "2020-05-20", "Amount": 58890 }, { "Date": "2020-05-21", "Amount": 48272 }, { "Date": "2020-05-22", "Amount": 67789 }, { "Date": "2020-05-23", "Amount": 62966 }, { "Date": "2020-05-24", "Amount": 41785 }, { "Date": "2020-05-25", "Amount": 51475 }, { "Date": "2020-05-26", "Amount": 56595 }, { "Date": "2020-05-27", "Amount": 62439 }, { "Date": "2020-05-28", "Amount": 60745 }, { "Date": "2020-05-29", "Amount": 59463 }, { "Date": "2020-05-30", "Amount": 60861 }, { "Date": "2020-05-31", "Amount": 31834 }, { "Date": "2020-06-01", "Amount": 43084 }, { "Date": "2020-06-02", "Amount": 44666 }, { "Date": "2020-06-03", "Amount": 53187 }, { "Date": "2020-06-04", "Amount": 50470 }, { "Date": "2020-06-05", "Amount": 44470 }, { "Date": "2020-06-06", "Amount": 48649 }, { "Date": "2020-06-07", "Amount": 36733 }, { "Date": "2020-06-08", "Amount": 38117 }, { "Date": "2020-06-09", "Amount": 39370 }, { "Date": "2020-06-10", "Amount": 42585 }, { "Date": "2020-06-11", "Amount": 44044 }, { "Date": "2020-06-12", "Amount": 43804 }, { "Date": "2020-06-13", "Amount": 46088 }, { "Date": "2020-06-14", "Amount": 32087 }, { "Date": "2020-06-15", "Amount": 40427 }, { "Date": "2020-06-16", "Amount": 49855 }, { "Date": "2020-06-17", "Amount": 110981 }, { "Date": "2020-06-18", "Amount": 84563 }, { "Date": "2020-06-19", "Amount": 77241 }, { "Date": "2020-06-20", "Amount": 67788 }, { "Date": "2020-06-21", "Amount": 56469 }, { "Date": "2020-06-22", "Amount": 75334 }, { "Date": "2020-06-23", "Amount": 77067 }, { "Date": "2020-06-24", "Amount": 98790 }, { "Date": "2020-06-25", "Amount": 88684 }, { "Date": "2020-06-26", "Amount": 77452 }, { "Date": "2020-06-27", "Amount": 74671 }, { "Date": "2020-06-28", "Amount": 63485 }, { "Date": "2020-06-29", "Amount": 53193 }, { "Date": "2020-06-30", "Amount": 61153 }, { "Date": "2020-07-01", "Amount": 59443 }, { "Date": "2020-07-02", "Amount": 55884 }, { "Date": "2020-07-03", "Amount": 51212 }, { "Date": "2020-07-04", "Amount": 46408 }, { "Date": "2020-07-05", "Amount": 38401 }, { "Date": "2020-07-06", "Amount": 40933 }, { "Date": "2020-07-07", "Amount": 45138 }, { "Date": "2020-07-08", "Amount": 49839 }, { "Date": "2020-07-09", "Amount": 43016 }, { "Date": "2020-07-10", "Amount": 43922 }, { "Date": "2020-07-11", "Amount": 40292 }, { "Date": "2020-07-12", "Amount": 29794 }, { "Date": "2020-07-13", "Amount": 41095 }, { "Date": "2020-07-14", "Amount": 38714 }, { "Date": "2020-07-15", "Amount": 51387 }, { "Date": "2020-07-16", "Amount": 45465 }, { "Date": "2020-07-17", "Amount": 42666 }, { "Date": "2020-07-18", "Amount": 37666 }, { "Date": "2020-07-19", "Amount": 28801 }, { "Date": "2020-07-20", "Amount": 40657 }, { "Date": "2020-07-21", "Amount": 42886 }, { "Date": "2020-07-22", "Amount": 46368 }, { "Date": "2020-07-23", "Amount": 44976 }, { "Date": "2020-07-24", "Amount": 46496 }, { "Date": "2020-07-25", "Amount": 41058 }, { "Date": "2020-07-26", "Amount": 33688 }, { "Date": "2020-07-27", "Amount": 40196 }, { "Date": "2020-07-28", "Amount": 46687 }, { "Date": "2020-07-29", "Amount": 47998 }, { "Date": "2020-07-30", "Amount": 51712 }, { "Date": "2020-07-31", "Amount": 38704 }, { "Date": "2020-08-01", "Amount": 41958 }, { "Date": "2020-08-02", "Amount": 38806 }, { "Date": "2020-08-03", "Amount": 45416 }, { "Date": "2020-08-04", "Amount": 54875 }, { "Date": "2020-08-05", "Amount": 53207 }, { "Date": "2020-08-06", "Amount": 52430 }, { "Date": "2020-08-07", "Amount": 43193 }, { "Date": "2020-08-08", "Amount": 33685 }, { "Date": "2020-08-09", "Amount": 27024 }, { "Date": "2020-08-10", "Amount": 36909 }, { "Date": "2020-08-11", "Amount": 42713 }, { "Date": "2020-08-12", "Amount": 71072 }, { "Date": "2020-08-13", "Amount": 39349 }, { "Date": "2020-08-14", "Amount": 35305 }, { "Date": "2020-08-15", "Amount": 29427 }, { "Date": "2020-08-16", "Amount": 22613 }, { "Date": "2020-08-17", "Amount": 32532 }, { "Date": "2020-08-18", "Amount": 34913 }, { "Date": "2020-08-19", "Amount": 37284 }, { "Date": "2020-08-20", "Amount": 37926 }, { "Date": "2020-08-21", "Amount": 33913 }, { "Date": "2020-08-22", "Amount": 34978 }, { "Date": "2020-08-23", "Amount": 33031 }, { "Date": "2020-08-24", "Amount": 37672 }, { "Date": "2020-08-25", "Amount": 41840 }, { "Date": "2020-08-26", "Amount": 46027 }, { "Date": "2020-08-27", "Amount": 44403 }, { "Date": "2020-08-28", "Amount": 39546 }, { "Date": "2020-08-29", "Amount": 41175 }, { "Date": "2020-08-30", "Amount": 35862 }, { "Date": "2020-08-31", "Amount": 38108 }, { "Date": "2020-09-01", "Amount": 38060 }, { "Date": "2020-09-02", "Amount": 32722 }, { "Date": "2020-09-03", "Amount": 40441 }, { "Date": "2020-09-04", "Amount": 39203 }, { "Date": "2020-09-05", "Amount": 43002 }, { "Date": "2020-09-06", "Amount": 34961 }, { "Date": "2020-09-07", "Amount": 37913 }, { "Date": "2020-09-08", "Amount": 36415 }, { "Date": "2020-09-09", "Amount": 41626 }, { "Date": "2020-09-10", "Amount": 40261 }, { "Date": "2020-09-11", "Amount": 37561 }, { "Date": "2020-09-12", "Amount": 40271 }, { "Date": "2020-09-13", "Amount": 39528 }, { "Date": "2020-09-14", "Amount": 29941 }, { "Date": "2020-09-15", "Amount": 26053 }, { "Date": "2020-09-16", "Amount": 27028 }, { "Date": "2020-09-17", "Amount": 40718 }, { "Date": "2020-09-18", "Amount": 39284 }, { "Date": "2020-09-19", "Amount": 36796 }, { "Date": "2020-09-20", "Amount": 31489 }, { "Date": "2020-09-21", "Amount": 32130 }, { "Date": "2020-09-22", "Amount": 32866 }]
+
+                // Create chart
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/
+                var chart = root.container.children.push(am5xy.XYChart.new(root, {
+                    focusable: true,
+                    panX: true,
+                    panY: true,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                    pinchZoomX: true
+                }));
+
+                var easing = am5.ease.linear;
 
 
+                // Create axes
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+                var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+                    maxDeviation: 0.1,
+                    groupData: false,
+                    baseInterval: {
+                        timeUnit: "day",
+                        count: 1
+                    },
+                    renderer: am5xy.AxisRendererX.new(root, {
 
-            xAxis.data.setAll(data);
-            series.data.setAll(data);
+                    }),
+                    tooltip: am5.Tooltip.new(root, {})
+                }));
 
-            // am5.net.load("/data/mydata.json").then(function (result) {
-            //     // This gets executed when data finishes loading
-            //     series.data.setAll(am5.JSONParser.parse(result.response));
-            // }).catch(function (result) {
-            //     // This gets executed if there was an error loading URL
-            //     // ... handle error
-            //     console.log("Error loading " + result.xhr.responseURL);
-            // });
-
-            // Make stuff animate on load
-            // https://www.amcharts.com/docs/v5/concepts/animations/
-            series.appear();
+                var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+                    maxDeviation: 0.2,
+                    renderer: am5xy.AxisRendererY.new(root, {})
+                }));
 
 
-            series.bullets.push(function () {
-                return am5.Bullet.new(root, {
-                    sprite: am5.Label.new(root, {
-                        text: "{valueYTotalPercent.formatNumber('#.#')}%",
-                        fill: root.interfaceColors.get("alternativeText"),
-                        centerY: am5.p50,
-                        centerX: am5.p50,
-                        populateText: true
+                // Add series
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+                var series = chart.series.push(am5xy.LineSeries.new(root, {
+                    minBulletDistance: 10,
+                    connect: false,
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "Amount",
+                    valueXField: "Date",
+                    tooltip: am5.Tooltip.new(root, {
+                        pointerOrientation: "horizontal",
+                        labelText: "{valueY}"
+                    })
+                }));
+
+                series.fills.template.setAll({
+                    fillOpacity: 0.2,
+                    visible: true
+                });
+
+                series.strokes.template.setAll({
+                    strokeWidth: 2
+                });
+
+
+                // Set up data processor to parse string dates
+                // https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
+                series.data.processor = am5.DataProcessor.new(root, {
+                    dateFormat: "yyyy-MM-dd",
+                    dateFields: ["Date"]
+                });
+
+                series.data.setAll(data);
+
+                series.bullets.push(function () {
+                    var circle = am5.Circle.new(root, {
+                        radius: 4,
+                        fill: root.interfaceColors.get("background"),
+                        stroke: series.get("fill"),
+                        strokeWidth: 2
+                    })
+
+                    return am5.Bullet.new(root, {
+                        sprite: circle
                     })
                 });
-            });
-
-            legend.data.push(series);
-        }
-        //makeSeries(name, fieldName)
-        if ('{{args[1]}}' == 'index_category') {
-            makeSeries("Pant", "Pant");
-            makeSeries("Cloth", "Cloth");
-            makeSeries("Others", "Others");
-        } else if ('{{args[1]}}' == 'index_color') {
-            makeSeries("Black", "Black");
-            makeSeries("White", "White");
-            makeSeries("Yello", "Yello");
-        }
-        else {
-            makeSeries("Pant", "Pant");
-            makeSeries("Cloth", "Cloth");
-            makeSeries("Others", "Others");
-        }
-
-        chart.appear(1000, 100);
-        // end am5.ready()
-
-        // }
-
-        //  chart timelines
-        // chart.legend = new am4charts.Legend();
-        chart.cursor = new am4charts.XYCursor();
-        // }
-
-        var chart = am4core.create("chartdiv3", am4charts.XYChart);
-
-        // Add data
-        chart.data = [{
-            "date": new Date(2018, 0, 1),
-            "value": 450,
-            "value2": 162,
-            "value3": 1100
-        }, {
-            "date": new Date(2018, 0, 2),
-            "value": 669,
-            "value3": 841
-        }, {
-            "date": new Date(2018, 0, 3),
-            "value": 1200,
-            "value3": 199
-        }, {
-            "date": new Date(2018, 0, 4),
-            "value2": 867
-        }, {
-            "date": new Date(2018, 0, 5),
-            "value2": 185,
-            "value3": 669
-        }, {
-            "date": new Date(2018, 0, 6),
-            "value": 150
-        }, {
-            "date": new Date(2018, 0, 7),
-            "value": 1220,
-            "value2": 350,
-            "value3": 600
-        }];
-
-        // Create axes
-        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-        dateAxis.renderer.grid.template.location = 0;
-        dateAxis.renderer.minGridDistance = 30;
-
-        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-
-        // Create series
-        function createSeries(field, name) {
-            var series = chart.series.push(new am4charts.LineSeries());
-            series.dataFields.valueY = field;
-            series.dataFields.dateX = "date";
-            series.name = name;
-            series.tooltipText = "{dateX}: [b]{valueY}[/]";
-            series.strokeWidth = 2;
-
-            series.smoothing = "monotoneX";
-
-            var bullet = series.bullets.push(new am4charts.CircleBullet());
-            bullet.circle.stroke = am4core.color("#fff");
-            bullet.circle.strokeWidth = 2;
-
-            return series;
-        }
-
-        createSeries("value", "Totol Income");
-        createSeries("value2", "Series #2");
 
 
-        // function chart_bubble() {
-        am4core.useTheme(am4themes_animated);
-        // am4core.useTheme(am4themes_dark);
+                // Add cursor
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+                var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+                    xAxis: xAxis,
+                    behavior: "none"
+                }));
+                cursor.lineY.set("visible", false);
 
-        var chart = am4core.create("chartdiv4", am4charts.XYChart);
-        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+                // add scrollbar
+                chart.set("scrollbarX", am5.Scrollbar.new(root, {
+                    orientation: "horizontal"
+                }));
 
-        var valueAxisX = chart.xAxes.push(new am4charts.ValueAxis());
-        var valueAxisY = chart.yAxes.push(new am4charts.ValueAxis());
 
-        var series = chart.series.push(new am4charts.LineSeries());
-        series.dataFields.valueX = "x";
-        series.dataFields.valueY = "y";
-        series.dataFields.value = "value";
-        series.strokeOpacity = 0;
-        series.sequencedInterpolation = true;
+                // Make stuff animate on load
+                // https://www.amcharts.com/docs/v5/concepts/animations/
+                chart.appear(1000, 100);
 
-        var bullet = series.bullets.push(new am4core.Circle());
-        bullet.fill = am4core.color("#ff0000");
-        bullet.propertyFields.fill = "color";
-        bullet.strokeOpacity = 0;
-        bullet.radius = 5;
-        bullet.strokeWidth = 2;
-        bullet.fillOpacity = 0.7;
-        bullet.stroke = am4core.color("#ffffff");
-
-        bullet.tooltipText = "[bold]{title}:[/]\nPopulation: {value.value}\nIncome: {valueX.value}\nLife expectancy:{valueY.value}";
-
-        var hoverState = bullet.states.create("hover");
-        hoverState.properties.fillOpacity = 1;
-        hoverState.properties.strokeOpacity = 1;
-
-        series.heatRules.push({ target: bullet, min: 2, max: 60, property: "radius" });
-
-        bullet.adapter.add("tooltipY", function (tooltipY, target) {
-            return -target.radius;
-        })
-
-        chart.cursor = new am4charts.XYCursor();
-        chart.cursor.behavior = "zoomXY";
-
-        chart.scrollbarX = new am4core.Scrollbar();
-        chart.scrollbarY = new am4core.Scrollbar();
-
-        chart.data = [
-            {
-                "title": "Afghanistan",
-                "id": "AF",
-                "color": "#eea638",
-                "continent": "asia",
-                "x": 1349.69694102398,
-                "y": 60.524,
-                "value": 33397058
-            },
-            {
-                "title": "Albania",
-                "id": "AL",
-                "color": "#d8854f",
-                "continent": "europe",
-                "x": 6969.30628256456,
-                "y": 77.185,
-                "value": 3227373
-            },
-            {
-                "title": "Algeria",
-                "id": "DZ",
-                "color": "#de4c4f",
-                "continent": "africa",
-                "x": 6419.12782939372,
-                "y": 70.874,
-                "value": 36485828
-            },
-            {
-                "title": "Angola",
-                "id": "AO",
-                "color": "#de4c4f",
-                "continent": "africa",
-                "x": 5838.15537582502,
-                "y": 51.498,
-                "value": 20162517
-            },
-            {
-                "title": "Argentina",
-                "id": "AR",
-                "color": "#86a965",
-                "continent": "south_america",
-                "x": 15714.1031814398,
-                "y": 76.128,
-                "value": 41118986
-            },
-            {
-                "title": "Armenia",
-                "id": "AM",
-                "color": "#d8854f",
-                "continent": "europe",
-                "x": 5059.0879636443,
-                "y": 74.469,
-                "value": 3108972
-            }, ,
-            {
-                "title": "Zambia",
-                "id": "ZM",
-                "color": "#de4c4f",
-                "continent": "africa",
-                "x": 1550.92385858124,
-                "y": 57.037,
-                "value": 13883577
-            },
-            {
-                "title": "Zimbabwe",
-                "id": "ZW",
-                "color": "#de4c4f",
-                "continent": "africa",
-                "x": 545.344601005788,
-                "y": 58.142,
-                "value": 13013678
             }
-        ];
-        // }
+
+            else {
+                var data = [{ "date": "2018-09-20", "price": 1415.3458474576 }, { "date": "2018-09-21", "price": 1419.2623050847 }, { "date": "2018-09-22", "price": 530.4376271186 }, { "date": "2018-09-23", "price": 1593.7830847458 }, { "date": "2018-09-24", "price": 1407.6096101695 }, { "date": "2018-09-25", "price": 1322.8798135593 }, { "date": "2018-09-26", "price": 1434.2044576271 }, { "date": "2018-09-27", "price": 1355.4982881356 }, { "date": "2018-09-28", "price": 2040.2070677966 }, { "date": "2018-09-29", "price": 4071.3813050847 }, { "date": "2018-09-30", "price": 1165.0301864407 }, { "date": "2018-10-01", "price": 1201.578220339 }, { "date": "2018-10-02", "price": 1254.0745423729 }, { "date": "2018-10-03", "price": 1173.1744915254 }, { "date": "2018-10-04", "price": 1188.8597966102 }, { "date": "2018-10-05", "price": 1009.3239322034 }, { "date": "2018-10-06", "price": 1089.7947118644 }, { "date": "2018-10-07", "price": 1010.4374237288 }, { "date": "2018-10-08", "price": 899.0806271186 }, { "date": "2018-10-09", "price": 1234.8909830508 }, { "date": "2018-10-10", "price": 1890.0404915254 }, { "date": "2018-10-11", "price": 1702.1712372881 }, { "date": "2018-10-12", "price": 1517.441220339 }, { "date": "2018-10-13", "price": 1445.4382881356 }, { "date": "2018-10-14", "price": 1103.0669661017 }, { "date": "2018-10-15", "price": 1061.7233220339 }, { "date": "2018-10-16", "price": 1566.3838644068 }, { "date": "2018-10-17", "price": 1621.256779661 }, { "date": "2018-10-18", "price": 1314.0367966102 }, { "date": "2018-10-19", "price": 1118.8254745763 }, { "date": "2018-10-20", "price": 1178.4867966102 }, { "date": "2018-10-21", "price": 1065.6325254237 }, { "date": "2018-10-22", "price": 1286.061 }, { "date": "2018-10-23", "price": 1469.8397288136 }, { "date": "2018-10-24", "price": 1841.5691864407 }, { "date": "2018-10-25", "price": 1573.9032881356 }, { "date": "2018-10-26", "price": 1615.2642033898 }, { "date": "2018-10-27", "price": 1488.458 }, { "date": "2018-10-28", "price": 1709.021440678 }, { "date": "2018-10-29", "price": 1383.4142542373 }, { "date": "2018-10-30", "price": 1344.0748983051 }, { "date": "2018-10-31", "price": 1227.4921186441 }, { "date": "2018-11-01", "price": 1378.1485084746 }, { "date": "2018-11-02", "price": 1183.8858305085 }, { "date": "2018-11-03", "price": 1285.208 }, { "date": "2018-11-04", "price": 1099.9753898305 }, { "date": "2018-11-05", "price": 1017.4860847458 }, { "date": "2018-11-06", "price": 1126.0866779661 }, { "date": "2018-11-07", "price": 1190.7924067797 }, { "date": "2018-11-08", "price": 1039.3255762712 }, { "date": "2018-11-09", "price": 1130.9551016949 }, { "date": "2018-11-10", "price": 1085.2013559322 }, { "date": "2018-11-11", "price": 1381.8328813559 }, { "date": "2018-11-12", "price": 851.4892033898 }, { "date": "2018-11-13", "price": 939.8085932203 }, { "date": "2018-11-14", "price": 1170.0965932203 }, { "date": "2018-11-15", "price": 1215.8466949153 }, { "date": "2018-11-16", "price": 1178.635779661 }, { "date": "2018-11-17", "price": 1204.4525932203 }, { "date": "2018-11-18", "price": 1126.9629661017 }, { "date": "2018-11-19", "price": 1107.3144915254 }, { "date": "2018-11-20", "price": 1312.9359830508 }, { "date": "2018-11-21", "price": 1272.4279322034 }, { "date": "2018-11-22", "price": 1596.7907288136 }, { "date": "2018-11-23", "price": 3891.939440678 }, { "date": "2018-11-24", "price": 2145.9552711864 }, { "date": "2018-11-25", "price": 1596.1478813559 }, { "date": "2018-11-26", "price": 1512.944338983 }, { "date": "2018-11-27", "price": 979.3970677966 }, { "date": "2018-11-28", "price": 951.0721864407 }, { "date": "2018-11-29", "price": 1041.0371864407 }, { "date": "2018-11-30", "price": 986.8356440678 }, { "date": "2018-12-01", "price": 1019.3577966102 }, { "date": "2018-12-02", "price": 843.5171355932 }, { "date": "2018-12-03", "price": 881.7208305085 }, { "date": "2018-12-04", "price": 1027.0817966102 }, { "date": "2018-12-05", "price": 1094.7697966102 }, { "date": "2018-12-06", "price": 1110.2038983051 }, { "date": "2018-12-07", "price": 985.9137288136 }, { "date": "2018-12-08", "price": 1070.6389830508 }, { "date": "2018-12-09", "price": 1075.0479152542 }, { "date": "2018-12-10", "price": 967.0019322034 }, { "date": "2018-12-11", "price": 1001.0526610169 }, { "date": "2018-12-12", "price": 1244.5813559322 }, { "date": "2018-12-13", "price": 1050.193220339 }, { "date": "2018-12-14", "price": 959.1581355932 }, { "date": "2018-12-15", "price": 1108.5163728814 }, { "date": "2018-12-16", "price": 1021.5836949153 }, { "date": "2018-12-17", "price": 1049.0600169492 }, { "date": "2018-12-18", "price": 1149.0446271186 }, { "date": "2018-12-19", "price": 1302.5752881356 }, { "date": "2018-12-20", "price": 1573.9807457627 }, { "date": "2018-12-21", "price": 1384.4910338983 }, { "date": "2018-12-22", "price": 1427.0625423729 }, { "date": "2018-12-23", "price": 1065.1884745763 }, { "date": "2018-12-24", "price": 924.4655084746 }, { "date": "2018-12-25", "price": 412.6921186441 }, { "date": "2018-12-26", "price": 656.7592372881 }, { "date": "2018-12-27", "price": 1355.318338983 }, { "date": "2018-12-28", "price": 1205.1966779661 }, { "date": "2018-12-29", "price": 1096.8025762712 }, { "date": "2018-12-30", "price": 866.5129491525 }, { "date": "2018-12-31", "price": 603.0253220339 }, { "date": "2019-01-01", "price": 512.1223898305 }, { "date": "2019-01-02", "price": 1141.3896101695 }, { "date": "2019-01-03", "price": 1224.3121016949 }, { "date": "2019-01-04", "price": 1124.9399491525 }, { "date": "2019-01-05", "price": 1144.3482372881 }, { "date": "2019-01-06", "price": 1001.2752372881 }, { "date": "2019-01-07", "price": 944.5012881356 }, { "date": "2019-01-08", "price": 1365.7051186441 }, { "date": "2019-01-09", "price": 1443.5341525424 }, { "date": "2019-01-10", "price": 1407.7508305085 }, { "date": "2019-01-11", "price": 1114.8776610169 }, { "date": "2019-01-12", "price": 1164.6884745763 }, { "date": "2019-01-13", "price": 1077.2539322034 }, { "date": "2019-01-14", "price": 962.2328813559 }, { "date": "2019-01-15", "price": 937.7501525424 }, { "date": "2019-01-16", "price": 1268.9474745763 }, { "date": "2019-01-17", "price": 954.6116271186 }, { "date": "2019-01-18", "price": 948.397440678 }, { "date": "2019-01-19", "price": 1006.8851016949 }, { "date": "2019-01-20", "price": 946.6045932203 }, { "date": "2019-01-21", "price": 955.1485423729 }, { "date": "2019-01-22", "price": 1003.4702542373 }, { "date": "2019-01-23", "price": 1061.1814067797 }, { "date": "2019-01-24", "price": 1097.529 }, { "date": "2019-01-25", "price": 1180.507779661 }, { "date": "2019-01-26", "price": 1217.4197118644 }, { "date": "2019-01-27", "price": 1079.4427288136 }, { "date": "2019-01-28", "price": 950.270440678 }, { "date": "2019-01-29", "price": 1163.3466610169 }, { "date": "2019-01-30", "price": 1019.9517457627 }, { "date": "2019-01-31", "price": 1029.5849491525 }, { "date": "2019-02-01", "price": 1094.2213898305 }, { "date": "2019-02-02", "price": 1139.7230847458 }, { "date": "2019-02-03", "price": 1198.2719322034 }, { "date": "2019-02-04", "price": 924.2031186441 }, { "date": "2019-02-05", "price": 996.0708135593 }, { "date": "2019-02-06", "price": 1038.6576271186 }, { "date": "2019-02-07", "price": 1084.7439491525 }, { "date": "2019-02-08", "price": 1014.0703050847 }, { "date": "2019-02-09", "price": 1112.5898135593 }, { "date": "2019-02-10", "price": 1062.4702372881 }, { "date": "2019-02-11", "price": 919.164779661 }, { "date": "2019-02-12", "price": 987.6935254237 }, { "date": "2019-02-13", "price": 932.5161016949 }, { "date": "2019-02-14", "price": 894.8378644068 }, { "date": "2019-02-15", "price": 1048.5338135593 }, { "date": "2019-02-16", "price": 1192.5398474576 }, { "date": "2019-02-17", "price": 964.1224745763 }, { "date": "2019-02-18", "price": 900.1562711864 }, { "date": "2019-02-19", "price": 954.6382711864 }, { "date": "2019-02-20", "price": 1194.8370847458 }, { "date": "2019-02-21", "price": 1497.1818474576 }, { "date": "2019-02-22", "price": 1620.9459661017 }, { "date": "2019-02-23", "price": 1883.8647966102 }, { "date": "2019-02-24", "price": 975.5946949153 }, { "date": "2019-02-25", "price": 1124.588220339 }, { "date": "2019-02-26", "price": 1232.2099830508 }, { "date": "2019-02-27", "price": 1273.2129491525 }, { "date": "2019-02-28", "price": 1166.5610508475 }, { "date": "2019-03-01", "price": 1172.551559322 }, { "date": "2019-03-02", "price": 1112.8179830508 }, { "date": "2019-03-03", "price": 1004.4725084746 }, { "date": "2019-03-04", "price": 905.8775762712 }, { "date": "2019-03-05", "price": 1022.0427627119 }, { "date": "2019-03-06", "price": 1398.3867288136 }, { "date": "2019-03-07", "price": 1256.239440678 }, { "date": "2019-03-08", "price": 1124.1032881356 }, { "date": "2019-03-09", "price": 1145.8108474576 }, { "date": "2019-03-10", "price": 1137.2995762712 }, { "date": "2019-03-11", "price": 1042.2120169492 }, { "date": "2019-03-12", "price": 1097.7771525424 }, { "date": "2019-03-13", "price": 1295.0294745763 }, { "date": "2019-03-14", "price": 1112.1995084746 }, { "date": "2019-03-15", "price": 1056.1240677966 }, { "date": "2019-03-16", "price": 1421.5574067797 }, { "date": "2019-03-17", "price": 1131.5729661017 }, { "date": "2019-03-18", "price": 891.4826610169 }, { "date": "2019-03-19", "price": 1044.3344576271 }, { "date": "2019-03-20", "price": 1239.9249322034 }, { "date": "2019-03-21", "price": 1402.4353559322 }, { "date": "2019-03-22", "price": 1295.3227966102 }, { "date": "2019-03-23", "price": 1265.496338983 }, { "date": "2019-03-24", "price": 1205.8810338983 }, { "date": "2019-03-25", "price": 1141.7002881356 }, { "date": "2019-03-26", "price": 1438.5639491525 }, { "date": "2019-03-27", "price": 1497.0842711864 }, { "date": "2019-03-28", "price": 1438.5028474576 }, { "date": "2019-03-29", "price": 1421.0364745763 }, { "date": "2019-03-30", "price": 1441.8075254237 }, { "date": "2019-03-31", "price": 1389.3723728814 }, { "date": "2019-04-01", "price": 1342.9218644068 }, { "date": "2019-04-02", "price": 1290.3167118644 }, { "date": "2019-04-03", "price": 1360.289779661 }, { "date": "2019-04-04", "price": 1290.2533220339 }, { "date": "2019-04-05", "price": 1186.080338983 }, { "date": "2019-04-06", "price": 3100.9048983051 }, { "date": "2019-04-07", "price": 1176.9502542373 }, { "date": "2019-04-08", "price": 1029.0689661017 }, { "date": "2019-04-09", "price": 1214.9952881356 }, { "date": "2019-04-10", "price": 1298.5103898305 }, { "date": "2019-04-11", "price": 1375.8490847458 }, { "date": "2019-04-12", "price": 1255.2261016949 }, { "date": "2019-04-13", "price": 1288.4630677966 }, { "date": "2019-04-14", "price": 1290.6524067797 }, { "date": "2019-04-15", "price": 1269.7375762712 }, { "date": "2019-04-16", "price": 1370.9560847458 }, { "date": "2019-04-17", "price": 1305.7717627119 }, { "date": "2019-04-18", "price": 1364.7494067797 }, { "date": "2019-04-19", "price": 1459.7729491525 }, { "date": "2019-04-20", "price": 1503.6065084746 }, { "date": "2019-04-21", "price": 1000.211220339 }, { "date": "2019-04-22", "price": 1313.7510508475 }, { "date": "2019-04-23", "price": 1775.1010338983 }, { "date": "2019-04-24", "price": 2223.1211864407 }, { "date": "2019-04-25", "price": 1786.259440678 }, { "date": "2019-04-26", "price": 1536.4280508475 }, { "date": "2019-04-27", "price": 874.5827288136 }, { "date": "2019-04-28", "price": 1317.4582372881 }, { "date": "2019-04-29", "price": 1404.148 }, { "date": "2019-04-30", "price": 1818.8495932203 }, { "date": "2019-05-01", "price": 2081.6301525424 }, { "date": "2019-05-02", "price": 1979.0706271186 }, { "date": "2019-05-03", "price": 1565.8851864407 }, { "date": "2019-05-04", "price": 1457.2200338983 }, { "date": "2019-05-05", "price": 1214.8036610169 }, { "date": "2019-05-06", "price": 1149.6396779661 }, { "date": "2019-05-07", "price": 1278.827440678 }, { "date": "2019-05-08", "price": 1301.6146271186 }, { "date": "2019-05-09", "price": 1108.920440678 }, { "date": "2019-05-10", "price": 1201.4842711864 }, { "date": "2019-05-11", "price": 1166.6957627119 }, { "date": "2019-05-12", "price": 973.6751016949 }, { "date": "2019-05-13", "price": 1030.4539491525 }, { "date": "2019-05-14", "price": 1181.2661016949 }, { "date": "2019-05-15", "price": 1139.0607966102 }, { "date": "2019-05-16", "price": 2593.4872711864 }, { "date": "2019-05-17", "price": 1144.0053559322 }, { "date": "2019-05-18", "price": 1309.2937288136 }, { "date": "2019-05-19", "price": 1058.5984067797 }, { "date": "2019-05-20", "price": 1224.3793728814 }, { "date": "2019-05-21", "price": 1269.9756271186 }, { "date": "2019-05-22", "price": 1404.8386610169 }, { "date": "2019-05-23", "price": 1422.8441186441 }, { "date": "2019-05-24", "price": 1538.0156101695 }, { "date": "2019-05-25", "price": 1499.2710677966 }, { "date": "2019-05-26", "price": 1427.1038813559 }, { "date": "2019-05-27", "price": 1456.1807627119 }, { "date": "2019-05-28", "price": 1376.2786440678 }, { "date": "2019-05-29", "price": 1754.0329152542 }, { "date": "2019-05-30", "price": 1287.1520508475 }, { "date": "2019-05-31", "price": 1761.7970169491 }, { "date": "2019-06-01", "price": 1611.5732542373 }, { "date": "2019-06-02", "price": 1546.3614915254 }, { "date": "2019-06-03", "price": 1459.8275254237 }, { "date": "2019-06-04", "price": 1431.957440678 }, { "date": "2019-06-05", "price": 1463.0074576271 }, { "date": "2019-06-06", "price": 1414.3634067797 }, { "date": "2019-06-07", "price": 1310.4709322034 }, { "date": "2019-06-08", "price": 1224.6763220339 }, { "date": "2019-06-09", "price": 858.8190338983 }, { "date": "2019-06-10", "price": 1066.3268474576 }, { "date": "2019-06-11", "price": 1189.776559322 }, { "date": "2019-06-12", "price": 991.3781186441 }, { "date": "2019-06-13", "price": 2340.5179322034 }, { "date": "2019-06-14", "price": 1316.7542711864 }, { "date": "2019-06-15", "price": 1236.1959491525 }, { "date": "2019-06-16", "price": 959.0459322034 }, { "date": "2019-06-17", "price": 1355.313559322 }, { "date": "2019-06-18", "price": 1613.8389322034 }, { "date": "2019-06-19", "price": 2476.7142542373 }, { "date": "2019-06-20", "price": 2199.0410338983 }, { "date": "2019-06-21", "price": 2001.1000677966 }, { "date": "2019-06-22", "price": 2099.9260847458 }, { "date": "2019-06-23", "price": 1971.1277627119 }, { "date": "2019-06-24", "price": 2332.4853728814 }, { "date": "2019-06-25", "price": 2251.6675084746 }, { "date": "2019-06-26", "price": 2296.1859152542 }, { "date": "2019-06-27", "price": 1936.8426779661 }, { "date": "2019-06-28", "price": 1758.144440678 }, { "date": "2019-06-29", "price": 1487.9686779661 }, { "date": "2019-06-30", "price": 1447.0091016949 }, { "date": "2019-07-01", "price": 1784.8297966102 }, { "date": "2019-07-02", "price": 1712.9863050847 }, { "date": "2019-07-03", "price": 1712.1317457627 }, { "date": "2019-07-04", "price": 1381.0366440678 }, { "date": "2019-07-05", "price": 1331.6789322034 }, { "date": "2019-07-06", "price": 1322.9705932203 }, { "date": "2019-07-07", "price": 1102.6408983051 }, { "date": "2019-07-08", "price": 1259.3999830508 }, { "date": "2019-07-09", "price": 1271.1681864407 }, { "date": "2019-07-10", "price": 1440.0581355932 }, { "date": "2019-07-11", "price": 1281.313338983 }, { "date": "2019-07-12", "price": 1095.1994576271 }, { "date": "2019-07-13", "price": 1166.8786610169 }, { "date": "2019-07-14", "price": 1056.5221355932 }, { "date": "2019-07-15", "price": 1235.044338983 }, { "date": "2019-07-16", "price": 1185.5509491525 }, { "date": "2019-07-17", "price": 1331.4280508475 }, { "date": "2019-07-18", "price": 1279.2386271186 }, { "date": "2019-07-19", "price": 1158.6217966102 }, { "date": "2019-07-20", "price": 1064.8987627119 }, { "date": "2019-07-21", "price": 1078.5364745763 }, { "date": "2019-07-22", "price": 1317.729559322 }, { "date": "2019-07-23", "price": 1423.7246440678 }, { "date": "2019-07-24", "price": 2217.2528305085 }, { "date": "2019-07-25", "price": 1338.2121694915 }, { "date": "2019-07-26", "price": 1180.2526949153 }, { "date": "2019-07-27", "price": 1147.019779661 }, { "date": "2019-07-28", "price": 1031.6514915254 }, { "date": "2019-07-29", "price": 1170.4532881356 }, { "date": "2019-07-30", "price": 1123.5193898305 }, { "date": "2019-07-31", "price": 1185.1797118644 }, { "date": "2019-08-01", "price": 1119.9599661017 }, { "date": "2019-08-02", "price": 890.1683220339 }, { "date": "2019-08-03", "price": 884.7249322034 }, { "date": "2019-08-04", "price": 784.9744576271 }, { "date": "2019-08-05", "price": 1018.8517457627 }, { "date": "2019-08-06", "price": 1081.1596779661 }, { "date": "2019-08-07", "price": 1087.5401355932 }, { "date": "2019-08-08", "price": 1059.3899152542 }, { "date": "2019-08-09", "price": 929.4704745763 }, { "date": "2019-08-10", "price": 972.607440678 }, { "date": "2019-08-11", "price": 819.7877627119 }, { "date": "2019-08-12", "price": 1010.7411355932 }, { "date": "2019-08-13", "price": 1105.3955254237 }, { "date": "2019-08-14", "price": 1185.2061694915 }, { "date": "2019-08-15", "price": 1156.0950338983 }, { "date": "2019-08-16", "price": 1033.9232881356 }, { "date": "2019-08-17", "price": 1001.8229830508 }, { "date": "2019-08-18", "price": 1094.5412542373 }, { "date": "2019-08-19", "price": 988.4832372881 }, { "date": "2019-08-20", "price": 1085.4184576271 }, { "date": "2019-08-21", "price": 1117.1952881356 }, { "date": "2019-08-22", "price": 1058.3759322034 }, { "date": "2019-08-23", "price": 915.372440678 }, { "date": "2019-08-24", "price": 841.1394237288 }, { "date": "2019-08-25", "price": 762.7794915254 }, { "date": "2019-08-26", "price": 892.4742881356 }, { "date": "2019-08-27", "price": 871.7882542373 }, { "date": "2019-08-28", "price": 954.7421016949 }, { "date": "2019-08-29", "price": 1048.6060677966 }, { "date": "2019-08-30", "price": 959.1170338983 }, { "date": "2019-08-31", "price": 813.9944915254 }, { "date": "2019-09-01", "price": 982.5523050847 }, { "date": "2019-09-02", "price": 1032.6766610169 }, { "date": "2019-09-03", "price": 1060.3185084746 }, { "date": "2019-09-04", "price": 1086.7353728814 }, { "date": "2019-09-05", "price": 1549.0567118644 }, { "date": "2019-09-06", "price": 1240.1380169492 }, { "date": "2019-09-07", "price": 1226.4416101695 }, { "date": "2019-09-08", "price": 1182.8484576271 }, { "date": "2019-09-09", "price": 1101.3542033898 }, { "date": "2019-09-10", "price": 1241.7373728814 }, { "date": "2019-09-11", "price": 1204.9480677966 }, { "date": "2019-09-12", "price": 1148.4454067797 }, { "date": "2019-09-13", "price": 1211.0869152542 }, { "date": "2019-09-14", "price": 1134.6199661017 }, { "date": "2019-09-15", "price": 1026.8692372881 }, { "date": "2019-09-16", "price": 1164.2393220339 }, { "date": "2019-09-17", "price": 1283.9132033898 }, { "date": "2019-09-18", "price": 1333.7314067797 }, { "date": "2019-09-19", "price": 1230.0396101695 }, { "date": "2019-09-20", "price": 1023.6388813559 }, { "date": "2019-09-21", "price": 655.6502711864 }, { "date": "2019-09-22", "price": 1168.9622711864 }, { "date": "2019-09-23", "price": 1197.5768305085 }, { "date": "2019-09-24", "price": 1262.1901525424 }, { "date": "2019-09-25", "price": 1415.247220339 }, { "date": "2019-09-26", "price": 1325.1101016949 }, { "date": "2019-09-27", "price": 1187.1600677966 }, { "date": "2019-09-28", "price": 6161.6030677966 }, { "date": "2019-09-29", "price": 1359.9902542373 }, { "date": "2019-09-30", "price": 1105.1683898305 }, { "date": "2019-10-01", "price": 1437.1608644068 }, { "date": "2019-10-02", "price": 1928.3217288136 }, { "date": "2019-10-03", "price": 1567.3220847458 }, { "date": "2019-10-04", "price": 1380.9482711864 }, { "date": "2019-10-05", "price": 1327.061779661 }, { "date": "2019-10-06", "price": 1332.6384576271 }, { "date": "2019-10-07", "price": 1261.8524576271 }, { "date": "2019-10-08", "price": 1247.9563898305 }, { "date": "2019-10-09", "price": 1414.9638135593 }, { "date": "2019-10-10", "price": 1198.6797627119 }, { "date": "2019-10-11", "price": 1031.0618813559 }, { "date": "2019-10-12", "price": 1154.5268644068 }, { "date": "2019-10-13", "price": 1027.6806440678 }, { "date": "2019-10-14", "price": 999.3247457627 }, { "date": "2019-10-15", "price": 1102.7700338983 }, { "date": "2019-10-16", "price": 1182.1400338983 }, { "date": "2019-10-17", "price": 998.3453220339 }, { "date": "2019-10-18", "price": 919.0261186441 }, { "date": "2019-10-19", "price": 1032.0394576271 }, { "date": "2019-10-20", "price": 929.3257966102 }, { "date": "2019-10-21", "price": 1051.1994915254 }, { "date": "2019-10-22", "price": 1148.1024745763 }, { "date": "2019-10-23", "price": 1216.9202711864 }, { "date": "2019-10-24", "price": 1221.2819661017 }, { "date": "2019-10-25", "price": 1204.8221016949 }, { "date": "2019-10-26", "price": 1119.1237457627 }, { "date": "2019-10-27", "price": 1122.2226101695 }, { "date": "2019-10-28", "price": 1040.8022711864 }, { "date": "2019-10-29", "price": 1052.1757966102 }, { "date": "2019-10-30", "price": 1191.6194915254 }, { "date": "2019-10-31", "price": 1146.2918644068 }, { "date": "2019-11-01", "price": 1118.7632372881 }, { "date": "2019-11-02", "price": 1208.7732033898 }, { "date": "2019-11-03", "price": 2738.4624576271 }, { "date": "2019-11-04", "price": 974.1735932203 }, { "date": "2019-11-05", "price": 987.2824745763 }, { "date": "2019-11-06", "price": 1009.4259661017 }, { "date": "2019-11-07", "price": 965.6569322034 }, { "date": "2019-11-08", "price": 1036.3715084746 }, { "date": "2019-11-09", "price": 1039.1709830508 }, { "date": "2019-11-10", "price": 888.7046271186 }, { "date": "2019-11-11", "price": 1412.9390169492 }, { "date": "2019-11-12", "price": 897.3929152542 }, { "date": "2019-11-13", "price": 957.516440678 }, { "date": "2019-11-14", "price": 985.5495762712 }, { "date": "2019-11-15", "price": 968.8953050847 }, { "date": "2019-11-16", "price": 1058.6946440678 }, { "date": "2019-11-17", "price": 921.0244576271 }, { "date": "2019-11-18", "price": 867.4640338983 }, { "date": "2019-11-19", "price": 913.226338983 }, { "date": "2019-11-20", "price": 1009.1683559322 }, { "date": "2019-11-21", "price": 985.6125423729 }, { "date": "2019-11-22", "price": 1007.4625084746 }, { "date": "2019-11-23", "price": 1019.1101525424 }, { "date": "2019-11-24", "price": 868.9467288136 }, { "date": "2019-11-25", "price": 1199.4700169492 }, { "date": "2019-11-26", "price": 1174.0162372881 }, { "date": "2019-11-27", "price": 1245.9616271186 }, { "date": "2019-11-28", "price": 3103.0279322034 }, { "date": "2019-11-29", "price": 4444.3423898305 }, { "date": "2019-11-30", "price": 1847.8137966102 }, { "date": "2019-12-01", "price": 1806.6985762712 }, { "date": "2019-12-02", "price": 1626.0400508475 }, { "date": "2019-12-03", "price": 768.7769152542 }, { "date": "2019-12-04", "price": 855.7742542373 }, { "date": "2019-12-05", "price": 758.9953559322 }, { "date": "2019-12-06", "price": 789.9276440678 }, { "date": "2019-12-07", "price": 897.8043220339 }, { "date": "2019-12-08", "price": 793.0538813559 }, { "date": "2019-12-09", "price": 849.9100169492 }, { "date": "2019-12-10", "price": 940.9229152542 }, { "date": "2019-12-11", "price": 1025.8241186441 }, { "date": "2019-12-12", "price": 1006.9618305085 }, { "date": "2019-12-13", "price": 925.9741355932 }, { "date": "2019-12-14", "price": 987.6616440678 }, { "date": "2019-12-15", "price": 915.2002372881 }, { "date": "2019-12-16", "price": 922.2252711864 }, { "date": "2019-12-17", "price": 968.2999830508 }, { "date": "2019-12-18", "price": 1684.5459830508 }, { "date": "2019-12-19", "price": 1326.8799152542 }, { "date": "2019-12-20", "price": 1242.2328305085 }, { "date": "2019-12-21", "price": 1362.9191186441 }, { "date": "2019-12-22", "price": 1158.3124745763 }, { "date": "2019-12-23", "price": 1208.1923050847 }, { "date": "2019-12-24", "price": 907.809779661 }, { "date": "2019-12-25", "price": 408.1892711864 }, { "date": "2019-12-26", "price": 553.3544576271 }, { "date": "2019-12-27", "price": 1059.4058474576 }, { "date": "2019-12-28", "price": 1039.7408135593 }, { "date": "2019-12-29", "price": 943.2418983051 }, { "date": "2019-12-30", "price": 908.9407288136 }, { "date": "2019-12-31", "price": 623.7758813559 }, { "date": "2020-01-01", "price": 384.8911355932 }, { "date": "2020-01-02", "price": 1161.7539491525 }, { "date": "2020-01-03", "price": 1151.6487457627 }, { "date": "2020-01-04", "price": 1123.3146779661 }, { "date": "2020-01-05", "price": 909.6352711864 }, { "date": "2020-01-06", "price": 793.7943220339 }, { "date": "2020-01-07", "price": 794.4936949153 }, { "date": "2020-01-08", "price": 991.6767966102 }, { "date": "2020-01-09", "price": 940.1402033898 }, { "date": "2020-01-10", "price": 892.5211525424 }, { "date": "2020-01-11", "price": 927.8257966102 }, { "date": "2020-01-12", "price": 941.8958983051 }, { "date": "2020-01-13", "price": 837.9422033898 }, { "date": "2020-01-14", "price": 859.7936610169 }, { "date": "2020-01-15", "price": 876.0490338983 }, { "date": "2020-01-16", "price": 894.105 }, { "date": "2020-01-17", "price": 818.4341694915 }, { "date": "2020-01-18", "price": 883.1991694915 }, { "date": "2020-01-19", "price": 801.7902033898 }, { "date": "2020-01-20", "price": 779.9886949153 }, { "date": "2020-01-21", "price": 693.6894237288 }, { "date": "2020-01-22", "price": 927.8641186441 }, { "date": "2020-01-23", "price": 981.1125932203 }, { "date": "2020-01-24", "price": 1047.5912033898 }, { "date": "2020-01-25", "price": 1155.7170508475 }, { "date": "2020-01-26", "price": 1261.9679661017 }, { "date": "2020-01-27", "price": 1003.5246610169 }, { "date": "2020-01-28", "price": 941.5572542373 }, { "date": "2020-01-29", "price": 1035.1024576271 }, { "date": "2020-01-30", "price": 1000.2999322034 }, { "date": "2020-01-31", "price": 980.2630508475 }, { "date": "2020-02-01", "price": 1046.3305254237 }, { "date": "2020-02-02", "price": 911.4704237288 }, { "date": "2020-02-03", "price": 913.9196440678 }, { "date": "2020-02-04", "price": 888.8185084746 }, { "date": "2020-02-05", "price": 1031.7167627119 }, { "date": "2020-02-06", "price": 1139.3065084746 }, { "date": "2020-02-07", "price": 1041.422220339 }, { "date": "2020-02-08", "price": 1075.7725084746 }, { "date": "2020-02-09", "price": 984.328220339 }, { "date": "2020-02-10", "price": 860.6827457627 }, { "date": "2020-02-11", "price": 907.1728474576 }, { "date": "2020-02-12", "price": 844.8248813559 }, { "date": "2020-02-13", "price": 1030.2786440678 }, { "date": "2020-02-14", "price": 900.8352372881 }, { "date": "2020-02-15", "price": 1041.9955423729 }, { "date": "2020-02-16", "price": 960.8380847458 }, { "date": "2020-02-17", "price": 927.0687457627 }, { "date": "2020-02-18", "price": 940.2137966102 }, { "date": "2020-02-19", "price": 748.2798983051 }, { "date": "2020-02-20", "price": 1219.9056101695 }, { "date": "2020-02-21", "price": 968.873779661 }, { "date": "2020-02-22", "price": 981.619220339 }, { "date": "2020-02-23", "price": 888.3197966102 }, { "date": "2020-02-24", "price": 923.7790677966 }, { "date": "2020-02-25", "price": 1026.1117118644 }, { "date": "2020-02-26", "price": 1157.7318305085 }, { "date": "2020-02-27", "price": 1235.8995932203 }, { "date": "2020-02-28", "price": 1038.6404237288 }, { "date": "2020-02-29", "price": 1156.7200338983 }, { "date": "2020-03-01", "price": 1129.3210508475 }, { "date": "2020-03-02", "price": 934.8171355932 }, { "date": "2020-03-03", "price": 1095.0260508475 }, { "date": "2020-03-04", "price": 1562.9251525424 }, { "date": "2020-03-05", "price": 1262.9607457627 }, { "date": "2020-03-06", "price": 1108.4575254237 }, { "date": "2020-03-07", "price": 1248.6270338983 }, { "date": "2020-03-08", "price": 1129.8141525424 }, { "date": "2020-03-09", "price": 1061.8138305085 }, { "date": "2020-03-10", "price": 1004.7736440678 }, { "date": "2020-03-11", "price": 1186.646779661 }, { "date": "2020-03-12", "price": 941.3156101695 }, { "date": "2020-03-13", "price": 836.1156101695 }, { "date": "2020-03-14", "price": 963.3604067797 }, { "date": "2020-03-15", "price": 716.5800847458 }, { "date": "2020-03-16", "price": 565.9536271186 }, { "date": "2020-03-17", "price": 706.3706440678 }, { "date": "2020-03-18", "price": 803.3477627119 }, { "date": "2020-03-19", "price": 741.6106779661 }, { "date": "2020-03-20", "price": 765.0278644068 }, { "date": "2020-03-21", "price": 798.4575423729 }, { "date": "2020-03-22", "price": 990.2839661017 }, { "date": "2020-03-23", "price": 744.8288644068 }, { "date": "2020-03-24", "price": 923.3997627119 }, { "date": "2020-03-25", "price": 1004.0425423729 }, { "date": "2020-03-26", "price": 1087.2209322034 }, { "date": "2020-03-27", "price": 953.6560169492 }, { "date": "2020-03-28", "price": 917.7002711864 }, { "date": "2020-03-29", "price": 1008.5635084746 }, { "date": "2020-03-30", "price": 1067.1376949153 }, { "date": "2020-03-31", "price": 1014.0481694915 }, { "date": "2020-04-01", "price": 1142.6307288136 }, { "date": "2020-04-02", "price": 1155.1111355932 }, { "date": "2020-04-03", "price": 1576.8348135593 }, { "date": "2020-04-04", "price": 2104.1131864407 }, { "date": "2020-04-05", "price": 1042.2498135593 }, { "date": "2020-04-06", "price": 1226.3557118644 }, { "date": "2020-04-07", "price": 1278.2241525424 }, { "date": "2020-04-08", "price": 1519.2174067797 }, { "date": "2020-04-09", "price": 1465.6001186441 }, { "date": "2020-04-10", "price": 1222.231559322 }, { "date": "2020-04-11", "price": 3961.9877627119 }, { "date": "2020-04-12", "price": 915.6819322034 }, { "date": "2020-04-13", "price": 978.4312881356 }, { "date": "2020-04-14", "price": 869.6631186441 }, { "date": "2020-04-15", "price": 1002.8206101695 }, { "date": "2020-04-16", "price": 1030.1811016949 }, { "date": "2020-04-17", "price": 971.1502033898 }, { "date": "2020-04-18", "price": 967.8233559322 }, { "date": "2020-04-19", "price": 879.9908813559 }, { "date": "2020-04-20", "price": 1068.9351186441 }, { "date": "2020-04-21", "price": 916.9764745763 }, { "date": "2020-04-22", "price": 1129.3183050847 }, { "date": "2020-04-23", "price": 1316.8854237288 }, { "date": "2020-04-24", "price": 1218.3786440678 }, { "date": "2020-04-25", "price": 1361.9392711864 }, { "date": "2020-04-26", "price": 1522.5410847458 }, { "date": "2020-04-27", "price": 789.3087627119 }, { "date": "2020-04-28", "price": 1026.5647457627 }, { "date": "2020-04-29", "price": 1052.8363559322 }, { "date": "2020-04-30", "price": 1094.5025932203 }, { "date": "2020-05-01", "price": 940.8241355932 }, { "date": "2020-05-02", "price": 815.8016779661 }, { "date": "2020-05-03", "price": 735.3857457627 }, { "date": "2020-05-04", "price": 818.7111525424 }, { "date": "2020-05-05", "price": 752.2998135593 }, { "date": "2020-05-06", "price": 955.3670847458 }, { "date": "2020-05-07", "price": 1061.7915423729 }, { "date": "2020-05-08", "price": 1170.8911694915 }, { "date": "2020-05-09", "price": 1162.6160508475 }, { "date": "2020-05-10", "price": 770.1803728814 }, { "date": "2020-05-11", "price": 1058.5344915254 }, { "date": "2020-05-12", "price": 1048.2912372881 }, { "date": "2020-05-13", "price": 1140.7255423729 }, { "date": "2020-05-14", "price": 1259.9599322034 }, { "date": "2020-05-15", "price": 1152.4351694915 }, { "date": "2020-05-16", "price": 1116.5138983051 }, { "date": "2020-05-17", "price": 950.6213220339 }, { "date": "2020-05-18", "price": 1226.4624915254 }, { "date": "2020-05-19", "price": 1331.3666271186 }, { "date": "2020-05-20", "price": 1543.6521016949 }, { "date": "2020-05-21", "price": 1290.6506949153 }, { "date": "2020-05-22", "price": 1737.1373559322 }, { "date": "2020-05-23", "price": 1629.9805762712 }, { "date": "2020-05-24", "price": 1184.2836949153 }, { "date": "2020-05-25", "price": 1381.3000169492 }, { "date": "2020-05-26", "price": 1523.1479322034 }, { "date": "2020-05-27", "price": 1665.7546610169 }, { "date": "2020-05-28", "price": 1644.9591864407 }, { "date": "2020-05-29", "price": 1563.8377288136 }, { "date": "2020-05-30", "price": 1564.1618135593 }, { "date": "2020-05-31", "price": 948.0491525424 }, { "date": "2020-06-01", "price": 1232.2898305085 }, { "date": "2020-06-02", "price": 1198.8877118644 }, { "date": "2020-06-03", "price": 1420.1546949153 }, { "date": "2020-06-04", "price": 1386.1382033898 }, { "date": "2020-06-05", "price": 1179.4080169492 }, { "date": "2020-06-06", "price": 1239.7503728814 }, { "date": "2020-06-07", "price": 1049.2200169492 }, { "date": "2020-06-08", "price": 1079.4796779661 }, { "date": "2020-06-09", "price": 1058.2374237288 }, { "date": "2020-06-10", "price": 1133.3058644068 }, { "date": "2020-06-11", "price": 1150.1526779661 }, { "date": "2020-06-12", "price": 1110.5238644068 }, { "date": "2020-06-13", "price": 1159.8153050847 }, { "date": "2020-06-14", "price": 880.3205762712 }, { "date": "2020-06-15", "price": 1048.5014067797 }, { "date": "2020-06-16", "price": 1292.0448305085 }, { "date": "2020-06-17", "price": 2540.1134067797 }, { "date": "2020-06-18", "price": 1916.1871355932 }, { "date": "2020-06-19", "price": 1755.3047627119 }, { "date": "2020-06-20", "price": 1533.4146949153 }, { "date": "2020-06-21", "price": 1369.5237288136 }, { "date": "2020-06-22", "price": 1776.1568813559 }, { "date": "2020-06-23", "price": 1803.5380847458 }, { "date": "2020-06-24", "price": 2195.5817288136 }, { "date": "2020-06-25", "price": 1976.2762033898 }, { "date": "2020-06-26", "price": 1726.0800847458 }, { "date": "2020-06-27", "price": 1676.138440678 }, { "date": "2020-06-28", "price": 1458.1629152542 }, { "date": "2020-06-29", "price": 1259.7523220339 }, { "date": "2020-06-30", "price": 1450.8982033898 }, { "date": "2020-07-01", "price": 1395.5045423729 }, { "date": "2020-07-02", "price": 1295.3464237288 }, { "date": "2020-07-03", "price": 1175.5879152542 }, { "date": "2020-07-04", "price": 1095.8934237288 }, { "date": "2020-07-05", "price": 936.9381355932 }, { "date": "2020-07-06", "price": 999.5495932203 }, { "date": "2020-07-07", "price": 1079.2765084746 }, { "date": "2020-07-08", "price": 1191.3086779661 }, { "date": "2020-07-09", "price": 1016.7820677966 }, { "date": "2020-07-10", "price": 1026.2698813559 }, { "date": "2020-07-11", "price": 948.1258135593 }, { "date": "2020-07-12", "price": 729.0827288136 }, { "date": "2020-07-13", "price": 987.1953559322 }, { "date": "2020-07-14", "price": 927.3981864407 }, { "date": "2020-07-15", "price": 1212.0864067797 }, { "date": "2020-07-16", "price": 1079.9237966102 }, { "date": "2020-07-17", "price": 991.5458813559 }, { "date": "2020-07-18", "price": 883.2640169492 }, { "date": "2020-07-19", "price": 702.2081016949 }, { "date": "2020-07-20", "price": 977.8743220339 }, { "date": "2020-07-21", "price": 1035.6935084746 }, { "date": "2020-07-22", "price": 1138.9971016949 }, { "date": "2020-07-23", "price": 1097.8659491525 }, { "date": "2020-07-24", "price": 1132.1814067797 }, { "date": "2020-07-25", "price": 1001.3311694915 }, { "date": "2020-07-26", "price": 839.015440678 }, { "date": "2020-07-27", "price": 1008.4934745763 }, { "date": "2020-07-28", "price": 1156.3632372881 }, { "date": "2020-07-29", "price": 1188.4460508475 }, { "date": "2020-07-30", "price": 1203.5094915254 }, { "date": "2020-07-31", "price": 909.948559322 }, { "date": "2020-08-01", "price": 972.5820847458 }, { "date": "2020-08-02", "price": 908.5920508475 }, { "date": "2020-08-03", "price": 1084.6743050847 }, { "date": "2020-08-04", "price": 1320.9060169491 }, { "date": "2020-08-05", "price": 1292.0098813559 }, { "date": "2020-08-06", "price": 1249.6357118644 }, { "date": "2020-08-07", "price": 1021.4383728814 }, { "date": "2020-08-08", "price": 805.348220339 }, { "date": "2020-08-09", "price": 670.455559322 }, { "date": "2020-08-10", "price": 904.0002711864 }, { "date": "2020-08-11", "price": 1048.3872711864 }, { "date": "2020-08-12", "price": 1734.5777118644 }, { "date": "2020-08-13", "price": 976.4912372881 }, { "date": "2020-08-14", "price": 881.1799491525 }, { "date": "2020-08-15", "price": 746.7269491525 }, { "date": "2020-08-16", "price": 630.6714915254 }, { "date": "2020-08-17", "price": 881.4353050847 }, { "date": "2020-08-18", "price": 946.4056610169 }, { "date": "2020-08-19", "price": 1008.1653559322 }, { "date": "2020-08-20", "price": 1040.0443559322 }, { "date": "2020-08-21", "price": 924.4278474576 }, { "date": "2020-08-22", "price": 982.2143728814 }, { "date": "2020-08-23", "price": 979.5989322034 }, { "date": "2020-08-24", "price": 1131.8903220339 }, { "date": "2020-08-25", "price": 1292.9948983051 }, { "date": "2020-08-26", "price": 1465.721440678 }, { "date": "2020-08-27", "price": 1367.6294576271 }, { "date": "2020-08-28", "price": 1207.571440678 }, { "date": "2020-08-29", "price": 1271.8732881356 }, { "date": "2020-08-30", "price": 1145.3194237288 }, { "date": "2020-08-31", "price": 1237.5300677966 }, { "date": "2020-09-01", "price": 1228.6411864407 }, { "date": "2020-09-02", "price": 1042.2023898305 }, { "date": "2020-09-03", "price": 1324.5482033898 }, { "date": "2020-09-04", "price": 1230.0161355932 }, { "date": "2020-09-05", "price": 1352.4638813559 }, { "date": "2020-09-06", "price": 1139.1364745763 }, { "date": "2020-09-07", "price": 1278.7032881356 }, { "date": "2020-09-08", "price": 1243.4895762712 }, { "date": "2020-09-09", "price": 1425.3108474576 }, { "date": "2020-09-10", "price": 1344.2379491525 }, { "date": "2020-09-11", "price": 1282.8984745763 }, { "date": "2020-09-12", "price": 1311.2038135593 }, { "date": "2020-09-13", "price": 1394.6976440678 }, { "date": "2020-09-14", "price": 1042.0790847458 }, { "date": "2020-09-15", "price": 874.892220339 }, { "date": "2020-09-16", "price": 890.2108474576 }, { "date": "2020-09-17", "price": 1418.2773050847 }, { "date": "2020-09-18", "price": 1363.8581186441 }, { "date": "2020-09-19", "price": 1227.4713050847 }, { "date": "2020-09-20", "price": 1116.0710677966 }, { "date": "2020-09-21", "price": 1139.5980508475 }, { "date": "2020-09-22", "price": 1133.4184237288 }];
+
+
+                // Create chart
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/
+                var chart = root.container.children.push(am5xy.XYChart.new(root, {
+                    focusable: true,
+                    panX: true,
+                    panY: true,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                    pinchZoomX: true
+                }));
+
+                var easing = am5.ease.linear;
+
+
+                // Create axes
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+                var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+                    maxDeviation: 0.1,
+                    groupData: false,
+                    baseInterval: {
+                        timeUnit: "day",
+                        count: 1
+                    },
+                    renderer: am5xy.AxisRendererX.new(root, {
+
+                    }),
+                    tooltip: am5.Tooltip.new(root, {})
+                }));
+
+                var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+                    maxDeviation: 0.2,
+                    renderer: am5xy.AxisRendererY.new(root, {})
+                }));
+
+
+                // Add series
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+                var series = chart.series.push(am5xy.LineSeries.new(root, {
+                    minBulletDistance: 10,
+                    connect: false,
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "price",
+                    valueXField: "date",
+                    tooltip: am5.Tooltip.new(root, {
+                        pointerOrientation: "horizontal",
+                        labelText: "{valueY}"
+                    })
+                }));
+
+                series.fills.template.setAll({
+                    fillOpacity: 0.2,
+                    visible: true
+                });
+
+                series.strokes.template.setAll({
+                    strokeWidth: 2
+                });
+
+
+                // Set up data processor to parse string dates
+                // https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
+                series.data.processor = am5.DataProcessor.new(root, {
+                    dateFormat: "yyyy-MM-dd",
+                    dateFields: ["date"]
+                });
+
+                series.data.setAll(data);
+
+                series.bullets.push(function () {
+                    var circle = am5.Circle.new(root, {
+                        radius: 4,
+                        fill: root.interfaceColors.get("background"),
+                        stroke: series.get("fill"),
+                        strokeWidth: 2
+                    })
+
+                    return am5.Bullet.new(root, {
+                        sprite: circle
+                    })
+                });
+
+
+                // Add cursor
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+                var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+                    xAxis: xAxis,
+                    behavior: "none"
+                }));
+                cursor.lineY.set("visible", false);
+
+                // add scrollbar
+                chart.set("scrollbarX", am5.Scrollbar.new(root, {
+                    orientation: "horizontal"
+                }));
+
+
+                // Make stuff animate on load
+                // https://www.amcharts.com/docs/v5/concepts/animations/
+                chart.appear(1000, 100);
+            }
+
+
+
+
+        }
+
+        chart_time();
+
+        function pie_of_map() {
+            if ('{{args[3]}}' == 'globalnum') {
+                am5.ready(function () {
+
+                    // Set up data
+                    var data = [{
+                        category: "Asia",
+                        value: 0.149589575,
+                        sliceSettings: {
+                            fill: am5.color(0x6771dc),
+                        },
+                        breakdown: [{
+                            category: "China",
+                            value: 9748
+                        },
+                        {
+                            category: "Hong Kong",
+                            value: 933
+                        },
+                        {
+                            category: "Japan",
+                            value: 4333
+                        },
+                        {
+                            category: "Australia",
+                            value: 2036
+                        },
+                        {
+                            category: "Philippines",
+                            value: 742
+                        },
+                        {
+                            category: "Taiwan",
+                            value: 666
+                        },
+                        {
+                            category: "New Zealand ",
+                            value: 442
+                        },
+                        {
+                            category: "Kazakhstan ",
+                            value: 174
+                        },
+                        {
+                            category: "Vietnam ",
+                            value: 453
+                        },
+                        {
+                            category: "Macau",
+                            value: 86
+                        },
+                        {
+                            category: "India",
+                            value: 1568
+                        },
+                        {
+                            category: "Malaysia",
+                            value: 890
+                        },
+                        {
+                            category: "South Korea ",
+                            value: 2091
+                        },
+                        {
+                            category: "Malaysia",
+                            value: 890
+                        },
+                        {
+                            category: "South Korea ",
+                            value: 2091
+                        },
+                        {
+                            category: "Singapore",
+                            value: 466
+                        }]
+                    },
+                    {
+                        category: "Europe",
+                        value: 0.68363991,
+                        sliceSettings: {
+                            fill: am5.color(0x6794dc),
+                        },
+                        breakdown: [
+                            {
+                                category: "Sweden",
+                                value: 8015
+                            },
+                            {
+                                category: "Norway",
+                                value: 4532
+                            },
+                            {
+                                category: "Denmark",
+                                value: 4626
+                            },
+                            {
+                                category: "UK",
+                                value: 11486
+                            },
+                            {
+                                category: "Switzerland",
+                                value: 5550
+                            },
+                            {
+                                category: "Germany",
+                                value: 29684
+                            },
+                            {
+                                category: "Netherlands",
+                                value: 5758
+                            },
+                            {
+                                category: "Belgium",
+                                value: 3331
+                            },
+                            {
+                                category: "Austria",
+                                value: 4368
+                            },
+                            {
+                                category: "Luxembourg",
+                                value: 432
+                            },
+                            {
+                                category: "Finland",
+                                value: 2158
+                            },
+                            {
+                                category: "France",
+                                value: 9166
+                            },
+                            {
+                                category: "Spain",
+                                value: 5535
+                            },
+                            {
+                                category: "Poland",
+                                value: 5095
+                            },
+                            {
+                                category: "Czech Republic",
+                                value: 1341
+                            },
+                            {
+                                category: "Portugal",
+                                value: 890
+                            },
+                            {
+                                category: "Italy",
+                                value: 6079
+                            },
+                            {
+                                category: "Slovenia",
+                                value: 394
+                            },
+                            {
+                                category: "Ireland",
+                                value: 1061
+                            },
+                            {
+                                category: "Hungary",
+                                value: 1543
+                            },
+                            {
+                                category: "Slovakia",
+                                value: 718
+                            },
+                            {
+                                category: "Greece",
+                                value: 1426
+                            },
+                            {
+                                category: "Russia ",
+                                value: 6226
+                            },
+                            {
+                                category: "Turkey ",
+                                value: 1925
+                            },
+                            {
+                                category: "Romania ",
+                                value: 2116
+                            },
+                            {
+                                category: "Bulgaria",
+                                value: 559
+                            },
+                            {
+                                category: "Latvia",
+                                value: 321
+                            },
+                            {
+                                category: "Lithuania",
+                                value: 356
+                            },
+                            {
+                                category: "Serbia ",
+                                value: 373
+                            },
+                            {
+                                category: "Estonia",
+                                value: 353
+                            },
+                            {
+                                category: "Iceland ",
+                                value: 221
+                            },
+                            {
+                                category: "Georgia ",
+                                value: 98
+                            },
+                            {
+                                category: "Ukraine ",
+                                value: 235
+                            },
+                            {
+                                category: "Cyprus",
+                                value: 100
+                            },
+                            {
+                                category: "Bosnia-Herzegovina ",
+                                value: 32
+                            },
+                            {
+                                category: "Belarus ",
+                                value: 73
+                            }]
+                    },
+
+                    {
+                        category: "North America",
+                        value: 0.149892992,
+                        sliceSettings: {
+                            fill: am5.color(0x095256),
+                        },
+                        breakdown: [{
+                            category: "USA  ",
+                            value: 20802
+                        },
+                        {
+                            category: "Puerto Rico  ",
+                            value: 98
+                        },
+                        {
+                            category: "Mexico  ",
+                            value: 2584
+                        },
+                        {
+                            category: "Canada  ",
+                            value: 4181
+                        }
+                        ]
+                    }, {
+                        category: "South America",
+                        value: 0.012683878,
+                        sliceSettings: {
+                            fill: am5.color(0xd9d9d9),
+                        },
+                        breakdown: [
+                            {
+                                category: "Peru ",
+                                value: 579
+                            },
+                            {
+                                category: "Chile ",
+                                value: 1002
+                            },
+                            {
+                                category: "Uruguay ",
+                                value: 261
+                            },
+                            {
+                                category: "Colombia ",
+                                value: 499
+                            }
+                        ]
+                    }, {
+                        category: "Africa",
+                        value: 0.004193645,
+                        sliceSettings: {
+                            fill: am5.color(0x68dc76),
+                        },
+                        breakdown: [
+                            {
+                                category: "South Africa",
+                                value: 774
+                            }
+                        ]
+                    }]
+
+                    // Create root element
+                    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+                    var root = am5.Root.new("chartdiv4");
+
+
+                    // Set themes
+                    // https://www.amcharts.com/docs/v5/concepts/themes/
+                    root.setThemes([
+                        am5themes_Animated.new(root)
+                    ]);
+
+                    // Create wrapper container
+                    var container = root.container.children.push(am5.Container.new(root, {
+                        width: am5.p100,
+                        height: am5.p100,
+                        layout: root.horizontalLayout
+                    }));
+
+
+                    // ==============================================
+                    // Column chart
+                    // ==============================================
+
+                    // Create chart
+                    // https://www.amcharts.com/docs/v5/charts/xy-chart/
+                    var columnChart = container.children.push(am5xy.XYChart.new(root, {
+                        width: am5.p50,
+                        panX: false,
+                        panY: false,
+                        wheelX: "none",
+                        wheelY: "none",
+                        layout: root.verticalLayout
+                    }));
+
+                    // Create axes
+                    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+                    var yAxis = columnChart.yAxes.push(am5xy.CategoryAxis.new(root, {
+                        categoryField: "category",
+                        renderer: am5xy.AxisRendererY.new(root, {})
+                    }));
+
+                    //xAxis.data.setAll(data);
+
+                    var xAxis = columnChart.xAxes.push(am5xy.ValueAxis.new(root, {
+                        renderer: am5xy.AxisRendererX.new(root, {})
+                    }));
+
+
+                    // Add series
+                    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+                    var columnSeries = columnChart.series.push(am5xy.ColumnSeries.new(root, {
+                        name: name,
+                        xAxis: xAxis,
+                        yAxis: yAxis,
+                        valueXField: "value",
+                        categoryYField: "category"
+                    }));
+
+                    columnSeries.columns.template.setAll({
+                        tooltipText: "{categoryY}: {valueX}"
+                    });
+
+                    //series.data.setAll(data);
+
+                    // Make stuff animate on load
+                    // https://www.amcharts.com/docs/v5/concepts/animations/
+                    columnChart.appear(1000, 100);
+
+
+                    // ==============================================
+                    // Column chart
+                    // ==============================================
+
+                    var pieChart = container.children.push(
+                        am5percent.PieChart.new(root, {
+                            width: am5.p50,
+                            innerRadius: am5.percent(50)
+                        })
+                    );
+
+                    // Create series
+                    var pieSeries = pieChart.series.push(
+                        am5percent.PieSeries.new(root, {
+                            valueField: "value",
+                            categoryField: "category"
+                        })
+                    );
+
+                    pieSeries.slices.template.setAll({
+                        templateField: "sliceSettings",
+                        strokeOpacity: 0
+                    });
+
+                    var currentSlice;
+                    pieSeries.slices.template.on("active", function (active, slice) {
+                        if (currentSlice && currentSlice != slice && active) {
+                            currentSlice.set("active", false)
+                        }
+
+                        var color = slice.get("fill");
+
+                        label1.setAll({
+                            fill: color,
+                            text: root.numberFormatter.format(slice.dataItem.get("valuePercentTotal"), "#.'%'")
+                        });
+
+                        label2.set("text", slice.dataItem.get("category"));
+
+                        columnSeries.columns.template.setAll({
+                            fill: slice.get("fill"),
+                            stroke: slice.get("fill")
+                        });
+
+                        columnSeries.data.setAll(slice.dataItem.dataContext.breakdown);
+                        yAxis.data.setAll(slice.dataItem.dataContext.breakdown);
+
+                        currentSlice = slice;
+                    });
+
+                    pieSeries.labels.template.set("forceHidden", true);
+                    pieSeries.ticks.template.set("forceHidden", true);
+
+                    pieSeries.data.setAll(data);
+
+                    // Add label
+                    var label1 = pieChart.seriesContainer.children.push(am5.Label.new(root, {
+                        text: "",
+                        fontSize: 35,
+                        fontweight: "bold",
+                        centerX: am5.p50,
+                        centerY: am5.p50
+                    }));
+
+                    var label2 = pieChart.seriesContainer.children.push(am5.Label.new(root, {
+                        text: "",
+                        fontSize: 12,
+                        centerX: am5.p50,
+                        centerY: am5.p50,
+                        dy: 30
+                    }));
+
+                    // Pre-select first slice
+                    pieSeries.events.on("datavalidated", function () {
+                        pieSeries.slices.getIndex(0).set("active", true);
+                    });
+
+                }); // end am5.ready()
+
+            }
+
+
+        }
+
+
+        pie_of_map();
+        function chart_map() {
+            am5.ready(function () {
+
+                // Create root element
+                // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+                var root = am5.Root.new("chartdiv5");
+
+                // Set themes
+                // https://www.amcharts.com/docs/v5/concepts/themes/
+                root.setThemes([
+                    am5themes_Animated.new(root)
+                ]);
+
+                // Create the map chart
+                // https://www.amcharts.com/docs/v5/charts/map-chart/
+                var chart = root.container.children.push(
+                    am5map.MapChart.new(root, {
+                        panX: "rotateX",
+                        panY: "rotateY",
+                        projection: am5map.geoMercator()
+                    })
+                );
+
+                // Create series for background fill
+                // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+                var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
+                backgroundSeries.mapPolygons.template.setAll({
+                    fill: root.interfaceColors.get("alternativeBackground"),
+                    fillOpacity: 0,
+                    strokeOpacity: 0
+                });
+                // Add background polygo
+                // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+                backgroundSeries.data.push({
+                    geometry: am5map.getGeoRectangle(90, 180, -90, -180)
+                });
+
+                // Create main polygon series for countries
+                // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+                var polygonSeries = chart.series.push(
+                    am5map.MapPolygonSeries.new(root, {
+                        geoJSON: am5geodata_worldLow
+                    })
+                );
+
+                polygonSeries.mapPolygons.template.setAll({
+                    fill: root.interfaceColors.get("alternativeBackground"),
+                    fillOpacity: 0.15,
+                    strokeWidth: 0.5,
+                    stroke: root.interfaceColors.get("background")
+                });
+
+                // Create polygon series for circles
+                // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+                var circleTemplate = am5.Template.new({
+                    tooltipText: "{name}: {value}"
+                });
+
+                var bubbleSeries = chart.series.push(
+                    am5map.MapPointSeries.new(root, {
+                        calculateAggregates: true,
+                        valueField: "value",
+                        polygonIdField: "id"
+                    })
+                );
+
+                bubbleSeries.bullets.push(function () {
+                    return am5.Bullet.new(root, {
+                        sprite: am5.Circle.new(root, {
+                            radius: 10,
+                            templateField: "circleTemplate"
+                        }, circleTemplate)
+                    });
+                });
+
+                bubbleSeries.set("heatRules", [{
+                    target: circleTemplate,
+                    min: 3,
+                    max: 30,
+                    key: "radius",
+                    dataField: "value"
+                }]);
+
+                var colors = am5.ColorSet.new(root, {});
+
+                bubbleSeries.data.setAll([
+                    {
+
+                        id: "AU",
+                        name: "Australia",
+                        value: 49,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+                        id: "AT",
+                        name: "Austria",
+                        value: 87,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "BY",
+                        name: "Belarus",
+                        value: 3,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "BE",
+                        name: "Belgium",
+                        value: 93,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "BG",
+                        name: "Bulgaria",
+                        value: 21,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "CA",
+                        name: "Canada",
+                        value: 96,
+                        circleTemplate: { fill: colors.getIndex(4) }
+                    },
+                    {
+
+                        id: "CL",
+                        name: "Chile",
+                        value: 17,
+                        circleTemplate: { fill: colors.getIndex(3) }
+                    },
+                    {
+
+                        id: "CN",
+                        name: "China",
+                        value: 505,
+                        circleTemplate: { fill: colors.getIndex(0) }
+                    },
+                    {
+
+                        id: "CO",
+                        name: "Colombia",
+                        value: 9,
+                        circleTemplate: { fill: colors.getIndex(3) }
+                    },
+                    {
+
+                        id: "CY",
+                        name: "Cyprus",
+                        value: 1,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "DK",
+                        name: "Denmark",
+                        value: 105,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "EE",
+                        name: "Estonia",
+                        value: 13,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "FI",
+                        name: "Finland",
+                        value: 65,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "FR",
+                        name: "France",
+                        value: 228,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "GE",
+                        name: "Georgia",
+                        value: 3,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "DE",
+                        name: "Germany",
+                        value: 457,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+                        "index": 16,
+                        id: "GR",
+                        name: "Greece",
+                        value: 35,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "HU",
+                        name: "Hungary",
+                        value: 47,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "IS",
+                        name: "Iceland",
+                        value: 7,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "IN",
+                        name: "India",
+                        value: 49,
+                        circleTemplate: { fill: colors.getIndex(0) }
+                    },
+                    {
+                        id: "IE",
+                        name: "Ireland",
+                        value: 24,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "IT",
+                        name: "Italy",
+                        value: 174,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "JP",
+                        name: "Japan",
+                        value: 115,
+                        circleTemplate: { fill: colors.getIndex(0) }
+                    },
+                    {
+
+                        id: "KZ",
+                        name: "Kazakhstan",
+                        value: 6,
+                        circleTemplate: { fill: colors.getIndex(0) }
+                    },
+                    {
+
+                        id: "LV",
+                        name: "Latvia",
+                        value: 9,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "LT",
+                        name: "Lithuania",
+                        value: 10,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "LU",
+                        name: "Luxembourg",
+                        value: 14,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "MY",
+                        name: "Malaysia",
+                        value: 50,
+                        circleTemplate: { fill: colors.getIndex(0) }
+                    },
+                    {
+
+                        id: "MX",
+                        name: "Mexico",
+                        value: 55,
+                        circleTemplate: { fill: colors.getIndex(4) }
+                    },
+                    {
+
+                        id: "NL",
+                        name: "Netherlands",
+                        value: 135,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "NZ",
+                        name: "New Zealand",
+                        value: 11,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "NO",
+                        name: "Norway",
+                        value: 125,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "PE",
+                        name: "Peru",
+                        value: 15,
+                        circleTemplate: { fill: colors.getIndex(3) }
+                    },
+                    {
+
+                        id: "PH",
+                        name: "Philippines",
+                        value: 41,
+                        circleTemplate: { fill: colors.getIndex(0) }
+                    },
+                    {
+
+                        id: "PL",
+                        name: "Poland",
+                        value: 192,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "PT",
+                        name: "Portugal",
+                        value: 29,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "RO",
+                        name: "Romania",
+                        value: 57,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+                        id: "RU",
+                        name: "Russia",
+                        value: 155,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "RS",
+                        name: "Serbia",
+                        value: 15,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "SG",
+                        name: "Singapore",
+                        value: 13,
+                        circleTemplate: { fill: colors.getIndex(0) }
+                    },
+                    {
+                        id: "SI",
+                        name: "Slovenia",
+                        value: 13,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+                        id: "ZA",
+                        name: "South Africa",
+                        value: 27,
+                        circleTemplate: { fill: colors.getIndex(2) }
+                    },
+                    {
+
+                        id: "ES",
+                        name: "Spain",
+                        value: 166,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+                        id: "SE",
+                        name: "Sweden",
+                        value: 168,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "CH",
+                        name: "Switzerland",
+                        value: 98,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+                        id: "TW",
+                        name: "Taiwan",
+                        value: 13,
+                        circleTemplate: { fill: colors.getIndex(0) }
+                    },
+                    {
+
+                        id: "TR",
+                        name: "Turkey",
+                        value: 59,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+                        id: "UA",
+                        name: "Ukraine",
+                        value: 5,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+
+                        id: "GB",
+                        name: "United Kingdom",
+                        value: 289,
+                        circleTemplate: { fill: colors.getIndex(8) }
+                    },
+                    {
+                        id: "US",
+                        name: "United States",
+                        value: 582,
+                        circleTemplate: { fill: colors.getIndex(4) }
+                    },
+                    {
+
+                        id: "UY",
+                        name: "Uruguay",
+                        value: 3,
+                        circleTemplate: { fill: colors.getIndex(3) }
+                    },
+                    {
+                        id: "VN",
+                        name: "Vietnam",
+                        value: 9,
+                        circleTemplate: { fill: colors.getIndex(0) }
+                    }
+
+                ]);
+
+                // Add globe/map switch
+                var cont = chart.children.push(am5.Container.new(root, {
+                    layout: root.horizontalLayout,
+                    x: 20,
+                    y: 40
+                }));
+
+                cont.children.push(am5.Label.new(root, {
+                    centerY: am5.p50,
+                    text: "Map"
+                }));
+
+                var switchButton = cont.children.push(
+                    am5.Button.new(root, {
+                        themeTags: ["switch"],
+                        centerY: am5.p50,
+                        icon: am5.Circle.new(root, {
+                            themeTags: ["icon"]
+                        })
+                    })
+                );
+
+                switchButton.on("active", function () {
+                    if (!switchButton.get("active")) {
+                        chart.set("projection", am5map.geoMercator());
+                        backgroundSeries.mapPolygons.template.set("fillOpacity", 0);
+                    } else {
+                        chart.set("projection", am5map.geoOrthographic());
+                        backgroundSeries.mapPolygons.template.set("fillOpacity", 0.1);
+                    }
+                });
+
+                cont.children.push(
+                    am5.Label.new(root, {
+                        centerY: am5.p50,
+                        text: "Globe"
+                    })
+                );
+
+                // Make stuff animate on load
+                chart.appear(1000, 100);
+            })
+        }
+
+        chart_map();
+
 
     </script>
 
