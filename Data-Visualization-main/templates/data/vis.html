@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts.CSS Tests Page</title>
+    <link href="{{ url_for('static', filename='/styles/style.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+    <style>
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 150px;
+        }
+
+        body,
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Raleway", sans-serif
+        }
+
+        h6 {
+            text-align: center;
+            text-decoration: underline;
+            margin: 1.5rem auto;
+        }
+
+        /* 
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-top: 10rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        } */
+
+        p {
+            text-align: center;
+        }
+
+        code {
+            background-color: #ffecef;
+            padding: 5px;
+        }
+
+        .stacked td {
+            --color-1: rgba(0, 200, 100, 0.5);
+            --color-2: rgba(255, 150, 0, 0.5);
+            --color-3: rgba(255, 50, 50, 0.5);
+        }
+
+        .w3-third img {
+            margin-bottom: -6px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+        .w3-third img:hover {
+            opacity: 1
+        }
+
+        #A ul li {
+            display: inline;
+        }
+
+        .main-menu {
+            color: #211e1e;
+            background-color: #cc071e;
+            font-size: 50px;
+            text-align: center;
+            padding: 5px;
+            margin: 0px;
+            cursor: pointer;
+            width: 980px;
+            display: inline-block;
+        }
+
+        /* 主選單的樣式 */
+        .main-menu:hover {
+            background-color: #ffffff;
+        }
+
+        .sub-menu {
+            color: #0000FF;
+            background-color: #CCCCCC;
+            margin: 5px -5px;
+            padding: 0px;
+            list-style-type: none;
+            position: absolute;
+        }
+
+        /* 下拉清單的樣式 */
+        .sub-menu li {
+            padding: 3px 5px;
+            text-align: left;
+        }
+
+        /* 下拉清單每一列的樣式 */
+        .sub-menu li:hover {
+            color: #FFFFFF;
+            /*background-color: #0000FF;*/
+        }
+
+        .sub-menu a {
+            text-align: center;
+            font-size: 15px;
+            display: block;
+            text-decoration: none;
+            width: 970px;
+            /*color: #0000FF;*/
+        }
+
+        .sub-menu a:hover {
+            color: #FFFFFF;
+            /*background-color: #0000FF;*/
+            text-decoration: none;
+            font-size: 15px;
+        }
+    </style>
+
+</head>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
+        style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+        <!--<h3 class="w3-padding-64 w3-center"><b>H&M<br>Recommendation</b></h3>-->
+        <br>
+        <br>
+        <img src="./static/H&M.png" width="165px">
+        <br>
+        <br>
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()"
+            class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+        <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">MAIN</a>
+        <br>
+        <a href="{{url_for('recommend')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
+        <br>
+        <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+        <br>
+        <a href="{{url_for('us')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
+    </nav>
+
+
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px">
+
+        <!-- Push down content on small screens -->
+        <div class="w3-hide-large" style="margin-top:83px"></div>
+
+        <div>
+            <!--選單1 (Hover)-->
+            <span class="main-menu" onmouseover="switchMenu( this, 'SubMenu1', 'MouseOver' )"
+                onmouseout="hideMenu()">Menu1(Hover)
+                <span style="font-size:50px;"></span>
+                <ul id="SubMenu1" class="sub-menu" style="display:none;">
+                    <li><a href="http://www.vixual.net/" target="_blank">Vixual</a></li>
+                    <li><a href="http://www.google.com.tw/" target="_blank">Google</a></li>
+                    <li><a href="http://tw.yahoo.com/" target="_blank">Yahoo!奇摩</a></li>
+                </ul>
+            </span>
+        </div>
+
+
+
+
+
+</body>
+<script>
+    // Script to open and close sidebar
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+
+    // Modal Image Gallery
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal01").style.display = "block";
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = element.alt;
+    }
+
+</script>
+<script>
+    var VisibleMenu = ''; // 記錄目前顯示的子選單的 ID
+
+    // 顯示或隱藏子選單
+    function switchMenu(theMainMenu, theSubMenu, theEvent) {
+        var SubMenu = document.getElementById(theSubMenu);
+        if (SubMenu.style.display == 'none') { // 顯示子選單
+            SubMenu.style.minWidth = theMainMenu.clientWidth; // 讓子選單的最小寬度與主選單相同 (僅為了美觀)
+            SubMenu.style.display = 'block';
+            hideMenu(); // 隱藏子選單
+            VisibleMenu = theSubMenu;
+        }
+        else { // 隱藏子選單
+            if (theEvent != 'MouseOver' || VisibleMenu != theSubMenu) {
+                SubMenu.style.display = 'none';
+                VisibleMenu = '';
+            }
+        }
+    }
+
+    // 隱藏子選單
+    function hideMenu() {
+        if (VisibleMenu != '') {
+            document.getElementById(VisibleMenu).style.display = 'none';
+        }
+        VisibleMenu = '';
+    }
+</script>
+
+</html>
