@@ -1,46 +1,20 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Visualization</title>
+    <title>Charts.CSS Tests Page</title>
     <link href="{{ url_for('static', filename='/styles/style.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <script src="//cdn.amcharts.com/lib/4/core.js"></script>
-    <script src="//cdn.amcharts.com/lib/4/charts.js"></script>
-    <script src="//cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-                Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        }
-
-        #chartdiv {
-            width: 50%;
-            height: 250px;
-        }
-
-        #chartdiv2 {
-            width: 50%;
-            height: 250px;
-        }
-
-        /* .container {
+        .container {
             max-width: 900px;
             margin: 0 auto;
-
-        }  */
-        .container {}
+        }
 
         .examples {
             display: grid;
@@ -64,6 +38,23 @@
             margin: 1.5rem auto;
         }
 
+        /* 
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-top: 10rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        } */
 
         p {
             text-align: center;
@@ -89,8 +80,65 @@
         .w3-third img:hover {
             opacity: 1
         }
-    </style>
 
+        #A ul li {
+            display: inline;
+        }
+
+        .main-menu {
+            color: #211e1e;
+            background-color: #cc071e;
+            font-size: 50px;
+            text-align: center;
+            padding: 5px;
+            margin: 0px;
+            cursor: pointer;
+            width: 980px;
+            display: inline-block;
+        }
+
+        /* 主選單的樣式 */
+        .main-menu:hover {
+            background-color: #ffffff;
+        }
+
+        .sub-menu {
+            color: #0000FF;
+            background-color: #CCCCCC;
+            margin: 5px -5px;
+            padding: 0px;
+            list-style-type: none;
+            position: absolute;
+        }
+
+        /* 下拉清單的樣式 */
+        .sub-menu li {
+            padding: 3px 5px;
+            text-align: left;
+        }
+
+        /* 下拉清單每一列的樣式 */
+        .sub-menu li:hover {
+            color: #FFFFFF;
+            /*background-color: #0000FF;*/
+        }
+
+        .sub-menu a {
+            text-align: center;
+            font-size: 15px;
+            display: block;
+            text-decoration: none;
+            width: 970px;
+            /*color: #0000FF;*/
+        }
+
+        .sub-menu a:hover {
+            color: #FFFFFF;
+            /*background-color: #0000FF;*/
+            text-decoration: none;
+            font-size: 15px;
+        }
+    </style>
 
 </head>
 
@@ -99,21 +147,25 @@
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
         style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-        <h3 class="w3-padding-64 w3-center"><b>H&M<br>Recommendation</b></h3>
+        <!--<h3 class="w3-padding-64 w3-center"><b>H&M<br>Recommendation</b></h3>-->
+        <br>
+        <br>
+        <img src="./static/H&M.png" width="165px">
+        <br>
+        <br>
+        <br>
         <a href="javascript:void(0)" onclick="w3_close()"
             class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
-        <a href="{{url_for('main_page')}}" onclick="w3_close()" class="w3-bar-item w3-button">MAIN</a>
-        <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+        <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">MAIN</a>
+        <br>
         <a href="{{url_for('recommend')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
-        <a href="{{url_for('recommend')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
-        <a href="{{url_for('recommend')}}#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+        <br>
+        <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+        <br>
+        <a href="{{url_for('us')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
     </nav>
 
-    <!-- Top menu on small screens -->
-    <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-        <span class="w3-left w3-padding">H&M Recommendation</span>
-        <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
-    </header>
+
 
     <!-- Overlay effect when opening sidebar on small screens -->
     <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
@@ -124,528 +176,73 @@
 
         <!-- Push down content on small screens -->
         <div class="w3-hide-large" style="margin-top:83px"></div>
-        <!-- 4/10新增許多plot圖的輸出,4/11 Restful -->
-        <form action="/vis" id="json_form">
-            <b>Pie Chart</b>
 
-            <!-- /vis?pie=garment_group_name&bar=index_category -->
-            <select class="w3-bar-item" style="width:20%" name="pie" form="json_form">
-                <option value="garment_group_name">garment_group_name</option>
-                <option value="perceived_colour_value_name">perceived_colour_value_name</option>
-            </select>
-            <b>Bar Chart</b>
-            <select class="w3-bar-item" style="width:20%" name="bar" form="json_form">
-                <option value="index_category">index_category</option>
-                <option value="index_color">index_color</option>
-            </select>
-            <button type='submit'>Show</button>
-        </form>
-
-        <!-- <button onclick="chart_pie({{jsfile}});chart_bar();chart_timeseries();chart_bubble()">Show</button> -->
-        <!-- plot圖id名稱 -->
-
-        <!-- <div id="chartdiv"></div>
-        <div id="chartdiv2"></div> -->
-
-        <div class="container">
-
-            <div class="row">
-                <div class="col">
-                    <h2>Total Articles</h2>
-                    <h1> 106k</h1>
-                </div>
-                <div class="col">
-                    <h2>Total Transactions </h2>
-                    <h1> 31.8m</h1>
-
-                </div>
-                <div class="col">
-                    <h2>Total Customer</h2>
-                    <h1> 13.7m </h1>
-                </div>
-            </div>
-
-            <div class="row">
-                <!-- <div class=".col-12 .col-lg-8" id="chartdiv4"> -->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-3" id="chartdiv">
-                </div>
-                <div class="col-3" id="chartdiv2">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12" id="chartdiv3">
-                </div>
-
-            </div>
-
+        <div>
+            <!--選單1 (Hover)-->
+            <span class="main-menu" onmouseover="switchMenu( this, 'SubMenu1', 'MouseOver' )"
+                onmouseout="hideMenu()">Menu1(Hover)
+                <span style="font-size:50px;"></span>
+                <ul id="SubMenu1" class="sub-menu" style="display:none;">
+                    <li><a href="http://www.vixual.net/" target="_blank">Vixual</a></li>
+                    <li><a href="http://www.google.com.tw/" target="_blank">Google</a></li>
+                    <li><a href="http://tw.yahoo.com/" target="_blank">Yahoo!奇摩</a></li>
+                </ul>
+            </span>
         </div>
 
-        <!-- End page content -->
 
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script>
 
-        // Script to open and close sidebar
-        function w3_open() {
-            document.getElementById("mySidebar").style.display = "block";
-            document.getElementById("myOverlay").style.display = "block";
-        }
 
-        function w3_close() {
-            document.getElementById("mySidebar").style.display = "none";
-            document.getElementById("myOverlay").style.display = "none";
-        }
-
-        // Modal Image Gallery
-        function onClick(element) {
-            document.getElementById("img01").src = element.src;
-            document.getElementById("modal01").style.display = "block";
-            var captionText = document.getElementById("caption");
-            captionText.innerHTML = element.alt;
-        }
-
-        // function chart_pie(file) {
-
-        am4core.useTheme(am4themes_animated);
-        var chart = am4core.create("chartdiv", am4charts.PieChart);
-
-
-        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-        // chart.data = file
-        chart.dataSource.url = "/data_pie?pie={{args[0]}}";
-
-        // 設定圓的角度 設定圓的columns  設定圓的半徑大
-        chart.radius = am4core.percent(70);
-        chart.innerRadius = am4core.percent(40);
-        chart.startAngle = 0;
-        chart.endAngle = 360;
-
-
-        var series = chart.series.push(new am4charts.PieSeries());
-        series.dataFields.value = "count";
-        series.dataFields.category = "column";
-
-        series.slices.template.cornerRadius = 10;
-        series.slices.template.innerCornerRadius = 7;
-        series.slices.template.draggable = false;
-        series.slices.template.inert = false;
-
-        series.hiddenState.properties.startAngle = 90;
-        series.hiddenState.properties.endAngle = 90;
-        //標示總數
-        // chart.legend = new am4charts.Legend();
-
-        //OK }
-        // function chart_bar(file) {
-        // Create root element
-        var root = am5.Root.new("chartdiv2");
-        root.setThemes([
-            am5themes_Animated.new(root)
-        ]);
-        // Create chart
-        var chart = root.container.children.push(am5xy.XYChart.new(root, {
-            panX: false,
-            panY: false,
-            wheelX: "panX",
-            wheelY: "zoomX",
-            layout: root.verticalLayout
-        }));
-
-
-        // This is a test!
-        if ('{{args[1]}}' == 'index_category') {
-            data = [
-                {
-                    "index": "women",
-                    "Pant": 0.3,
-                    "Cloth": 0.1,
-                    "Others": 0.6
-                },
-                {
-                    "index": "Baby\/Children",
-                    "Pant": 0.6,
-                    "Cloth": 0.3,
-                    "Others": 0.1
-                },
-                {
-                    "index": "Divided",
-                    "Pant": 0.8,
-                    "Cloth": 0.1,
-                    "Others": 0.1
-                }
-            ]
-
-            // result = am5.net.load(url);
-            // // result.target.series.each(function (series) {
-            // //         xAxis.data.setAll(data)
-            // //         series.data.setAll(data);
-            // //         console.log("data=" + result.response);
-            // //     });
-            // data = am5.JSONParser.parse(result.response);
-            // data = result.response;
-        } else if ('{{args[1]}}' == 'index_color') {
-
-            data = [
-                {
-                    "index": "Men",
-                    "Black": 0.2,
-                    "White": 0.1,
-                    "Yello": 0.15
-                },
-                {
-                    "index": "Women",
-                    "Black": 0.5,
-                    "White": 0.3,
-                    "Yello": 0.3
-                }
-            ]
-        } else {
-
-            data = [
-                {
-                    "index": "women",
-                    "Pant": 0.3,
-                    "Cloth": 0.1,
-                    "Others": 0.6
-                },
-                {
-                    "index": "Baby\/Children",
-                    "Pant": 0.6,
-                    "Cloth": 0.3,
-                    "Others": 0.1
-                },
-                {
-                    "index": "Divided",
-                    "Pant": 0.8,
-                    "Cloth": 0.1,
-                    "Others": 0.1
-                }
-            ]
-        }
-
-        // // var data = files
-        // function dataLoaded(result) {
-        //     // Set data on all series of the chart
-        //     var data = am5.JSONParser.parse(result.response);
-        //     console.log("loading " + result.xhr.responseURL);
-
-        //     // set data
-        //     result.target.series.each(function (series) {
-        //         xAxis.data.setAll(data)
-        //         series.data.setAll(data);
-        //         console.log("data=" + result.response);
-        //     });
-        // }
-        // // http://127.0.0.1:5000//data_bar?bar=index_category
-        // url = '/data_bar?bar={{args[1]}}';
-        // am5.net.load(url, chart).then(dataLoaded);
-
-
-
-        // Create axes
-        var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-            categoryField: "index",
-            renderer: am5xy.AxisRendererX.new(root, {}),
-            tooltip: am5.Tooltip.new(root, {})
-        }));
-
-        var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-            min: 0,
-            max: 100,
-            numberFormat: "#'%'",
-            strictMinMax: true,
-            calculateTotals: true,
-            renderer: am5xy.AxisRendererY.new(root, {})
-        }));
-
-
-        // Add legend
-        // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-        var legend = chart.children.push(am5.Legend.new(root, {
-            centerX: am5.p50,
-            x: am5.p50
-        }));
-
-
-        // Add series
-        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-        function makeSeries(name, fieldName) {
-            var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-                name: name,
-                stacked: true,
-                xAxis: xAxis,
-                yAxis: yAxis,
-                valueYField: fieldName,
-                valueYShow: "valueYTotalPercent",
-                categoryXField: "index"
-            }));
-
-            series.columns.template.setAll({
-                tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
-                tooltipY: am5.percent(10)
-            });
-
-
-
-
-            xAxis.data.setAll(data);
-            series.data.setAll(data);
-
-            // am5.net.load("/data/mydata.json").then(function (result) {
-            //     // This gets executed when data finishes loading
-            //     series.data.setAll(am5.JSONParser.parse(result.response));
-            // }).catch(function (result) {
-            //     // This gets executed if there was an error loading URL
-            //     // ... handle error
-            //     console.log("Error loading " + result.xhr.responseURL);
-            // });
-
-            // Make stuff animate on load
-            // https://www.amcharts.com/docs/v5/concepts/animations/
-            series.appear();
-
-
-            series.bullets.push(function () {
-                return am5.Bullet.new(root, {
-                    sprite: am5.Label.new(root, {
-                        text: "{valueYTotalPercent.formatNumber('#.#')}%",
-                        fill: root.interfaceColors.get("alternativeText"),
-                        centerY: am5.p50,
-                        centerX: am5.p50,
-                        populateText: true
-                    })
-                });
-            });
-
-            legend.data.push(series);
-        }
-        //makeSeries(name, fieldName)
-        if ('{{args[1]}}' == 'index_category') {
-            makeSeries("Pant", "Pant");
-            makeSeries("Cloth", "Cloth");
-            makeSeries("Others", "Others");
-        } else if ('{{args[1]}}' == 'index_color') {
-            makeSeries("Black", "Black");
-            makeSeries("White", "White");
-            makeSeries("Yello", "Yello");
-        }
-        else {
-            makeSeries("Pant", "Pant");
-            makeSeries("Cloth", "Cloth");
-            makeSeries("Others", "Others");
-        }
-
-        chart.appear(1000, 100);
-        // end am5.ready()
-
-        // }
-
-        //  chart timelines
-        // chart.legend = new am4charts.Legend();
-        chart.cursor = new am4charts.XYCursor();
-        // }
-
-        var chart = am4core.create("chartdiv3", am4charts.XYChart);
-
-        // Add data
-        chart.data = [{
-            "date": new Date(2018, 0, 1),
-            "value": 450,
-            "value2": 162,
-            "value3": 1100
-        }, {
-            "date": new Date(2018, 0, 2),
-            "value": 669,
-            "value3": 841
-        }, {
-            "date": new Date(2018, 0, 3),
-            "value": 1200,
-            "value3": 199
-        }, {
-            "date": new Date(2018, 0, 4),
-            "value2": 867
-        }, {
-            "date": new Date(2018, 0, 5),
-            "value2": 185,
-            "value3": 669
-        }, {
-            "date": new Date(2018, 0, 6),
-            "value": 150
-        }, {
-            "date": new Date(2018, 0, 7),
-            "value": 1220,
-            "value2": 350,
-            "value3": 600
-        }];
-
-        // Create axes
-        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-        dateAxis.renderer.grid.template.location = 0;
-        dateAxis.renderer.minGridDistance = 30;
-
-        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-
-        // Create series
-        function createSeries(field, name) {
-            var series = chart.series.push(new am4charts.LineSeries());
-            series.dataFields.valueY = field;
-            series.dataFields.dateX = "date";
-            series.name = name;
-            series.tooltipText = "{dateX}: [b]{valueY}[/]";
-            series.strokeWidth = 2;
-
-            series.smoothing = "monotoneX";
-
-            var bullet = series.bullets.push(new am4charts.CircleBullet());
-            bullet.circle.stroke = am4core.color("#fff");
-            bullet.circle.strokeWidth = 2;
-
-            return series;
-        }
-
-        createSeries("value", "Totol Income");
-        createSeries("value2", "Series #2");
-
-
-        // function chart_bubble() {
-        am4core.useTheme(am4themes_animated);
-        // am4core.useTheme(am4themes_dark);
-
-        var chart = am4core.create("chartdiv4", am4charts.XYChart);
-        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-
-        var valueAxisX = chart.xAxes.push(new am4charts.ValueAxis());
-        var valueAxisY = chart.yAxes.push(new am4charts.ValueAxis());
-
-        var series = chart.series.push(new am4charts.LineSeries());
-        series.dataFields.valueX = "x";
-        series.dataFields.valueY = "y";
-        series.dataFields.value = "value";
-        series.strokeOpacity = 0;
-        series.sequencedInterpolation = true;
-
-        var bullet = series.bullets.push(new am4core.Circle());
-        bullet.fill = am4core.color("#ff0000");
-        bullet.propertyFields.fill = "color";
-        bullet.strokeOpacity = 0;
-        bullet.radius = 5;
-        bullet.strokeWidth = 2;
-        bullet.fillOpacity = 0.7;
-        bullet.stroke = am4core.color("#ffffff");
-
-        bullet.tooltipText = "[bold]{title}:[/]\nPopulation: {value.value}\nIncome: {valueX.value}\nLife expectancy:{valueY.value}";
-
-        var hoverState = bullet.states.create("hover");
-        hoverState.properties.fillOpacity = 1;
-        hoverState.properties.strokeOpacity = 1;
-
-        series.heatRules.push({ target: bullet, min: 2, max: 60, property: "radius" });
-
-        bullet.adapter.add("tooltipY", function (tooltipY, target) {
-            return -target.radius;
-        })
-
-        chart.cursor = new am4charts.XYCursor();
-        chart.cursor.behavior = "zoomXY";
-
-        chart.scrollbarX = new am4core.Scrollbar();
-        chart.scrollbarY = new am4core.Scrollbar();
-
-        chart.data = [
-            {
-                "title": "Afghanistan",
-                "id": "AF",
-                "color": "#eea638",
-                "continent": "asia",
-                "x": 1349.69694102398,
-                "y": 60.524,
-                "value": 33397058
-            },
-            {
-                "title": "Albania",
-                "id": "AL",
-                "color": "#d8854f",
-                "continent": "europe",
-                "x": 6969.30628256456,
-                "y": 77.185,
-                "value": 3227373
-            },
-            {
-                "title": "Algeria",
-                "id": "DZ",
-                "color": "#de4c4f",
-                "continent": "africa",
-                "x": 6419.12782939372,
-                "y": 70.874,
-                "value": 36485828
-            },
-            {
-                "title": "Angola",
-                "id": "AO",
-                "color": "#de4c4f",
-                "continent": "africa",
-                "x": 5838.15537582502,
-                "y": 51.498,
-                "value": 20162517
-            },
-            {
-                "title": "Argentina",
-                "id": "AR",
-                "color": "#86a965",
-                "continent": "south_america",
-                "x": 15714.1031814398,
-                "y": 76.128,
-                "value": 41118986
-            },
-            {
-                "title": "Armenia",
-                "id": "AM",
-                "color": "#d8854f",
-                "continent": "europe",
-                "x": 5059.0879636443,
-                "y": 74.469,
-                "value": 3108972
-            }, ,
-            {
-                "title": "Zambia",
-                "id": "ZM",
-                "color": "#de4c4f",
-                "continent": "africa",
-                "x": 1550.92385858124,
-                "y": 57.037,
-                "value": 13883577
-            },
-            {
-                "title": "Zimbabwe",
-                "id": "ZW",
-                "color": "#de4c4f",
-                "continent": "africa",
-                "x": 545.344601005788,
-                "y": 58.142,
-                "value": 13013678
-            }
-        ];
-        // }
-
-    </script>
 
 </body>
+<script>
+    // Script to open and close sidebar
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+
+    // Modal Image Gallery
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal01").style.display = "block";
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = element.alt;
+    }
+
+</script>
+<script>
+    var VisibleMenu = ''; // 記錄目前顯示的子選單的 ID
+
+    // 顯示或隱藏子選單
+    function switchMenu(theMainMenu, theSubMenu, theEvent) {
+        var SubMenu = document.getElementById(theSubMenu);
+        if (SubMenu.style.display == 'none') { // 顯示子選單
+            SubMenu.style.minWidth = theMainMenu.clientWidth; // 讓子選單的最小寬度與主選單相同 (僅為了美觀)
+            SubMenu.style.display = 'block';
+            hideMenu(); // 隱藏子選單
+            VisibleMenu = theSubMenu;
+        }
+        else { // 隱藏子選單
+            if (theEvent != 'MouseOver' || VisibleMenu != theSubMenu) {
+                SubMenu.style.display = 'none';
+                VisibleMenu = '';
+            }
+        }
+    }
+
+    // 隱藏子選單
+    function hideMenu() {
+        if (VisibleMenu != '') {
+            document.getElementById(VisibleMenu).style.display = 'none';
+        }
+        VisibleMenu = '';
+    }
+</script>
 
 </html>

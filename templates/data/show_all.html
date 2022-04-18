@@ -7,9 +7,93 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
    <style>
+      .slider_container div {
+         position: absolute;
+         top: 5px;
+         left: 5px;
+         opacity: 0;
+         filter: alpha(opacity=0);
+      }
+
+      .slider_container div {
+         -webkit-animation: round 15s linear infinite;
+         animation: round 15s linear infinite;
+      }
+
+
+      @-webkit-keyframes round {
+         4% {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            /* 0 - 1秒 淡入*/
+         }
+
+         20% {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            /* 1- 5秒靜止*/
+         }
+
+         24% {
+            opacity: 0;
+            filter: alpha(opacity=0);
+            /* 5-6秒淡出*/
+         }
+      }
+
+      @keyframes round {
+         4% {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            /* 0 - 1秒 淡入*/
+         }
+
+         20% {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            /* 1- 5秒靜止*/
+         }
+
+         24% {
+            opacity: 0;
+            filter: alpha(opacity=0);
+            /* 5-6秒淡出*/
+         }
+      }
+
+      .slider_container div:nth-child(5) {
+         -webkit-animation-delay: 0s;
+         animation-delay: 0s;
+      }
+
+      .slider_container div:nth-child(4) {
+         -webkit-animation-delay: 3s;
+         animation-delay: 3s;
+      }
+
+      .slider_container div:nth-child(3) {
+         -webkit-animation-delay: 6s;
+         animation-delay: 6s;
+      }
+
+      .slider_container div:nth-child(2) {
+         -webkit-animation-delay: 9s;
+         animation-delay: 9s;
+      }
+
+      .slider_container div:nth-child(1) {
+         -webkit-animation-delay: 12s;
+         animation-delay: 12s;
+      }
+
       body,
       h1,
       h2,
@@ -28,6 +112,104 @@
       .w3-third img:hover {
          opacity: 1
       }
+
+      #XDD {
+         /*loat: left;*/
+         width: 20px;
+         height: 35px;
+      }
+
+      #QAQ {
+         background:#ffffff;
+         height: 600px;
+      }
+
+      #QAQ1 {
+         background:#ffffff;
+         height: 1240px;
+      }
+
+
+      #QAQ2 {
+         background:#ffffff;
+         max-width: 1600px;
+      }
+
+      .QAQ3 {
+         background:#ffffff;
+      }
+
+      #QAQ4 {
+         background: #cc071e;
+         height: 100px;
+      }
+      #QAQ5 {
+
+      /*background: #cc071e;*/
+      width: 760px;
+      height: 510px;
+      position: absolute;
+      top: 10%;
+      left: 33%;
+      /*box-shadow:0 0 10px 5px #cc071e;*/
+      }
+
+      #QAQ6 {
+      /*background: #cc071e;*/
+      width: 270px;
+      height: 400px;
+      position: relative;
+      top: 3%;
+      left: 4%;
+      }
+      #QAQ7 {
+      /*background: #cc071e;*/
+      width: 270px;
+      height: 400px;
+      position: relative;
+      top: -29%;
+      left: 36.5%;
+      }
+      #QAQ8 {
+      /*background: #cc071e;*/
+      width: 270px;
+      height: 400px;
+      position: relative;
+      top: -61.5%;
+      left: 68.5%;
+      }
+      #QAQ9 {
+      background: #cc071e;
+      width: 390px;
+      height: 340px;
+      position: relative;
+      top: -63%;
+      left: 4%;
+      }
+      #QAQ9-1 {
+      /*background: #cc071e;*/
+      width: 460px;
+      height: 340px;
+      position: relative;
+      top: 0%;
+      left: 111.5%;
+      }
+      #QAQ10 {
+      background: #cc071e;
+      width: 390px;
+      height: 340px;
+      position: relative;
+      top: -56%;
+      left: 540px;
+      }
+      #QAQ10-1 {
+      /*background: #cc071e;*/
+      width: 460px;
+      height: 340px;
+      position: relative;
+      top: 0px;
+      left: -500px;
+      }
    </style>
 </head>
 
@@ -36,87 +218,328 @@
 
    <!-- Sidebar/menu -->
    <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
-      style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-      <h3 class="w3-padding-64 w3-center"><b>H&M<br>Recommendation</b></h3>
-      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+      style="display:none;z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+      <!--<h3 class="w3-padding-64 w3-center"><b>H&M<br>Recommendation</b></h3>-->
+      <br>
+      <br>
+      <img src="./static/H&M.png" width="165px">
+      <br>
+      <br>
+      <br>
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-hide-large">CLOSE Menu</a>
       <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">MAIN</a>
-      <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+      <br>
       <a href="{{url_for('recommend')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
+      <br>
+      <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+      <br>
       <a href="{{url_for('us')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
-      <a href="{{url_for('us')}}#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
    </nav>
-   <!-- Top menu on small screens -->
-   <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-      <span class="w3-left w3-padding">H&M Recommendation</span>
-      <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
-   </header>
-
-   <!-- Overlay effect when opening sidebar on small screens -->
-   <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
-      title="close side menu" id="myOverlay"></div>
 
    <!-- !PAGE CONTENT! -->
    <div class="w3-main" style="margin-left:300px">
 
-      <!-- Push down content on small screens -->
-      <div class="w3-hide-large" style="margin-top:83px"></div>
+      <div id="QAQ">
+         <div id="QAQ5">
+               <div class="slider_container">
+                  <div>
+                     <img src="./static/hmgoepprod.jpg" width="750px" height="500px" alt="pure css3 slider" />
+                     <!--<span class="info">Image Description 1</span>-->
+                  </div>
+                  <div>
+                     <img src="./static/hmgoepprod (1).jpg" width="750px" height="500px" alt="pure css3 slider" />
+                     <!--<span class="info">Image Description 2</span>-->
+                  </div>
+                  <div>
+                     <img src="./static/hmgoepprod (2).jpg" width="750px" height="500px" alt="pure css3 slider" />
+                     <!--<span class="info">Image Description 2</span>-->
+                  </div>
+                  <div>
+                     <img src="./static/hmgoepprod (3).jpg" width="750px" height="500px" alt="pure css3 slider" />
+                     <!--<span class="info">Image Description 2</span>-->
+                  </div>
+                  <div>
+                     <img src="./static/hmgoepprod(4).jpg" width="750px" height="500px" alt="pure css3 slider" />
+                     <!--<span class="info">Image Description 2</span>-->
+                  </div>
+               </div>
+         </div>
+      </div>
+
+      <div id="QAQ1">
+         <div id="QAQ6">
+            <img src="./static/clothes-hanger.png" width="120" alt="1">
+            <h2>111111111111111111111
+               <br>111111111111111111111
+               <br>111111111111111111111
+               <br>111111111111111111111
+               <br>111111111111111111111
+            </h2>
+         </div>
+         <div id="QAQ7">
+            <img src="./static/tshirt.png" width="120" alt="2">
+            <h2>22222222222222222
+               <br>22222222222222222
+               <br>22222222222222222
+               <br>22222222222222222
+               <br>22222222222222222
+            </h2>
+         </div>
+         <div id="QAQ8">
+            <img src="./static/dress.png" width="120" alt="3">
+            <h2>33333333333333333
+               <br>33333333333333333
+               <br>33333333333333333
+               <br>33333333333333333
+               <br>33333333333333333
+            </h2>
+         </div>
+         <div id="QAQ9">
+            <div id="QAQ9-1">
+            <h2>4444444444444444444444444444
+               <br>4444444444444444444444444444
+               <br>4444444444444444444444444444
+               <br>4444444444444444444444444444
+               <br>4444444444444444444444444444
+               <br>4444444444444444444444444444
+               <br>4444444444444444444444444444
+            </h2>
+            </div>
+         </div>
+         <div id="QAQ10">
+            <div id="QAQ10-1">
+            <h2>5555555555555555555555555555
+               <br>5555555555555555555555555555
+               <br>5555555555555555555555555555
+               <br>5555555555555555555555555555
+               <br>5555555555555555555555555555
+               <br>5555555555555555555555555555
+               <br>5555555555555555555555555555
+            </h2>
+            </div>
+         </div>
+      </div>
 
       <!-- Create 創建客戶資料-->
-      <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
+      <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large QAQ3" id="contact">
          <div class="w3-content" style="max-width:1000px">
-            <h4 class="w3-center"><b>Customer Interface</b></h4>
+            <h1 class="w3-center"><b>Customer Interface</b></h1>
 
             {%- for message in get_flashed_messages() %}
             {{ message }}
             {%- endfor %}
 
 
-            <form action="{{ request.path }}" method="post" id="cus_form">
+            <form action="{{ url_for('recommend') }}" method="post" id="cus_form">
 
-
-               <div class="w3-container">
+               <div>
 
                   <div class="w3-bar w3-black">
 
-                     <label for="name" style="width:20% " class="w3-bar-item">Name</label></a>
-                     <label for="gender" style="width:20%" class="w3-bar-item">Gender</label></a>
-                     <label for="age" style="width:20%" class="w3-bar-item">Age</label></a>
-                     <label for="club" style="width:20%" class="w3-bar-item">Club</label></a>
-                     <label for="fashion" style="width:20%" class="w3-bar-item">Fashion</label><br>
+                     <label for="name" style="width:20% " class="w3-bar-item">Sales_channel_id</label></a>
+                     <label for="gender" style="width:20%" class="w3-bar-item">Product_group_name</label></a>
+                     <label for="age" style="width:20%" class="w3-bar-item">Graphical_appearance_name</label></a>
+                     <label for="club" style="width:20%" class="w3-bar-item">Colour_group_name</label></a>
+                     <label for="fashion" style="width:20%" class="w3-bar-item">Section_name</label><br>
 
-                     <input class="w3-bar-item" style="width:20%" type="text" name="name" placeholder="Name" /></a>
+                     <select class="w3-bar-item" style="width:20%" name="sales_channel_id" form="cus_form" required='required'>
+                        <option value="1">線上</option>
+                        <option value="2">實體</option>
+                     </select></a>
 
-
-                     <select class="w3-bar-item" style="width:20%" name="gender" form="cus_form" required='required'>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                     <select class="w3-bar-item" style="width:20%" name="product_group_name" form="cus_form" required='required'>
+                        <option value="Garment Upper body">Garment Upper body</option>
+                        <option value="Garment Lower body">Garment Lower body</option>
+                        <option value="Swimwear">Swimwear</option>
+                        <option value="Garment Full body">Garment Full body</option>
+                        <option value="Underwear">Underwear</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Socks & Tights">Socks & Tights</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Unknown">Unknown</option>
+                        <option value="Nightwear">Nightwear</option>
+                     
                      </select></a>
 
 
-                     <select class="w3-bar-item" style="width:20%" name="age" form="cus_form" required='required'>
-                        <option value="18~25">18~25</option>
-                        <option value="26~35">26~35</option>
-                        <option value="36~45">36~45</option>
+                     <select class="w3-bar-item" style="width:20%" name="graphical_appearance_name" form="cus_form" required='required'>
+                        <option value="Solid">Solid</option>
+                        <option value="All over pattern">All over pattern</option>
+                        <option value="Denim">Denim</option>
+                        <option value="Melange">Melange</option>
+                        <option value="Stripe">Stripe</option>
+                        <option value="Other structure">Other structure</option>
+                        <option value="Check">Check</option>
+                        <option value="Lace">Lace</option>
+                        <option value="Dot">Dot</option>
+                        <option value="Contrast">Contrast</option>
+                        <option value="Embroidery">Embroidery</option>
+                        <option value="Front print">Front print</option>
+                        <option value="Placement print">Placement print</option>
+                        <option value="Mixed solid/pattern">Mixed solid/pattern</option>
+                        <option value="Glittering/Metallic">Glittering/Metallic</option>
+                        <option value="Jacquard">Jacquard</option>
+                        <option value="Colour blocking">Colour blocking</option>
+                        <option value="Treatment">Treatment</option>
+                        <option value="Mesh">Mesh</option>
+                        <option value="Metallic">Metallic</option>
+                        <option value="Transparent">Transparent</option>
+                        <option value="Sequin">Sequin</option>
+                        <option value="Chambray">Chambray</option>
                      </select></a>
 
 
                      <!-- <input type="text" name="club" /><br> -->
-                     <select class="w3-bar-item" style="width:20%" name="club" form="cus_form" required='required'>
-                        <option value="Activate">Activate</option>
-                        <option value="None">None</option>
+                     <select class="w3-bar-item" style="width:20%" name="colour_group_name" form="cus_form" required='required'>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                        <option value="Dark Blue">Dark Blue</option>
+                        <option value="Light Beige">Light Beige</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Greenish Khaki">Greenish Khaki</option>
+                        <option value="Light Blue">Light Blue</option>
+                        <option value="Dark Green">Dark Green</option>
+                        <option value="Dark Grey">Dark Grey</option>
+                        <option value="Off White">Off White</option>
+                        <option value="Grey">Grey</option>
+                        <option value="Beige">Beige</option>
+                        <option value="Red">Red</option>
+                        <option value="Dark Red">Dark Red</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Yellowish Brown">Yellowish Brown</option>
+                        <option value="Dark Beige">Dark Beige</option>
+                        <option value="Light Orange">Light Orange</option>
+                        <option value="Light Pink">Light Pink</option>
+                        <option value="Dark Orange">Dark Orange</option>
+                        <option value="Pink">Pink</option>
+                        <option value="Light Grey">Light Grey</option>
+                        <option value="Green">Green</option>
+                        <option value="Light Yellow">Light Yellow</option>
+                        <option value="Greyish Beige">Greyish Beige</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Light Green">Light Green</option>
+                        <option value="Dark Yellow">Dark Yellow</option>
+                        <option value="Dark Pink">Dark Pink</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Other Pink">Other Pink</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Other Purple">Other Purple</option>
+                        <option value="Other Green">Other Green</option>
+                        <option value="Light Purple">Light Purple</option>
+                        <option value="Other Orange">Other Orange</option>
+                        <option value="Light Turquoise">Light Turquoise</option>
+                        <option value="Turquoise">Turquoise</option>
+                        <option value="Bronze/Copper">Bronze/Copper</option>
+                        <option value="Transparent">Transparent</option>
+                        <option value="Dark Turquoise">Dark Turquoise</option>
+                        <option value="Dark Purple">Dark Purple</option>
+                        <option value="Other">Other</option>
+
                      </select></a>
 
-                     <select class="w3-bar-item" style="width:20%" name="fnews" form="cus_form" required='required'>
-                        <option value="Frequency">Frequency</option>
-                        <option value="Sometimes">Sometimes</option>
-                        <option value="None">None</option>
+                     <select class="w3-bar-item" style="width:20%" name="section_name" form="cus_form" required='required'>
+                        <option value="Womens Everyday Collection">Womens Everyday Collection</option>
+                        <option value="Womens Swimwear, beachwear">Womens Swimwear, beachwear</option>
+                        <option value="Divided Collection">Divided Collection</option>
+                        <option value="Womens Everyday Basics">Womens Everyday Basics</option>
+                        <option value="Womens Lingerie">Womens Lingerie</option>
+                        <option value="Ladies Denim">Ladies Denim</option>
+                        <option value="Divided Basics">Divided Basics</option>
+                        <option value="Womens Tailoring">Womens Tailoring</option>
+                        <option value="Ladies H&M Sport">Ladies H&M Sport</option>
+                        <option value="Womens Nightwear, Socks & Tigh">Womens Nightwear, Socks & Tigh</option>
+                        <option value="Womens Casual">Womens Casual</option>
+                        <option value="Men Underwear">Men Underwear</option>
+                        <option value="Womens Small accessories">Womens Small accessories</option>
+                        <option value="Womens Shoes">Womens Shoes</option>
+                        <option value="Womens Big accessories">Womens Big accessories</option>
+                        <option value="Womens Jackets">Womens Jackets</option>
+                        <option value="Divided Selected">Divided Selected</option>
+                        <option value="Denim Men">Denim Men</option>
+                        <option value="H&M+">H&M+</option>
+                        <option value="Divided Accessories">Divided Accessories</option>
+                        <option value="Divided Complements Other">Divided Complements Other</option>
+                        <option value="Men Suits & Tailoring">Men Suits & Tailoring</option>
+                        <option value="Womens Trend">Womens Trend</option>
+                        <option value="Divided Projects">Divided Projects</option>
+                        <option value="Mama">Mama</option>
+                        <option value="Contemporary Street">Contemporary Street</option>
+                        <option value="Men Accessories">Men Accessories</option>
+                        <option value="Men H&M Sport">Men H&M Sport</option>
+                        <option value="Contemporary Smart">Contemporary Smart</option>
+                        <option value="Young Boy">Young Boy</option>
+   
+                     </select></a>
+
+                     <label for="fashion" style="width:20%" class="w3-bar-item">Garment_group_name</label></a>
+                     <label for="fashion" style="width:20%" class="w3-bar-item">Year</label></a>
+                     <label for="fashion" style="width:20%" class="w3-bar-item">Season</label></a>
+                     <label for="fashion" style="width:20%" class="w3-bar-item">Pricelabel</label></a>
+                     <label for="fashion" style="width:20%" class="w3-bar-item">Salelabel</label><br>
+                     
+                     <select class="w3-bar-item" style="width:20%" name="garment_group_name" form="cus_form" required='required'>
+                        <option value="Swimwear">Swimwear</option>
+                        <option value="Jersey Basic">Jersey Basic</option>
+                        <option value="Jersey Fancy">Jersey Fancy</option>
+                        <option value="Trousers">Trousers</option>
+                        <option value="Under-, Nightwear">Under-, Nightwear</option>
+                        <option value="Knitwear">Knitwear</option>
+                        <option value="Blouses">Blouses</option>
+                        <option value="Trousers Denim">Trousers Denim</option>
+                        <option value="Dresses Ladies">Dresses Ladies</option>
+                        <option value="Shorts">Shorts</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Socks and Tights">Socks and Tights</option>
+                        <option value="Skirts">Skirts</option>
+                        <option value="Special Offers">Special Offers</option>
+                        <option value="Dressed">Dressed</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Outdoor">Outdoor</option>
+                        <option value="Unknown">Unknown</option>
+                        <option value="Shirts">Shirts</option>
+                        
+                     </select></a>
+
+                     <select class="w3-bar-item" style="width:20%" name="Year" form="cus_form" required='required'>
+                        <option value="2019">去年</option>
+                        <option value="2020">今年</option>
+                        <option value="2018">前年</option>
+                        
+                     </select></a>
+
+                     <select class="w3-bar-item" style="width:20%" name="season" form="cus_form" required='required'>
+                        <option value="Summer">Summer</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Fall">Fall</option>
+                        <option value="Winter">Winter</option>
+                        
+                     </select></a>
+
+                     <select class="w3-bar-item" style="width:20%" name="pricelabel" form="cus_form" required='required'>
+                        <option value="100~199元">100~199元</option>
+                        <option value="200~299元">200~299元</option>
+                        <option value="300~399元">300~399元</option>
+                        <option value="99元以下">99元以下</option>
+                        <option value="400~499元">400~499元</option>
+                        <option value="500~599元">500~599元</option>
+                        <option value="600~699元">600~699元</option>
+                        <option value="800~899元">800~899元</option>
+                        <option value="1000元以上">1000元以上</option>
+                        <option value="700~799元">700~799元</option>
+                        <option value="900元~999元">900元~999元</option>
 
                      </select></a>
 
+                     <select class="w3-bar-item" style="width:20%" name="salelabel" form="cus_form" required='required'>
+                        <option value="一般">一般</option>
+                        <option value="冷門">冷門</option>
+                        <option value="熱門">熱門</option>
+
+                     </select></a>
 
                   </div>
-                     <!-- <input type="submit" value="Submit" /> -->
-                     <button id="sub" class="w3-button w3-block w3-black w3-margin-bottom" type='submit'>Submit</button>
+                  <!-- <input type="submit" value="Submit" /> -->
+                  <button id="sub" class="w3-button w3-block w3-black w3-margin-bottom" type='submit'>Submit</button>
                </div>
             </form>
          </div>
@@ -125,7 +548,7 @@
          <!-- Table Content -->
 
          <div class="w3-content ">
-            <h4 class="w3-center"><b>Customer info</b></h4>
+            <h1 class="w3-center"><b>Customer info</b></h1>
 
             <div class="w3-section">
 
@@ -190,7 +613,7 @@
 
       function w3_close() {
          document.getElementById("mySidebar").style.display = "none";
-         document.getElementById("myOverlay").style.display = "none";
+         /*document.getElementById("myOverlay").style.display = "none";*/
       }
 
       // Modal Image Gallery
