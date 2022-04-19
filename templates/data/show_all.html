@@ -9,6 +9,17 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"></script>
 
    <style>
       .slider_container div {
@@ -116,95 +127,102 @@
       }
 
       #QAQ {
-         background: linear-gradient(to top, #ffecd2 0%, #fcb69f 100%);
+         background: #ffffff;
          height: 600px;
       }
 
       #QAQ1 {
-         background: linear-gradient(to bottom, #ffecd2 0%, #fcb69f 100%);
+         background: #ffffff;
          height: 1240px;
       }
 
 
       #QAQ2 {
-         background: linear-gradient(to top, #ffecd2 0%, #fcb69f 100%);
+         background: #ffffff;
          max-width: 1600px;
       }
 
       .QAQ3 {
-         background: linear-gradient(to top, #ffecd2 0%, #fcb69f 100%);
+         background: #ffffff;
       }
 
       #QAQ4 {
          background: #cc071e;
          height: 100px;
       }
+
       #QAQ5 {
 
-      background: #cc071e;
-      width: 760px;
-      height: 510px;
-      position: absolute;
-      top: 50px;
-      left: 400px;
-      box-shadow:0 0 10px 5px #cc071e;
+         /*background: #cc071e;*/
+         width: 760px;
+         height: 510px;
+         position: absolute;
+         top: 10%;
+         left: 33%;
+         /*box-shadow:0 0 10px 5px #cc071e;*/
       }
 
       #QAQ6 {
-      /*background: #cc071e;*/
-      width: 270px;
-      height: 400px;
-      position: relative;
-      top: 40px;
-      left: 40px;
+         /*background: #cc071e;*/
+         width: 270px;
+         height: 400px;
+         position: relative;
+         top: 3%;
+         left: 4%;
       }
+
       #QAQ7 {
-      /*background: #cc071e;*/
-      width: 270px;
-      height: 400px;
-      position: relative;
-      top: -360px;
-      left: 350px;
+         /*background: #cc071e;*/
+         width: 270px;
+         height: 400px;
+         position: relative;
+         top: -29%;
+         left: 36.5%;
       }
+
       #QAQ8 {
-      /*background: #cc071e;*/
-      width: 270px;
-      height: 400px;
-      position: relative;
-      top: -760px;
-      left: 660px;
+         /*background: #cc071e;*/
+         width: 270px;
+         height: 400px;
+         position: relative;
+         top: -61.5%;
+         left: 68.5%;
       }
+
       #QAQ9 {
-      background: #cc071e;
-      width: 390px;
-      height: 340px;
-      position: relative;
-      top: -720px;
-      left: 40px;
+         background: #cc071e;
+         width: 390px;
+         height: 340px;
+         position: relative;
+         top: -63%;
+         left: 4%;
       }
+
       #QAQ9-1 {
-      /*background: #cc071e;*/
-      width: 460px;
-      height: 340px;
-      position: relative;
-      top: 0px;
-      left: 430px;
+         /*background: #cc071e;*/
+         width: 460px;
+         height: 340px;
+         position: relative;
+         top: 0%;
+         left: 111.5%;
       }
+
       #QAQ10 {
-      background: #cc071e;
-      width: 390px;
-      height: 340px;
-      position: relative;
-      top: -680px;
-      left: 540px;
+         background: #cc071e;
+         width: 390px;
+         height: 340px;
+         position: relative;
+         top: -56%;
+         left: 540px;
       }
+
       #QAQ10-1 {
-      /*background: #cc071e;*/
-      width: 460px;
-      height: 340px;
-      position: relative;
-      top: 0px;
-      left: -500px;
+         /*background: #cc071e;*/
+         width: 460px;
+         height: 340px;
+         position: relative;
+         top: 0px;
+         left: -500px;
       }
    </style>
 </head>
@@ -229,6 +247,8 @@
       <br>
       <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
       <br>
+      <!-- <a href="{{url_for('back')}}" onclick="w3_close()" class="w3-bar-item w3-button">BACKEND</a>
+      <br> -->
       <a href="{{url_for('us')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
    </nav>
 
@@ -292,132 +312,30 @@
          </div>
          <div id="QAQ9">
             <div id="QAQ9-1">
-            <h2>4444444444444444444444444444
-               <br>4444444444444444444444444444
-               <br>4444444444444444444444444444
-               <br>4444444444444444444444444444
-               <br>4444444444444444444444444444
-               <br>4444444444444444444444444444
-               <br>4444444444444444444444444444
-            </h2>
+               <h2>4444444444444444444444444444
+                  <br>4444444444444444444444444444
+                  <br>4444444444444444444444444444
+                  <br>4444444444444444444444444444
+                  <br>4444444444444444444444444444
+                  <br>4444444444444444444444444444
+                  <br>4444444444444444444444444444
+               </h2>
             </div>
          </div>
          <div id="QAQ10">
             <div id="QAQ10-1">
-            <h2>5555555555555555555555555555
-               <br>5555555555555555555555555555
-               <br>5555555555555555555555555555
-               <br>5555555555555555555555555555
-               <br>5555555555555555555555555555
-               <br>5555555555555555555555555555
-               <br>5555555555555555555555555555
-            </h2>
+               <h2>5555555555555555555555555555
+                  <br>5555555555555555555555555555
+                  <br>5555555555555555555555555555
+                  <br>5555555555555555555555555555
+                  <br>5555555555555555555555555555
+                  <br>5555555555555555555555555555
+                  <br>5555555555555555555555555555
+               </h2>
             </div>
          </div>
       </div>
 
-      <!-- Create 創建客戶資料-->
-      <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large QAQ3" id="contact">
-         <div class="w3-content" style="max-width:1000px">
-            <h1 class="w3-center"><b>Customer Interface</b></h1>
-
-            {%- for message in get_flashed_messages() %}
-            {{ message }}
-            {%- endfor %}
-
-
-            <form action="{{ request.path }}" method="post" id="cus_form">
-
-               <div>
-
-                  <div class="w3-bar w3-black">
-
-                     <label for="name" style="width:20% " class="w3-bar-item">Name</label></a>
-                     <label for="gender" style="width:20%" class="w3-bar-item">Gender</label></a>
-                     <label for="age" style="width:20%" class="w3-bar-item">Age</label></a>
-                     <label for="club" style="width:20%" class="w3-bar-item">Club</label></a>
-                     <label for="fashion" style="width:20%" class="w3-bar-item">Fashion</label><br>
-
-                     <input class="w3-bar-item" style="width:20%" type="text" name="name" placeholder="Name"
-                        id="XDD" /></a>
-
-
-                     <select class="w3-bar-item" style="width:20%" name="gender" form="cus_form" required='required'>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                     </select></a>
-
-
-                     <select class="w3-bar-item" style="width:20%" name="age" form="cus_form" required='required'>
-                        <option value="18~25">18~25</option>
-                        <option value="26~35">26~35</option>
-                        <option value="36~45">36~45</option>
-                     </select></a>
-
-
-                     <!-- <input type="text" name="club" /><br> -->
-                     <select class="w3-bar-item" style="width:20%" name="club" form="cus_form" required='required'>
-                        <option value="Activate">Activate</option>
-                        <option value="None">None</option>
-                     </select></a>
-
-                     <select class="w3-bar-item" style="width:20%" name="fnews" form="cus_form" required='required'>
-                        <option value="Frequency">Frequency</option>
-                        <option value="Sometimes">Sometimes</option>
-                        <option value="None">None</option>
-
-                     </select></a>
-
-
-                  </div>
-                  <!-- <input type="submit" value="Submit" /> -->
-                  <button id="sub" class="w3-button w3-block w3-black w3-margin-bottom" type='submit'>Submit</button>
-               </div>
-            </form>
-         </div>
-
-
-         <!-- Table Content -->
-
-         <div class="w3-content ">
-            <h1 class="w3-center"><b>Customer info</b></h1>
-
-            <div class="w3-section">
-
-               <table class="w3-table-all">
-                  <thead>
-                     <tr>
-                        <th width="150">Name</th>
-                        <th width="100">Gender</th>
-                        <th width="100">Age</th>
-                        <th width="100">Club</th>
-                        <th width="100">Fashion News</th>
-                        <th width="100">Recommendation</th>
-
-                     </tr>
-                  </thead>
-
-                  <tbody>
-                     {% for info in appInfo %}
-
-
-                     <tr>
-                        <td>{{ info.name }}</td>
-                        <td>{{ info.gender }}</td>
-                        <td>{{ info.age }}</td>
-                        <td>{{ info.club }}</td>
-                        <td>{{ info.fnews }}</td>
-                        <td align="center"> <a href="/recommend/{{info.id }}"><i class="fa fa-search"></i></a> </td>
-
-                     </tr>
-                     {% endfor %}
-
-
-                  </tbody>
-               </table>
-            </div>
-         </div>
-      </div>
 
       <!-- Modal for full size  images on click-->
       <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">

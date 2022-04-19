@@ -22,16 +22,20 @@ from flask_sqlalchemy import SQLAlchemy
 #             }
 #         ]
 sqlite_db='sqlite:///DevDb.db'
+sqlite_db2='sqlite:///DevDb2.db'
+
 app = Flask(__name__)
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = [DB_TYPE]+[DB_CONNECTOR]://[USERNAME]:[PASSWORD]@[HOST]:[PORT]/[DB_NAME]
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///DevDb.db'
+app.config['SQLALCHEMY_DATABASE_URI2'] = 'sqlite:///DevDb2.db'
+
 app.config['SECRET_KEY'] = "random string"
 
 db = SQLAlchemy(app)
 
 ##  create a database with item from data
-def create():
+def create1():
     # engine = create_engine(sqlite_db, echo=True)
    # 定義資料庫的DataFrame
     # base = declarative_base()
@@ -103,10 +107,58 @@ def create():
         pricelabel='99元以下',
         salelabel='熱門')       
         
+    # db.session.add(item)
+    # db.session.commit()
+
+
+create1()
+db= dataset.connect(sqlite_db)
+print( list(db['app_info']) )
+
+def create2():
+    # engine = create_engine(sqlite_db, echo=True)
+   # 定義資料庫的DataFrame
+    # base = declarative_base()
+
+    #使用FLASK定義
+    base = db.Model
+            
+    class AppInfo(base):
+        __tablename__ = 'app_info2'
+
+        id = db.Column('id',db.Integer, primary_key=True)
+        price = db.Column(db.String)
+        alive = db.Column(db.Integer)
+        cluster_age_avgconsume = db.Column(db.Integer)
+        loyaty = db.Column(db.String)
+        age_class = db.Column(db.Integer)
+        attribute = db.Column(db.Integer)
+        graphical_rename = db.Column(db.Integer)
+        color_rename = db.Column(db.Integer)
+        garment_group_name = db.Column(db.Integer)
+        
+    def __init__(self, price,alive,cluster_age_avgconsume, 
+    loyaty, age_class, attribute, graphical_rename, color_rename,garment_group_name):
+        self.price = price
+        self.cluster_age_avgconsume = cluster_age_avgconsume
+        self.loyaty = loyaty
+        self.age_class = age_class
+        self.attribute = attribute
+        self.graphical_rename=graphical_rename
+        self.alive=alive
+        self.color_rename=color_rename
+        self.garment_group_name=garment_group_name
+    # 產生資料表
+    # base.metadata.create_all(engine)
+    db.create_all()
+
+    item =AppInfo( price='0.017729',alive=1,cluster_age_avgconsume=8, 
+    loyaty='13.00384615', age_class=4, attribute=3, graphical_rename=0,
+     color_rename=0, garment_group_name=15)       
+        
     db.session.add(item)
     db.session.commit()
 
-
-create()
-db= dataset.connect(sqlite_db)
-print( list(db['app_info']) )
+# create2()
+# db= dataset.connect(sqlite_db2)
+# print( list(db['app_info2']) )
