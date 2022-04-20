@@ -18,10 +18,12 @@ JSON_FOLDER = os.path.join('static', 'data')
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///DevDb.db'
+
 app.config['CLOTHS_FOLDER'] = CLOTHS_FOLDER
 app.config['SECRET_KEY'] = "random string"
 app.config['JSON_FOLDER'] = JSON_FOLDER
 db = SQLAlchemy(app)
+
 mail = Mail(app)
 
 class Appmail():
@@ -131,7 +133,7 @@ def recommend():
 def recommend2():
     global customer
     # init
-    customer='cus_1'
+    # customer='cus_1'
 
     # get customer id, and 傳入Customer ID 的圖
     # slt1 = request.form.get('cus_ID')
@@ -175,7 +177,7 @@ def recommend2():
         
         return render_template('data/rec_ML2.html',prediction_text=product,cus_text=customer)
 
-    return render_template('data/rec_ML2.html',articles)
+    return render_template('data/rec_ML2.html')
 
 
         
