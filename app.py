@@ -273,21 +273,34 @@ def recommend0_f():
 @app.route('/recommend0', methods=['GET', 'POST'])
 def recommend0():
     slt1 = request.form.get('cus_ID')
-    if request.form.get('cus_ID') == None:
-        slt1 = '1'
-    atcl = ft.cus_id(slt1)
-    slt1 =  "Customer_ID : " + slt1
-    #atcl = str(atcl)
-    lls = []
-    for DXX in atcl:
-        N = str(DXX)
-        F = 'item2'
-        FN = F +'\\'+ N
-        FFN = os.path.join(app.config['CLOTHS_FOLDER'],FN)
-        FFN = FFN + '.jpg'
-        lls.append(FFN)
-    B = lls
-    return render_template('data/rec0.html',cus_text=slt1,atcl_text=B)
+    if request.form.get('cus_ID') != None:
+        atcl = ft.cus_id(slt1)
+        slt1 =  "Customer_ID : " + slt1
+        #atcl = str(atcl)
+        lls = []
+        for DXX in atcl:
+            N = str(DXX)
+            F = 'item2'
+            FN = F +'\\'+ N
+            FFN = os.path.join(app.config['CLOTHS_FOLDER'],FN)
+            FFN = FFN + '.jpg'
+            lls.append(FFN)
+        global BL
+        BL = lls
+        return render_template('data/rec0.html',cus_text=slt1,atcl_text=BL)
+    else:
+        global NBL
+        NBL = [] #New B List
+        for B in BL:
+            test = request.form.get(B)
+            print('test = ',test)
+            if test == None:
+                pass
+            else:
+                test = test[-14:-4]
+                NBL.append(test)
+            print('NBL = ',NBL)
+        return render_template('data/rec_f.html',atcl_text=NBL)
 
 # 依照各FORM ID  連結去推薦產品頁面
 @app.route('/recommend/<app_id>', methods=['GET', 'POST'])
