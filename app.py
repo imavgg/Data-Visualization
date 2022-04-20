@@ -1,15 +1,16 @@
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify
 from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
-import os
+
 import numpy as np
 from sqlite3 import connect
-import json,pickle
+import json,pickle,os,csv
 import pandas as pd
 from pyparsing import col
 
 # Save the AI MODEL INFO
 from Model_1 import pickle_model  as x2art # x2articles
+from Model_2 import for_test as ft #另一組 推薦系統
 
 
 CLOTHS_FOLDER = os.path.join('static', 'cloths')
@@ -22,30 +23,6 @@ app.config['SECRET_KEY'] = "random string"
 app.config['JSON_FOLDER'] = JSON_FOLDER
 db = SQLAlchemy(app)
 mail = Mail(app)
-
-
-# # this is a test for printing images on recommend
-# prediction =[]
-# def test():
-#     from random import sample 
-#     # The default random articles ID for ML
-#     IDs = ['0108775015','0108775044','0108775051','0110065001','0110065002','0110065011','0111565001','0111565003','0111586001','0111593001','0111609001','0112679048','0112679052','0114428026','0114428030','0116379047','0118458003','0118458004','0118458028','0118458029','0118458034','0118458038','0118458039']
-#     cloth_files=[]
-#     picked = sample(IDs,12)
-#     for DXX in picked:
-#         Name = str(DXX) + '.jpg'
-#         Folder = str(DXX)[0:3]
-#         FN = Folder +'\\'+ Name
-#         cloth_files.append(FN)
-
-#     # return 給HTML的參數
-#     files=[]
-#     for i in cloth_files:
-#         file = app.config['CLOTHS_FOLDER']+ '\\'+ i
-#         # print(file)
-#         files.append(file)
-#     return(files)
-# files = test()
 
 class Appmail():
     def __init__(self, title, sender, body):
@@ -103,47 +80,10 @@ class AppInfo(db.Model):
 # main link
 @app.route('/', methods=['GET', 'POST'])
 def main_page():
-    # # 接收UI輸入
-    # if request.method == 'POST':  # pass with http
-    #     if not request.form['name'] or not request.form['gender'] or not request.form['age']:
-    #         flash('Please enter all the fields', 'error')
-    #     else:
-    #         # 從 HTML 得到參數 並 新增info欄位
-    #         info = AppInfo(request.form['name'],
-    #                        request.form['gender'],
-    #                        request.form['age'],
-    #                        request.form['club'],
-    #                        request.form['fnews'],
-    #                        request.form['sales_channel_id'],
-    #                        request.form['product_group_name'],
-    #                        request.form['graphical_appearance_name'],
-    #                        request.form['colour_group_name'],
-    #                        request.form['section_name'],
-    #                        request.form['garment_group_name'],
-    #                        request.form['Year'],
-    #                        request.form['season'],
-    #                        request.form['pricelabel'],
-    #                        request.form['salelabel'],
-    #                        'NONE'
-    #                        )
-    #         # run ML
-    #         ex1 =x2art.encode(info)
-    #         y1 = x2art.predict(ex1) 
-                 
-    #         # save to db
-    #         info.predict(str(y1))
-    #         db.session.add(info)
-    #         db.session.commit()
-
-    #         # 導入至推薦產品頁面
-    #         flash('Record was successfully added')
-
-    #         return redirect(url_for('recommend2', pic = y1))
-
     return render_template('data/show_all.html', appInfo=AppInfo.query.all())
 
 
-# 推薦產品頁面
+# 推薦產品 ML1
 @app.route('/recommend', methods=['GET','POST'])
 def recommend():
     # rec 位動作的頁面   
@@ -185,6 +125,63 @@ def recommend():
 
     return render_template('data/rec.html')
 
+
+# 推薦產品 ML2:傳回給customer的圖片 
+@app.route('/recommend2', methods=['GET','POST'])
+def recommend2():
+    global customer
+    # init
+    customer='cus_1'
+
+    # get customer id, and 傳入Customer ID 的圖
+    # slt1 = request.form.get('cus_ID')
+    if not request.form.get('cus_ID')==  None:
+
+        # articles for customer ID
+        articles = ft.cus_id(request.form.get('cus_ID'))
+        print('articles for customer ID=',articles)
+        customer = request.form.get('cus_ID') #customer 回傳給 global variable
+
+        # articles ID pictures location
+        lls = []
+        # articles ID pictures
+        FNs=[]
+        for DXX in articles:
+            N = str(DXX)
+            F = 'item2'
+            FN = F +'\\'+ N
+            FFN = os.path.join(app.config['CLOTHS_FOLDER'],FN)
+            FFN = FFN + '.jpg'
+            lls.append(FFN)
+            FNs.append(N)
+            
+        # print(lls) 
+        # 傳回給checkbox的圖片
+        return render_template('data/rec_ML2.html',cus_text=customer,atcl_text=lls,arts=FNs,atc1=articles)
+    
+
+    checked = request.form.getlist('article')    
+    if checked ==[] or customer==None:
+        pass
+    else:
+        x=ft.lgbm()
+        y=ft.RandomForest()
+        z=ft.xgboost()
+
+        # print("checked:",checked)
+        print("cus:",customer)
+
+        product = ft.predict(x,y,z,customer,checked)
+        
+        return render_template('data/rec_ML2.html',prediction_text=product,cus_text=customer)
+
+    return render_template('data/rec_ML2.html',articles)
+
+
+        
+   
+
+    
 
 
 # 依照各FORM ID  連結去推薦產品頁面
