@@ -10,6 +10,7 @@ import pandas as pd
 from pyparsing import col
 from Model_1 import pickle_model  as x2art # x2articles
 from Model_1 import pickle_model0  as xdart # x2articles
+from Model_2 import for_test as ft #另一組 推薦系統
 
 
 CLOTHS_FOLDER = os.path.join('static', 'cloths')
@@ -229,6 +230,11 @@ def us():
 
     return render_template('data/us.html', appInfo=AppInfo.query.all())
 
+@app.route('/recommend_popular')
+def recommend_popular():
+    #推薦最受歡迎的
+    return render_template('data/rec.html')
+
 # 推薦產品頁面
 @app.route('/recommend', methods=['GET', 'POST'])
 def recommend():
@@ -257,6 +263,31 @@ def recommend():
     y1 = os.path.join(app.config['CLOTHS_FOLDER'],B[0])
     return render_template('data/rec.html', prediction_text='{}.jpg'.format(y1))
 
+#另一組的推薦_首頁
+@app.route('/recommend0_f')
+def recommend0_f():
+
+    return render_template('data/rec_f.html')
+
+#另一組的推薦
+@app.route('/recommend0', methods=['GET', 'POST'])
+def recommend0():
+    slt1 = request.form.get('cus_ID')
+    if request.form.get('cus_ID') == None:
+        slt1 = '1'
+    atcl = ft.cus_id(slt1)
+    slt1 =  "Customer_ID : " + slt1
+    #atcl = str(atcl)
+    lls = []
+    for DXX in atcl:
+        N = str(DXX)
+        F = 'item2'
+        FN = F +'\\'+ N
+        FFN = os.path.join(app.config['CLOTHS_FOLDER'],FN)
+        FFN = FFN + '.jpg'
+        lls.append(FFN)
+    B = lls
+    return render_template('data/rec0.html',cus_text=slt1,atcl_text=B)
 
 # 依照各FORM ID  連結去推薦產品頁面
 @app.route('/recommend/<app_id>', methods=['GET', 'POST'])

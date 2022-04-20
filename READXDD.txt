@@ -1,0 +1,15 @@
+static 沒更新  要去 雲端上抓  需要的 圖檔  {static\cloths\item2
+
+Model_2 檔案 過大 需要去 雲端上抓 需要的 檔案(共5個) {Model_2\cus12(Org).csv {Model_2\for_test.py {Model_2\RandomForest.pickle {Model_2\LGBM.pickle {Model_2\xgboost.pickle
+(that’s a big file. Try again with a file smaller than 25MB.)
+
+主要更新:
+	def recommend_popular():
+
+	def recommend0_f():
+
+	def recommend0():
+
+	rec0.html
+
+	另一組  Model_2
