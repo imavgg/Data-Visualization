@@ -4,9 +4,9 @@
 `python app.py`
 
 ## 需要先下載大檔
-將Model1(志峰)的圖檔放在 :Flask_team\static\cloths\item 資料夾內
-將Model2(益偉)的圖檔放在: Flask_team\static\cloths\item2 資料夾內
-Model2 的pickles黨過大 要放在Flast_team\Model2 資料夾內
+* 將Model1(志峰)的圖檔放在 :Flask_team\static\cloths\item 資料夾內
+* 將Model2(益偉)的圖檔放在: Flask_team\static\cloths\item2 資料夾內
+* Model2 的pickles黨過大 要放在Flast_team\Model2 資料夾內
 
 * Requirement.txt是有可能需要的額外套件，自行配合package缺的套件提示做下載 (另pickle,xgboost版本需要特定此版)
 
