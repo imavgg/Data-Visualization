@@ -48,6 +48,14 @@
             bottom: 0px;
             right: 0px;
         }
+        #pred{
+            height: 200px;
+        }
+        #fig16 {
+            height: 400px;
+            right: 30%;
+        }
+
     </style>
 </head>
 
@@ -66,11 +74,13 @@
             class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
         <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">MAIN</a>
         <br>
+        <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+        <br>
         <a href="{{url_for('recommend')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
         <br>
         <a href="{{url_for('recommend2')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION2</a>
         <br>
-        <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+        <a href="{{url_for('back')}}" onclick="w3_close()" class="w3-bar-item w3-button">BACKEND</a>
         <br>
         <a href="{{url_for('us')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
     </nav>
@@ -83,15 +93,15 @@
         <div class="w3-hide-large" style="margin-top:83px"></div>
 
         <form action="{{ url_for('recommend2') }}" method="post" id="customer">
+            <h1 class="w3-center"><b>Customer Interface</b></h1>
 
             <div class="w3-bar w3-black">
 
+                <input class="w3-bar-item" style="width:30%;height: 65px" type="text" name="name"
+                    placeholder="name" /></a>
 
-                <label for="cus" style="width:100%;font-size:30px;" class="w3-bar-item">Customer_ID</label>
-
-                <br>
-                <br>
-                <select class="w3-bar-item" style="width:100%;text-align:center;font-size:20px;" name="cus_ID">
+                <select class="w3-bar-item" style="width:30%;height: 65px;text-align:center;font-size:20px;"
+                    name="cus_ID">
                     <option value="cus_1">cus_1</option>
                     <option value="cus_2">cus_2</option>
                     <option value="cus_3">cus_3</option>
@@ -106,8 +116,10 @@
                     <option value="cus_12">cus_12</option>
 
                 </select></a>
+                <button id="sub" style="width:30%;font-size:20px;" class="w3-button w3-block w3-black w3-margin-bottom"
+                    type='submit'>Submit</button>
             </div>
-            <button id="sub" class="w3-button w3-block w3-black w3-margin-bottom" type='submit'>Submit</button>
+
         </form>
 
 
@@ -116,42 +128,32 @@
 
         <form action="{{ url_for('recommend2') }}" method="post" id="articles">
 
-            
+        <div id="fig16">
             {% for art_id in arts %}
-            <img src="static/cloths/item2/{{art_id}}.jpg" style="width:20% ;  height: 350px;" />
+            <img src="static/cloths/item2/{{art_id}}.jpg" style="width:10% ;  height: 170px;" />
             <input type="checkbox" name="article" value="{{art_id}}" checked />
 
-            {% endfor %} 
-            <!-- {% for art_image in atcl_text%}
-            <img src="{{art_image}}" style="width:20% ;  height: 350px; " />
-            {% endfor %} -->
-            
+            {% endfor %}
+
             <br>
-
-            <!-- {% for art_id in arts %}
-            <input type="checkbox" name="article" value="{{art_id}}" />
-            {% endfor %} -->
-
-            <button id="ml" class="w3-button w3-block w3-black w3-margin-bottom" type='submit'>ML</button>
+            <button class="w3-button w3-block w3-black w3-margin-bottom" type='submit'>ML</button>
+        </div>
         </form>
 
 
-        <b2>Products recommend for {{cus_text}} are as followings: </b2>
+        <h4>Products recommend for {{cus_text}} are as followings:<br> {{prediction_text}}</h4> <br>
 
 
-        <!-- {{prediction_text}} -->
-
+        <div id ="pred">
         {% for i in prediction_text%}
-        <br>
-        <img src="static/cloths/item2/{{i}}.jpg" style="width:20%;  height: 350px;" />    {{i}}
-
-
+        <img src="static/cloths/item2/{{i}}.jpg" style="width:10% ;  height: 170px;" />
         {% endfor %}
+        </div>
+        <div class="w3-black w3-center w3-padding-24">版權所有 © 自強工業基金會H&M推薦系統</a></div>
 
 
-
-        <!-- End page content -->
     </div>
+
 
     <script>
         // Script to open and close sidebar

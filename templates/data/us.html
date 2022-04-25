@@ -2,185 +2,232 @@
 <html lang="en">
 
 <head>
-        <title>About us</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-        <style>
-            body {
-              font-family: Arial, Helvetica, sans-serif;
-              margin: 0;
-            }
-            
-            html {
-              box-sizing: border-box;
-            }
-            
-            *, *:before, *:after {
-              box-sizing: inherit;
-            }
-            
-            .column {
-              float: left;
-              width: 33.3%;
-              margin-bottom: 16px;
-              padding: 0 8px;
-            }
-            
-            .card {
-              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-              margin: 8px;
-            }
-            
-            .about-section {
-              padding: 50px;
-              text-align: center;
-              background-color: #474e5d;
-              color: white;
-            }
-            
-            .container {
-              padding: 0 16px;
-            }
-            
-            .container::after, .row::after {
-              content: "";
-              clear: both;
-              display: table;
-            }
-            
-            .title {
-              color: grey;
-            }
-            
-            .button {
-              border: none;
-              outline: 0;
-              display: inline-block;
-              padding: 8px;
-              color: white;
-              background-color: #000;
-              text-align: center;
-              cursor: pointer;
-              width: 100%;
-            }
-            
-            .button:hover {
-              background-color: #555;
-            }
-            
-            @media screen and (max-width: 650px) {
-              .column {
-                width: 100%;
-                display: block;
-              }
-            }
-            </style>
-</head>
-<body>
+  <title>About us</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="folder" href=".\ \static\cloths">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: "Raleway", sans-serif
+    }
 
-    <div class="about-section">
-      <h1>About Us Page</h1>
-      <p>Some text about who we are and what we do.</p>
-      <p>Resize the browser window to see that this page is responsive by the way.</p>
-    </div>
-    
-    <h2 style="text-align:center">Our Team</h2>
+
+    body {
+      /* font-family: Arial, Helvetica, sans-serif; */
+      margin: 0;
+    }
+
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    .column {
+      float: left;
+      width: 20%;
+      margin-bottom: 10px;
+      padding: 0 8px;
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      margin: 8px;
+    }
+
+    .about-section {
+      padding: 30px;
+      text-align: center;
+      background-color: #474e5d;
+      color: white;
+    }
+
+    .container {
+      padding: 0 10px;
+    }
+
+    .container::after,
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .title {
+      color: grey;
+    }
+
+    .button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .button:hover {
+      background-color: #555;
+    }
+
+    @media screen and (max-width: 300) {
+      .column {
+        width: 100%;
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
+    style="display:none;z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+    <!--<h3 class="w3-padding-64 w3-center"><b>H&M<br>Recommendation</b></h3>-->
+    <br>
+    <br>
+    <img src="./static/H&M.png" width="165px">
+    <br>
+    <br>
+    <br>
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-hide-large">CLOSE Menu</a>
+    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">MAIN</a>
+    <br>
+    <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+    <br>
+    <a href="{{url_for('recommend')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
+    <br>
+    <a href="{{url_for('recommend2')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION2</a>
+    <br>
+    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">BACKEND</a>
+    <br>
+    <a href="{{url_for('us')}}" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
+  </nav>
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px">
+
+
+    <!-- <div class="about-section">
+      <h1>About Us</h1>
+    </div> -->
+
+    <h2 style="text-align:center">AI Model Team</h2>
     <div class="row">
       <div class="column">
         <div class="card">
-          <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+          <img src="/static/men/陳.jpg" alt="Jane" style="width:100%">
           <div class="container">
-            <h2>Jane Doe</h2>
-            <p class="title">CEO & Founder</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-            <p>jane@example.com</p>
-            <p><button class="button" onclick="location.href='https://www.youtube.com/watch?v=I2dJuNwlIH0'">Contact</button></p>
-       
+            <h2>陳弘峻</h2>
+            <p><button class="button"
+                onclick="location.href='https://drive.google.com/file/d/1CmHDXeNRUvR961jEzMjITZ_SOVr26VwI/view?usp=sharing'">Contact</button>
+            </p>
+
           </div>
         </div>
       </div>
-    
+
       <div class="column">
         <div class="card">
-          <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
+          <img src="/static/men/李.jpg" alt="Mike" style="width:100%">
           <div class="container">
-            <h2>Mike Ross</h2>
-            <p class="title">Art Director</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-            <p>mike@example.com</p>
-            <p><button class="button">Contact</button></p>
+            <h2>李有騰</h2>
+            <p><button class="button"
+                onclick="location.href='https://drive.google.com/file/d/1eizKmO6CvFlFDFmacGeflyXUepe-vFKL/view?usp=sharing'">Contact</button>
+            </p>
           </div>
         </div>
       </div>
-      
+
       <div class="column">
         <div class="card">
-          <img src="/Users/minni/Desktop/ab/ES100-65拷貝.jpg" alt="John" style="width:100%">
+          <img src="/static/men/蕭.jpg" alt="John" style="width:100%">
           <div class="container">
-            <h2>John Doe</h2>
-            <p class="title">Designer</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-            <p>john@example.com</p>
-            <p><button class="button">Contact</button></p>
+            <h2>蕭至峰</h2>
+            <p><button class="button"
+                onclick="widnow.open='https://drive.google.com/file/d/1DU7SYv86S8Om2EpOU3DZFEHLKdP4dHSY/view?usp=sharing','_blank'">Contact</button>
+            </p>
           </div>
         </div>
       </div>
-    
+
       <div class="column">
         <div class="card">
-          <img src="/Users/minni/Desktop/ab/ES100-65拷貝.jpg" alt="John" style="width:100%">
+          <img src="/static/men/黃.jpg" alt="John" style="width:100%">
           <div class="container">
-            <h2>John Doe</h2>
-            <p class="title">Designer</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-            <p>john@example.com</p>
-            <p><button class="button">Contact</button></p>
-          </div>
-        </div>
-      </div>
-    
-      <div class="column">
-        <div class="card">
-          <img src="/Users/minni/Desktop/ab/ES100-65拷貝.jpg" alt="John" style="width:100%">
-          <div class="container">
-            <h2>John Doe</h2>
-            <p class="title">Designer</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-            <p>john@example.com</p>
-            <p><button class="button">Contact</button></p>
-          </div>
-        </div>
-      </div>
-    
-      <div class="column">
-        <div class="card">
-          <img src="/Users/minni/Desktop/ab/ES100-65拷貝.jpg" alt="John" style="width:100%">
-          <div class="container">
-            <h2>John Doe</h2>
-            <p class="title">Designer</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-            <p>john@example.com</p>
-            <p><button class="button">Contact</button></p>
-          </div>
-        </div>
-      </div>
-    
-      <div class="column">
-        <div class="card">
-          <img src="/Users/minni/Desktop/ab/ES100-65拷貝.jpg" alt="John" style="width:100%">
-          <div class="container">
-            <h2>John Doe</h2>
-            <p class="title">Designer</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-            <p>john@example.com</p>
-            <p><button class="button">Contact</button></p>
+            <h2>黃奕瑋</h2>
+            <p><button class="button"
+                onclick="location.href='https://docs.google.com/document/d/1gqkclpDQsGu2J4Me6vtQ-e0lgFb2PUFFLsH2A-HV8M8/edit?usp=sharing'">Contact</button>
+            </p>
           </div>
         </div>
       </div>
     </div>
-    
-    </body>
-    </html>
-    
+
+    <h2 style="text-align:center">Web Visualization Team</h2>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <img src="/static/men/妮.jpg" alt="John" style="width:100%">
+          <div class="container">
+            <h2>潘旻妮</h2>
+            <p><button class="button"
+                onclick="location.href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=panminni@gmail.com'">Contact</button>
+            </p>
+
+
+            </button></p>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <img src="/static/men/安.jpg" alt="John" style="width:100%">
+          <div class="container">
+            <h2>安漢瑄</h2>
+            <p><button class="button"
+                onclick="location.href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=applean061516@gmail.com?subject=邀請面試'">Contact</button>
+            </p>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <img src="/static/men/吳.jpg" alt="John" style="width:100%">
+          <div class="container">
+            <h2>吳旻澤</h2>
+            <p><button class="button"
+                onclick="location.href='https://drive.google.com/file/d/1Nf_8MFWpSJu9tuGaRbe8TyFvhcC0y_9t/view?usp=sharing' ">Contact</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+</html>

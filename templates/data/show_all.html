@@ -21,6 +21,19 @@
       integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
       crossorigin="anonymous"></script>
 
+   <!-- Styles -->
+   <style>
+      #chartdiv_map {
+         width: 80%;
+         height: 300px;
+      }
+   </style>
+
+   <!-- Resources -->
+   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+   <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+   <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
    <style>
       .slider_container div {
          position: absolute;
@@ -120,109 +133,18 @@
          opacity: 1
       }
 
-      #XDD {
-         /*loat: left;*/
-         width: 20px;
-         height: 35px;
-      }
 
       #QAQ {
-         background: #ffffff;
          height: 600px;
-      }
-
-      #QAQ1 {
-         background: #ffffff;
-         height: 1240px;
-      }
-
-
-      #QAQ2 {
-         background: #ffffff;
-         max-width: 1600px;
-      }
-
-      .QAQ3 {
-         background: #ffffff;
-      }
-
-      #QAQ4 {
-         background: #cc071e;
-         height: 100px;
       }
 
       #QAQ5 {
 
-         /*background: #cc071e;*/
          width: 760px;
          height: 510px;
          position: absolute;
          top: 10%;
          left: 33%;
-         /*box-shadow:0 0 10px 5px #cc071e;*/
-      }
-
-      #QAQ6 {
-         /*background: #cc071e;*/
-         width: 270px;
-         height: 400px;
-         position: relative;
-         top: 3%;
-         left: 4%;
-      }
-
-      #QAQ7 {
-         /*background: #cc071e;*/
-         width: 270px;
-         height: 400px;
-         position: relative;
-         top: -29%;
-         left: 36.5%;
-      }
-
-      #QAQ8 {
-         /*background: #cc071e;*/
-         width: 270px;
-         height: 400px;
-         position: relative;
-         top: -61.5%;
-         left: 68.5%;
-      }
-
-      #QAQ9 {
-         background: #cc071e;
-         width: 390px;
-         height: 340px;
-         position: relative;
-         top: -63%;
-         left: 4%;
-      }
-
-      #QAQ9-1 {
-         /*background: #cc071e;*/
-         width: 460px;
-         height: 340px;
-         position: relative;
-         top: 0%;
-         left: 111.5%;
-      }
-
-      #QAQ10 {
-         background: #cc071e;
-         width: 390px;
-         height: 340px;
-         position: relative;
-         top: -56%;
-         left: 540px;
-      }
-
-      #QAQ10-1 {
-         /*background: #cc071e;*/
-         width: 460px;
-         height: 340px;
-         position: relative;
-         top: 0px;
-         left: -500px;
       }
    </style>
 </head>
@@ -243,15 +165,15 @@
       <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-hide-large">CLOSE Menu</a>
       <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">MAIN</a>
       <br>
+      <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+      <br>
       <a href="{{url_for('recommend')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
       <br>
       <a href="{{url_for('recommend2')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION2</a>
       <br>
-      <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
+      <a href="{{url_for('back')}}" onclick="w3_close()" class="w3-bar-item w3-button">BACKEND</a>
       <br>
-      <!-- <a href="{{url_for('back')}}" onclick="w3_close()" class="w3-bar-item w3-button">BACKEND</a>
-      <br> -->
-      <a href="{{url_for('us')}}#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
+      <a href="{{url_for('us')}}" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
    </nav>
 
    <!-- !PAGE CONTENT! -->
@@ -259,7 +181,7 @@
 
       <div id="QAQ">
          <div id="QAQ5">
-            <div class="slider_container">
+            <div class="slider_container ">
                <div>
                   <img src="./static/hmgoepprod.jpg" width="750px" height="500px" alt="pure css3 slider" />
                   <!--<span class="info">Image Description 1</span>-->
@@ -283,74 +205,29 @@
             </div>
          </div>
       </div>
+      <iframe
+         src="https://onedrive.live.com/embed?cid=194A41396B20E779&resid=194A41396B20E779%21342&authkey=AB1CfL2k6iBNzwk&em=2"
+         width="100%" height="600px" frameborder="0" scrolling="no"></iframe>
+      <div class="w3-black w3-center w3-padding-24">版權所有 © 自強工業基金會H&M推薦系統</a></div>
 
-      <div id="QAQ1">
-         <div id="QAQ6">
-            <img src="./static/clothes-hanger.png" width="120" alt="1">
-            <h2>111111111111111111111
-               <br>111111111111111111111
-               <br>111111111111111111111
-               <br>111111111111111111111
-               <br>111111111111111111111
-            </h2>
-         </div>
-         <div id="QAQ7">
-            <img src="./static/tshirt.png" width="120" alt="2">
-            <h2>22222222222222222
-               <br>22222222222222222
-               <br>22222222222222222
-               <br>22222222222222222
-               <br>22222222222222222
-            </h2>
-         </div>
-         <div id="QAQ8">
-            <img src="./static/dress.png" width="120" alt="3">
-            <h2>33333333333333333
-               <br>33333333333333333
-               <br>33333333333333333
-               <br>33333333333333333
-               <br>33333333333333333
-            </h2>
-         </div>
-         <div id="QAQ9">
-            <div id="QAQ9-1">
-               <h2>4444444444444444444444444444
-                  <br>4444444444444444444444444444
-                  <br>4444444444444444444444444444
-                  <br>4444444444444444444444444444
-                  <br>4444444444444444444444444444
-                  <br>4444444444444444444444444444
-                  <br>4444444444444444444444444444
-               </h2>
-            </div>
-         </div>
-         <div id="QAQ10">
-            <div id="QAQ10-1">
-               <h2>5555555555555555555555555555
-                  <br>5555555555555555555555555555
-                  <br>5555555555555555555555555555
-                  <br>5555555555555555555555555555
-                  <br>5555555555555555555555555555
-                  <br>5555555555555555555555555555
-                  <br>5555555555555555555555555555
-               </h2>
-            </div>
-         </div>
+
+   </div>
+
+
+   <!-- Modal for full size  images on click-->
+   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+      <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+         <img id="img01" class="w3-image">
+         <p id="caption"></p>
       </div>
-
-
-      <!-- Modal for full size  images on click-->
-      <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
-         <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
-         <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-            <img id="img01" class="w3-image">
-            <p id="caption"></p>
-         </div>
-      </div>
+   </div>
 
 
 
-      <!-- End page content -->
+
+
+   <!-- End page content -->
    </div>
 
    <script>
@@ -374,6 +251,10 @@
       }
 
    </script>
+
+
+
+
 
 
 </body>

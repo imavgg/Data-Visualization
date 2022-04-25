@@ -244,18 +244,21 @@
             class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
         <a href="{{url_for('main_page')}}" onclick="w3_close()" class="w3-bar-item w3-button">MAIN</a>
         <br>
-        <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
-        <br>
         <a href="{{url_for('visualization')}}" onclick="w3_close()" class="w3-bar-item w3-button">VISUALIZATION</a>
         <br>
-        <!-- <a href="{{url_for('back')}}" onclick="w3_close()" class="w3-bar-item w3-button">BACKEND</a>
-        <br>   -->
+        <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION</a>
+        <br>
+        <a href="{{url_for('recommend2')}}" onclick="w3_close()" class="w3-bar-item w3-button">RECOMMENDATION2</a>
+        <br>
+
+        <a href="{{url_for('back')}}" onclick="w3_close()" class="w3-bar-item w3-button">BACKEND</a>
+        <br>
         <a href="{{url_for('us')}}" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
     </nav>
 
 
     <!-- !PAGE CONTENT! -->
-    <div class="w3-main" style="margin-left:300px">
+    <div class="w3-main" style="margin-left:300px;height:610px">
 
         <!-- Push down content on small screens -->
         <div class="w3-hide-large" style="margin-top:83px"></div>
@@ -539,6 +542,8 @@
                 </form>
 
                 {{prediction_text}}
+                <img src="static/cloths/item/0{{prediction_text[0]}}.jpg" style="width:50% ;" />
+
 
             </div>
             <!-- Modal for full size images on click-->
@@ -549,38 +554,34 @@
                     <p id="caption"></p>
                 </div>
             </div>
-
-
-
-
-
-
             <!-- End page content -->
         </div>
-
-        <script>
-            // Script to open and close sidebar
-            function w3_open() {
-                document.getElementById("mySidebar").style.display = "block";
-                document.getElementById("myOverlay").style.display = "block";
-            }
-
-            function w3_close() {
-                document.getElementById("mySidebar").style.display = "none";
-                document.getElementById("myOverlay").style.display = "none";
-            }
-
-            // Modal Image Gallery
-            function onClick(element) {
-                document.getElementById("img01").src = element.src;
-                document.getElementById("modal01").style.display = "block";
-                var captionText = document.getElementById("caption");
-                captionText.innerHTML = element.alt;
-            }
-
-        </script>
+    </div>
+    <!-- <div class="w3-black w3-center w3-padding-24" style="margin-left:300px">版權所有 © 自強工業基金會H&M推薦系統</a></div> -->
 
 
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+
+    </script>
 </body>
 
 </html>
