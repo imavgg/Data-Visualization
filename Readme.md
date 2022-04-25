@@ -1,11 +1,20 @@
 ## Readme
 
 ## 使用方式
-`python app.py`  
+`python app.py`
 
-## Git 首次下載:
+## 需要先下載大檔
+將Model1(志峰)的圖檔放在 :Flask_team\static\cloths\item 資料夾內
+將Model2(益偉)的圖檔放在: Flask_team\static\cloths\item2 資料夾內
+Model2 的pickles黨過大 要放在Flast_team\Model2 資料夾內
+
+
+
+
+
+## Git 下載與協作方法:
 * git clone https://github.com/imavgg/Data-Visualization.git 需先下載本端。
-* 複製（Fork）一份原作的專案到你自己的 GitHub 帳號底下。
+* Fork一份原作的專案到你自己的 GitHub 帳號底下。
 * cd Data-Visualization
 * git checkout -b "your branch name" :設一個新的branch 名字。
 
