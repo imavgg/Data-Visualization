@@ -1,36 +1,30 @@
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify
 from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
-
 import numpy as np
 from sqlite3 import connect
 import json,pickle,os,csv
 import pandas as pd
 from pyparsing import col
-
+import list2db as lb
 # Save the AI MODEL INFO
 from Model_1 import pickle_model  as x2art # x2articles
-from Model_2 import for_test as ft #另一組 推薦系統
+from Model_2 import for_test as ft 
+
 
 
 CLOTHS_FOLDER = os.path.join('static', 'cloths')
 JSON_FOLDER = os.path.join('static', 'data')
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///DevDb.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ML.db'
 
 app.config['CLOTHS_FOLDER'] = CLOTHS_FOLDER
 app.config['SECRET_KEY'] = "random string"
 app.config['JSON_FOLDER'] = JSON_FOLDER
 db = SQLAlchemy(app)
-
 mail = Mail(app)
 
-class Appmail():
-    def __init__(self, title, sender, body):
-        self.title = title
-        self.sender = sender
-        self.body = body
 
 # add user input item into database
 class AppInfo(db.Model):
@@ -55,8 +49,6 @@ class AppInfo(db.Model):
     salelabel= db.Column(db.String)
     PREDICT = db.Column(db.String) #save predict result
 
-    # FOR MODEL2
-
     def __init__(self, name, gender, age, club, fnews,sales_channel_id,
     product_group_name,graphical_appearance_name,colour_group_name,
     section_name,garment_group_name,Year,season,pricelabel,salelabel,PREDICT):
@@ -79,6 +71,42 @@ class AppInfo(db.Model):
 
     def predict(self, predict):
         self.PREDICT=predict
+
+class AppInfo2(db.Model):
+
+    id = db.Column('id',db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    price = db.Column(db.String)
+    cluster_age_avgconsume = db.Column(db.Integer)
+    alive = db.Column(db.Integer)
+    Buy_n_year = db.Column(db.Integer)
+    loyaty = db.Column(db.String)
+    avg_consume = db.Column(db.Integer)
+    age_class = db.Column(db.Integer)
+    attribute = db.Column(db.Integer)
+    graphical_rename = db.Column(db.Integer)
+    color_rename = db.Column(db.Integer)
+    garment_group_name = db.Column(db.Integer)
+    PREDICT=db.Column(db.String)
+
+    def __init__(self, name, price,alive,cluster_age_avgconsume, 
+    loyaty, age_class, attribute, graphical_rename,
+     color_rename,garment_group_name,avg_consume,Buy_n_year,PREDICT):
+        self.name = name
+        self.price = price
+        self.cluster_age_avgconsume = cluster_age_avgconsume
+        self.loyaty = loyaty                                           
+        self.avg_consume=avg_consume
+        self.Buy_n_year = Buy_n_year
+        self.age_class = age_class
+        self.attribute = attribute
+        self.graphical_rename=graphical_rename
+        self.alive=alive
+        self.color_rename=color_rename
+        self.garment_group_name=garment_group_name
+        self.PREDICT=PREDICT
+
+
 # main link
 @app.route('/', methods=['GET', 'POST'])
 def main_page():
@@ -123,67 +151,76 @@ def recommend():
 
             # 導入至推薦產品頁面
             flash('Record was successfully added')
-            return render_template('data/rec.html', prediction_text='{}.jpg'.format(y1))
 
-    return render_template('data/rec.html')
+            return render_template('data/rec.html', prediction_text=y1)
+
+    return render_template('data/rec.html',prediction_text='predict_text')
 
 
 # 推薦產品 ML2:傳回給customer的圖片 
 @app.route('/recommend2', methods=['GET','POST'])
 def recommend2():
-    global customer
-    # init
-    # customer='cus_1'
 
-    # get customer id, and 傳入Customer ID 的圖
-    # slt1 = request.form.get('cus_ID')
-    if not request.form.get('cus_ID')==  None:
-
-        # articles for customer ID
-        articles = ft.cus_id(request.form.get('cus_ID'))
-        print('articles for customer ID=',articles)
-        customer = request.form.get('cus_ID') #customer 回傳給 global variable
-
-        # articles ID pictures location
-        lls = []
-        # articles ID pictures
-        FNs=[]
-        for DXX in articles:
-            N = str(DXX)
-            F = 'item2'
-            FN = F +'\\'+ N
-            FFN = os.path.join(app.config['CLOTHS_FOLDER'],FN)
-            FFN = FFN + '.jpg'
-            lls.append(FFN)
-            FNs.append(N)
-            
-        # print(lls) 
-        # 傳回給checkbox的圖片
-        return render_template('data/rec_ML2.html',cus_text=customer,atcl_text=lls,arts=FNs,atc1=articles)
     
+    if request.method == 'POST':  # pass with ULR   
+        # init for customer
+        global last
+        global FNs
+        global name
+        customer = request.form.get('cus_ID')
+        print(customer)
+        checked = request.form.getlist('article')  
+        print(checked)
+        name = request.form.get('name')
+        print(name)
 
-    checked = request.form.getlist('article')    
-    if checked ==[] or customer==None:
-        pass
-    else:
-        x=ft.lgbm()
-        y=ft.RandomForest()
-        z=ft.xgboost()
-
-        # print("checked:",checked)
-        print("cus:",customer)
-
-        product = ft.predict(x,y,z,customer,checked)
+        # get customer id, and 傳入Customer ID 的圖
+        if customer == None and checked == []: #if先跑ML沒選Customer
+            print('please enter customer id first and predict')
+        elif customer ==None and not checked ==[]: #當點 ML ,customer以上次紀錄值
+            customer=last
+        else: #當點完Customer,last=customer免得下次點ML為空值
+            # find recommend articles for customer ID
+            articles = ft.cus_id(customer)
+            print('articles for customer ID=',articles)
+            # record last input for customer
+            last = customer
+            # articles ID pictures location
+            locations = []
+            # articles ID pictures
+            FNs=[]
+            for art in articles:
+                
+                FFN = os.path.join(app.config['CLOTHS_FOLDER'],'item2\\'+ str(art))+ '.jpg'
+                locations.append(FFN)
+                FNs.append(str(art))
+                
+            # 傳回給checkbox的圖片
+            return render_template('data/rec_ML2.html',cus_text=customer,atcl_text=locations,arts=FNs,atc1=articles)
         
-        return render_template('data/rec_ML2.html',prediction_text=product,cus_text=customer)
+
+        if not checked==[] :  
+            # print("checked:",checked)
+            # print("cus:",customer)
+
+            features = ft.feat2arr(customer,checked)
+            product = ft.predict(customer,checked)
+            items=lb.to_db(features)
+
+            #抓取勾取之購物車中 各特徵屬性的最大共同值特徵
+                        
+            info2 = AppInfo2(customer,items[0],items[1],items[2],items[3],
+                            items[4],items[5],items[6],items[7],items[8],
+                            items[9],items[10],str(product))
+            db.session.add(info2) 
+            db.session.commit()
+
+            return render_template('data/rec_ML2.html',arts=FNs,prediction_text=product,cus_text=customer)
+        else:
+            print('checked =[] or no customer input')
 
     return render_template('data/rec_ML2.html')
 
-
-        
-   
-
-    
 
 
 # 依照各FORM ID  連結去推薦產品頁面
@@ -197,10 +234,11 @@ def modify(app_id):
             info = db.session.query(AppInfo).filter_by(id=app_id).first()            
             y1 = info.PREDICT        
             return render_template('data/rec.html', prediction_text='{}.jpg'.format(y1))
-            
+
+
 @app.route('/backend')
 def back():
-    return render_template('data/rec_ML1.html', appInfo=AppInfo.query.all())
+    return render_template('data/rec_ML1.html', appInfo2=AppInfo2.query.all(),appInfo=AppInfo.query.all())
 
 
 
@@ -270,6 +308,7 @@ def data_timeline():
         print("nothing")
     return( json.dumps(data_js))
 
+
 # 視覺化接收選單name
 @ app.route('/vis', methods=['GET', 'POST'])
 def visualization():
@@ -280,26 +319,13 @@ def visualization():
     globalc = request.args.get('globalc')
     
     return render_template('data/vis.html', args=[pie,bar,timeline,globalc] )
+
+
+
 # 關於我們
 @app.route('/us',methods=['GET', 'POST'])
 def us():
-    if request.method == 'POST':        
-        if not request.form['title'] or not request.form['sender']:
-            flash('Please enter all the fields', 'error')
-        else:
-            mail = Appmail( request.form['title'], 
-                            request.form['sender'],
-                           request.form['body']
-                           )
-            msg_recipients = ['applean061516@gmail.com']
-            msg = Message(mail.title,
-                sender=mail.sender,
-                recipients=msg_recipients,
-                body=mail.body)
-            mail.send(msg)
-            return('Mail sent')
-
-    return render_template('data/us.html', appInfo=AppInfo.query.all())
+    return render_template('data/us.html')
 
 
 if __name__ == '__main__':
